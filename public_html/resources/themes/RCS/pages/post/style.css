@@ -166,13 +166,89 @@
 #post_page_wrapper .post_comments main.comments_main {
   display: flex;
   width: 940px;
+  flex-direction: column;
   padding: 5px;
   flex-wrap: wrap;
 }
 
-#post_page_wrapper .post_comments main.comments_main .comment {
+#post_page_wrapper .post_comments main.comments_main div.comment_post {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 12pt;
+}
+
+#post_page_wrapper .post_comments main.comments_main div.comment_post div.comment_data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 940px;
+  padding: 0px 5px;
+  height: 28px;
+  background-color: #272e43;
+  color: #e0e0e0;
+  font-weight: bold;
+  font-size: 14pt;
+}
+
+#post_page_wrapper .post_comments main.comments_main div.comment_post div.comment_data .comment_author a {
+  color: #e0e0e0;
+}
+
+#post_page_wrapper .post_comments main.comments_main div.comment_post div.comment_data .comment_votes .vote_positive {
+  color: green;
+}
+
+#post_page_wrapper .post_comments main.comments_main div.comment_post div.comment_data .comment_votes .vote_negative {
+  color: lightcoral;
+}
+
+#post_page_wrapper .post_comments main.comments_main div.comment_post .comment_contents {
   display: flex;
   flex-direction: column;
+  width: 940px;
+  font-size: 18pt;
+}
+
+#post_page_wrapper .post_comments main.comments_main div.comment_post .comment_contents form {
+  width: 940px;
+}
+
+#post_page_wrapper .post_comments main.comments_main div.comment_post .comment_contents form div textarea {
+  resize: none;
+  min-height: 128px;
+}
+
+#post_page_wrapper .post_comments main.comments_main div.comment_post .comment_contents form div .form_input {
+  width: 934px;
+  padding: 2px;
+  margin-bottom: 10px;
+}
+
+#post_page_wrapper .post_comments main.comments_main div.comment_post .comment_contents form div.form_button_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#post_page_wrapper .post_comments main.comments_main div.comment_post .comment_contents form div.form_button_container .form_submit {
+  width: 200px;
+  font-size: 14pt;
+  border: none;
+  background-color: #272e43;
+  color: #e0e0e0;
+  padding: 5px;
+}
+
+#post_page_wrapper .post_comments main.comments_main div.comment_post .comment_contents form div.form_button_container .form_submit:hover {
+  background-color: #003153;
+  cursor: pointer;
+}
+
+#post_page_wrapper .post_comments main.comments_main .comment {
+  display: flex;
   width: 230px;
   min-height: 320px;
   border: 1px solid lightgray;

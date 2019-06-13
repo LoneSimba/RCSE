@@ -56,14 +56,14 @@
         font-size: 18pt;
     }
 
-    .topic_replies {
+    
+    .post_comments {
         display: flex;
         flex-direction: column;
         width: $main-width - 10px;
-        margin-top: 10px;
         padding: 5px;
 
-        header.replies_header {
+        header.comments_header {
             display: flex;
             align-items: center;
             width: $main_width - 20px;
@@ -75,13 +75,124 @@
             font-size: 14pt;
         }
 
-        main.replies_main {
+        main.comments_main {
             display: flex;
             width: $main_width - 20px;
+            flex-direction: column;
             padding: 5px;
             //justify-content: space-between;
             flex-wrap: wrap;
 
+            div.comment_post {
+                display: flex;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 20px;  
+                font-size: 12pt;
+                
+                div.comment_data {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: $main_width - 20px;
+                    padding: 0px 5px;
+                    height: 28px;
+                    background-color: $light_black;
+                    color: $bright_gray;
+                    font-weight: bold;
+                    font-size: 14pt;
+            
+                    .comment_author {
+                        a {
+                            color: $bright_gray;
+                        }
+                    }
+            
+                    .comment_votes {
+                        .vote_positive {
+                            color: green;
+                        }
+            
+                        .vote_negative {
+                            color: lightcoral;
+                        }
+                    }
+                }
+            
+                .comment_contents {
+                    display: flex;
+                    flex-direction: column;
+                    width: $main_width - 20px;
+                    font-size: 18pt;
+                    
+                    form {
+                        width: $main_width - 20px;
+
+                        div {
+                            textarea {
+                                resize: none;
+                                min-height: 128px;
+                            }
+                
+                            .form_input {
+                                width: $main_width - 26px;
+                                padding: 2px;
+                                margin-bottom: 10px;
+                            }
+                        }
+
+                        div.form_button_container {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                
+                            .form_submit {
+                                width: 200px;
+                                font-size: 14pt;
+                                border: none;
+                                background-color: $light_black;
+                                color: $bright_gray;
+                                padding: 5px;
+                            }
+                
+                            .form_submit:hover {
+                                background-color: $lighter_black;
+                                cursor: pointer;
+                            }
+                            
+                        }
+                    }
+                
+                }
+            }
+
+
+            .comment {
+                display: flex;
+                width: $panel_width;
+                min-height: 320px;
+                border: 1px solid lightgray;
+                background-color: #e5e5e5;
+                margin: 5px 1.5px;
+                
+                .author_image {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: $panel_width;
+                    height: $panel_width;
+                    background-color: #f5f5f5;
+                }
+
+                .comment_text {
+                    display: flex;
+                    flex-direction: column;
+                    width: $panel_width - 8px;
+                    padding: 2px 4px;
+                }
+
+            }
         }
     }
     

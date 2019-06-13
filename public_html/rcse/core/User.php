@@ -91,12 +91,11 @@ class User
         }
 
         try {
-            $user_data = $this->database->databaseGetData('accounts', $type, $id);
+            $user_data = $this->database->databaseGetData('accounts', $type, $id)[0];
         } catch (\Exception $e) {
             $this->logger->log($this->logger::ERROR, $e->getMessage(), get_class($this));
             return $e->getMessage();
         }
-
         if (password_verify($pass, $user_data['password']) === false) {
             $message = "Failed to login: password doesn't match!";
             $this->logger->log($this->logger::NOTICE, $message, get_class($this));
@@ -117,17 +116,18 @@ class User
         }
 
         try {
-            $user_data = $this->database->databaseGetData('accounts', 'by_login', $login);
+            $user_data = $this->database->databaseGetData('accounts', 'by_login', $login)[0];
         } catch (\Exception $e) {
             $this->logger->log($this->logger::ERROR, $e->getMessage(), get_class($this));
             return false;
         }
-
         return $user_data;
     }
 
     public function userGetUsergroup(string $login)
-    { }
+    {
+        return json_decode($this->userGetInfo($login)['settings'], true)['group'];
+    }
 
     public function userGroupIsPermitted(string $usergroup, string $permission)
     { }

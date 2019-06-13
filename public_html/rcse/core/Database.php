@@ -79,7 +79,7 @@ class Database
         }
         $this->logger->log($this->logger::INFO, "Data obtained successfully.", get_class($this));
         
-        if($type === "all" || $type === "by_section") {
+        if($type === "all" || $type === "by_section" || $type = "by_reply_to") {
             return $query->fetchAll(\PDO::FETCH_ASSOC);
         } else {
             return $query->fetch(\PDO::FETCH_ASSOC);

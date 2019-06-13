@@ -72,7 +72,7 @@ class Forum
         }
 
         try {
-            return $this->database->databaseGetData('topics', 'by_topic_id', $topic_id);
+            return $this->database->databaseGetData('topics', 'by_topic_id', $topic_id)[0];
         } catch (\Exception $e) {
             $this->logger->log($this->logger::ERROR, $e->getMessage(), get_class($this));
             return $e->getMessage();
@@ -122,10 +122,6 @@ class Forum
 
     public function forumGetReplyList(string $topic_id)
     {
-        if ($this->database->databaseCheckData('replies', 'by_reply_to', $topic_id) === false) {
-            return "No comments here";
-        }
-
         try {
             return $this->database->databaseGetData('replies', 'by_reply_to', $topic_id);
         } catch (\Exception $e) {

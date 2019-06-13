@@ -76,7 +76,7 @@ switch ($page) {
                 $ui->uiSetPageElement("PAGE_TITLE", "Создание аккаунта");
                 break;
             default:
-                if(isset($_GET['login'])) {
+                if (isset($_GET['login'])) {
                     $login = htmlspecialchars($_GET['login']);
                 } elseif (isset($_COOKIE['session_login'])) {
                     $login = $_COOKIE['session_login'];
@@ -84,7 +84,7 @@ switch ($page) {
                     $page_cont = "<script>window.location.href = '/' </script>";
                     $ui->uiSetPageElement("PAGE_CONTENT", $page_cont);
                 }
-                
+
                 $user_data = $user->userGetInfo($login);
 
                 $email = ($_COOKIE['session_login'] === $login) ? $user_data['email'] : "скрыто";
@@ -92,7 +92,7 @@ switch ($page) {
                 $origin = ($_COOKIE['session_login'] === $login) ? $user_data['origin'] : "скрыто";
                 $sex = ($_COOKIE['session_login'] === $login) ? $user_data['sex'] : "скрыто";
                 $reg_day = $user_data['regdate'];
-        
+
                 $ui->uiSetPageElement("USER_LOGIN", $login);
                 $ui->uiSetPageElement("USER_EMAIL", $email);
                 $ui->uiSetPageElement("USER_BDAY", $birthday);
@@ -124,21 +124,21 @@ switch ($page) {
                     break;
                 }
                 $id = htmlspecialchars($_GET['id']);
-
                 $ui->uiCreatePostPage();
 
                 $posts = $news->newsPostGetPostsList();
+                $current_post = $news->newsPostGetPostData($id);
 
-                $ui->uiSetPageElement("PAGE_TITLE", "Просмотр: " . $posts[$id]['title']);
-                $ui->uiSetPageElement("POST_TITLE", $posts[$id]['title']);
-                $ui->uiSetPageElement("POST_AUTHOR", $posts[$id]['author']);
-                $ui->uiSetPageElement("POST_DATE", $posts[$id]['date']);
-                $ui->uiSetPageElement("POST_VOTEUP", $posts[$id]['voteups']);
-                $ui->uiSetPageElement("POST_VOTEDOWN", $posts[$id]['votedowns']);
-                $ui->uiSetPageElement("POST_DESCRIPTION", $posts[$id]['description']);
-                $ui->uiSetPageElement("POST_CONTENT", $posts[$id]['content']);
+                $ui->uiSetPageElement("POST_TITLE", $current_post['title']);
+                $ui->uiSetPageElement("POST_AUTHOR", $current_post['author']);
+                $ui->uiSetPageElement("POST_DATE", $current_post['date']);
+                $ui->uiSetPageElement("POST_VOTEUP", $current_post['voteups']);
+                $ui->uiSetPageElement("POST_VOTEDOWN", $current_post['votedowns']);
+                $ui->uiSetPageElement("POST_DESCRIPTION", $current_post['description']);
+                $ui->uiSetPageElement("POST_CONTENT", $current_post['content']);
 
                 $post_count = count($posts);
+                $post_block = "";
 
                 if ($post_count === 0) {
                     $post_block = "<div class=\"news_post\">
@@ -151,7 +151,6 @@ switch ($page) {
                                 </div>
                             </div>";
                 } elseif ($post_count >= 4) {
-                    $post_block = "";
                     for ($i = 1; $i < 4; $i++) {
                         if ($i == $id) {
                             $a = 5;
@@ -176,7 +175,6 @@ switch ($page) {
                                 </div>";
                     }
                 } else {
-                    $post_block = "";
                     for ($i = 0; $i < $post_count; $i++) {
                         $post_block .= "<div class=\"news_post\">
                                     <div class=\"news_post_image\">
@@ -190,7 +188,56 @@ switch ($page) {
                     }
                 }
                 $ui->uiSetPageElement("POST_BLOCK", $post_block);
-                $ui->uiSetPageElement("PAGE_TITLE", "Просмотр публикации {$posts[$id]['title']}");
+
+                $comments = $news->newsPostGetCommentList($id);
+                $comm_count = count($comments);
+
+                $comm_block = "";
+
+                if ($user_online) {
+                    $comm_block .= "<div class=\"comment_post\">
+                                    <div class=\"comment_data\">
+                                        <span class=\"comment_author\">Оставить комментарий</span>                                                                
+                                    </div>
+                                    <div class=\"comment_contents\">
+                                        <form action=\"/?page=action&mode=comment_post&id={$id}\" method=\"POST\">
+                                            <div>
+                                                <textarea name=\"comment\" class=\"form_input\" maxlength=\"64\"></textarea>
+                                            </div>
+                                            <div class=\"form_button_container\">
+                                                <input type=\"submit\" value=\"Опубликовать\" class=\"form_submit\">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    </div>";
+                }
+
+                if ($comm_count === 0) {
+                    $comm_block .= "<div class=\"comment_post\">
+                        <div class=\"comment_contents\">
+                            <span>Комментариев нет.</span>
+                        </div>
+                    </div>";
+                } else {
+                    for ($i = 0; $i < $comm_count; $i++) {
+                        $comm_block .= "<div class=\"comment_post\">
+                                        <div class=\"comment_data\">
+                                            <span class=\"comment_author\">Автор: <a href=\"/?page=user&login={$comments[$i]['author']}\">{$comments[$i]['author']}</a></span>
+                                            <span class=\"comment_date\">Опубликовано: {$comments[$i]['date']}</span>
+                                            <div class=\"comment_votes\">
+                                                <span class=\"vote_positive\">{$comments[$i]['voteups']}</span>
+                                                <span class=\"vote_negative\">{$comments[$i]['votedowns']}</span>
+                                            </div>
+                                        </div>
+                                        <div class=\"comment_contents\">
+                                            <span>{$comments[$i]['content']}</span>
+                                        </div>
+                                        </div>";
+                    }
+                }
+
+                $ui->uiSetPageElement("COMMENTS_BLOCK", $comm_block);
+                $ui->uiSetPageElement("PAGE_TITLE", "Просмотр публикации {$current_post['title']}");
                 break;
             default:
                 $ui->uiCreateNewsPage();
@@ -199,7 +246,7 @@ switch ($page) {
                 $post_count = count($posts);
 
                 if ($post_count === 0) {
-                    if ($user_online === true) {
+                    if ($user_online === true && $user->userGetUsergroup($_COOKIE['session_login']) === 'Admin') {
                         $post_block = "<div class=\"news_post\">
                                 <div class=\"news_post_image\">
                                     <span>*</span>
@@ -234,7 +281,7 @@ switch ($page) {
                                 </div>";
                     }
 
-                    if ($user_online === true) {
+                    if ($user_online === true && $user->userGetUsergroup($_COOKIE['session_login']) === 'Admin') {
                         $post_block .= "<div class=\"news_post\">
                                             <div class=\"news_post_image\">
                                                 <span>*</span>
@@ -270,7 +317,7 @@ switch ($page) {
                 } else {
                     $sections_block = "<select name=\"section\" required>
                                             <option disabled selected>Выберите раздел</option>";
-                    foreach($sections as $key => $value) {
+                    foreach ($sections as $key => $value) {
                         $sections_block .= "<option value=\"{$key}\">{$sections[$key]['name']}</option>";
                     }
                     $sections_block .= "</select>";
@@ -292,7 +339,6 @@ switch ($page) {
 
                 $topic = $forum->forumGetTopicData($id);
 
-                $ui->uiSetPageElement("PAGE_TITLE", "Просмотр: " . $topic['title']);
                 $ui->uiSetPageElement("TOPIC_TITLE", $topic['title']);
                 $ui->uiSetPageElement("TOPIC_AUTHOR", $topic['author']);
                 $ui->uiSetPageElement("TOPIC_DATE", $topic['date']);
@@ -300,6 +346,55 @@ switch ($page) {
                 $ui->uiSetPageElement("TOPIC_VOTEDOWN", $topic['votedowns']);
                 $ui->uiSetPageElement("TOPIC_CONTENT", $topic['content']);
 
+                $comments = $forum->forumGetReplyList($id);
+                $comm_count = count($comments);
+
+                $comm_block = "";
+
+                if ($user_online) {
+                    $comm_block .= "<div class=\"comment_post\">
+                                    <div class=\"comment_data\">
+                                        <span class=\"comment_author\">Оставить ответ</span>                                                                
+                                    </div>
+                                    <div class=\"comment_contents\">
+                                        <form action=\"/?page=action&mode=forum_reply&id={$id}\" method=\"POST\">
+                                            <div>
+                                                <textarea name=\"reply\" class=\"form_input\" maxlength=\"64\"></textarea>
+                                            </div>
+                                            <div class=\"form_button_container\">
+                                                <input type=\"submit\" value=\"Опубликовать\" class=\"form_submit\">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    </div>";
+                }
+
+                if ($comm_count === 0) {
+                    $comm_block .= "<div class=\"comment_post\">
+                        <div class=\"comment_contents\">
+                            <span>Ответов нет.</span>
+                        </div>
+                    </div>";
+                } else {
+                    for ($i = 0; $i < $comm_count; $i++) {
+                        $comm_block .= "<div class=\"comment_post\">
+                                        <div class=\"comment_data\">
+                                            <span class=\"comment_author\">Автор: <a href=\"/?page=user&login={$comments[$i]['author']}\">{$comments[$i]['author']}</a></span>
+                                            <span class=\"comment_date\">Опубликовано: {$comments[$i]['date']}</span>
+                                            <div class=\"comment_votes\">
+                                                <span class=\"vote_positive\">{$comments[$i]['voteups']}</span>
+                                                <span class=\"vote_negative\">{$comments[$i]['votedowns']}</span>
+                                            </div>
+                                        </div>
+                                        <div class=\"comment_contents\">
+                                            <span>{$comments[$i]['content']}</span>
+                                        </div>
+                                        </div>";
+                    }
+                }
+
+                $ui->uiSetPageElement("COMMENTS_BLOCK", $comm_block);
+                $ui->uiSetPageElement("PAGE_TITLE", "Просмотр публикации {$current_post['title']}");
                 break;
             default:
                 $ui->uiCreateForumPage();
@@ -324,16 +419,10 @@ switch ($page) {
                         $topics_count = (empty($topics)) ? 0 : count($topics);
 
                         if ($topics_count === 0) {
-                            if ($user_online === true) { 
+                            if ($user_online === true) {
                                 $page_data .= "<div class=\"forum_post\">
                                                 <div class=\"forum_post_text\">
                                                     <span class=\"forum_post_title\"><a href=\"/?page=forum&mode=create\">Создать пост</a></span>
-                                                    <div class=\"forum_post_info\">
-                                                        <span class=\"author_name\"><a nohref>-</a></span>
-                                                        <div class=\"forum_post_votes\">
-                                                            <span class=\"vote_positive\">-</span>
-                                                            <span class=\"vote_negative\">-</span>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>";
@@ -359,8 +448,8 @@ switch ($page) {
                                                     </div>
                                                 </div>";
                             }
-                            if($user_online === true) {
-                            $page_data .= "<div class=\"forum_post\">
+                            if ($user_online === true) {
+                                $page_data .= "<div class=\"forum_post\">
                                                 <div class=\"forum_post_text\">
                                                     <span class=\"forum_post_title\"><a href=\"/?page=forum&mode=create\">Создать пост</a></span>
                                                     <div class=\"forum_post_info\">
@@ -487,7 +576,33 @@ switch ($page) {
 
                 break;
             case 'comment_post':
+                if ($user_online === false) {
+                    $page_contents = "<script>window.location.href = '/?page=news' </script>";
+                    $ui->uiSetPageElement("PAGE_CONTENT", $page_contents);
+                }
+                if (isset($_GET['id']) === false) {
+                    $page_contents = "<script>window.location.href = '/?page=news' </script>";
+                    $ui->uiSetPageElement("PAGE_CONTENT", $page_contents);
+                }
 
+                $comment = htmlspecialchars($_POST['comment']);
+
+                $res = $news->newsPostCreateComment(htmlspecialchars($_GET['id']), $_COOKIE['session_login'], $comment);
+                if ($res !== true) {
+                    $data = "
+                    <form action='/?page=error' id='form' method='POST'>
+                        <input type='hidden' name='message' value='{$title}'>
+                    </form>
+                    <script>
+                        document.getElementById('form').submit();
+                    </script>";
+                } else {
+                    $data = "
+                    <script>
+                        window.location.href = '/?page=news&mode=view&id={$_GET['id']}';
+                    </script>";
+                }
+                $ui->uiSetPageElement("PAGE_CONTENT", $data);
                 break;
             case 'comment_upvote':
 
@@ -529,6 +644,35 @@ switch ($page) {
                 $ui->uiSetPageElement("PAGE_CONTENT", $data);
 
                 break;
+            case 'forum_reply':
+                if ($user_online === false) {
+                    $page_contents = "<script>window.location.href = '/?page=forum' </script>";
+                    $ui->uiSetPageElement("PAGE_CONTENT", $page_contents);
+                }
+                if (isset($_GET['id']) === false) {
+                    $page_contents = "<script>window.location.href = '/?page=forum' </script>";
+                    $ui->uiSetPageElement("PAGE_CONTENT", $page_contents);
+                }
+
+                $reply = htmlspecialchars($_POST['reply']);
+
+                $res = $forum->forumCreateReply(htmlspecialchars($_GET['id']), $_COOKIE['session_login'], $reply);
+                if ($res !== true) {
+                    $data = "
+                        <form action='/?page=error' id='form' method='POST'>
+                            <input type='hidden' name='message' value='{$title}'>
+                        </form>
+                        <script>
+                            document.getElementById('form').submit();
+                        </script>";
+                } else {
+                    $data = "
+                        <script>
+                            window.location.href = '/?page=forum&mode=view&id={$_GET['id']}';
+                        </script>";
+                }
+                $ui->uiSetPageElement("PAGE_CONTENT", $data);
+                break;
             case 'forum_upvote':
 
                 break;
@@ -554,8 +698,8 @@ switch ($page) {
         $post_count = count($posts);
 
         if ($post_count === 0) {
-            if ($user_online === true) {
-                        $post_block = "<div class=\"news_post\">
+            if ($user_online === true && $user->userGetUsergroup($_COOKIE['session_login']) === 'Admin') {
+                $post_block = "<div class=\"news_post\">
                                 <div class=\"news_post_image\">
                                     <span>*</span>
                                 </div>
@@ -564,8 +708,8 @@ switch ($page) {
                                     <span class=\"news_post_descr\">Пока нововстей нет. Исправте это!</span>
                                 </div>
                             </div>";
-                    } else {
-                        $post_block = "<div class=\"news_post\">
+            } else {
+                $post_block = "<div class=\"news_post\">
                         <div class=\"news_post_image\">
                             <span>*</span>
                         </div>
@@ -574,7 +718,7 @@ switch ($page) {
                             <span class=\"news_post_descr\">Пока других новостей нет.</span>
                         </div>
                     </div>";
-                    }
+            }
         } elseif ($post_count >= 4) {
             $post_block = "";
             for ($i = 0; $i < 3; $i++) {
@@ -610,8 +754,8 @@ switch ($page) {
                                     </div>
                                 </div>";
             }
-            if ($user_online === true) {
-                        $post_block .= "<div class=\"news_post\">
+            if ($user_online === true  && $user->userGetUsergroup($_COOKIE['session_login']) === 'Admin') {
+                $post_block .= "<div class=\"news_post\">
                                 <div class=\"news_post_image\">
                                     <span>*</span>
                                 </div>
@@ -620,7 +764,7 @@ switch ($page) {
                                     <span class=\"news_post_descr\">Пока нововстей нет. Исправте это!</span>
                                 </div>
                             </div>";
-                    }
+            }
         }
         $ui->uiSetPageElement("POST_BLOCK", $post_block);
 

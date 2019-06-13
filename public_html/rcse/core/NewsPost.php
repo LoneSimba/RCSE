@@ -45,7 +45,7 @@ class NewsPost
         }
 
         try {
-            return $this->database->databaseGetData('posts', 'by_post_id', $post_id);
+            return $this->database->databaseGetData('posts', 'by_post_id', $post_id)[0];
         } catch (\Exception $e) {
             $this->logger->log($this->logger::ERROR, $e->getMessage(), get_class($this));
             return $e->getMessage();
@@ -95,10 +95,6 @@ class NewsPost
 
     public function newsPostGetCommentList(string $post_id)
     {
-        if ($this->database->databaseCheckData('comments', 'by_reply_to', $post_id) === false) {
-            return "No comments here";
-        }
-
         try {
             return $this->database->databaseGetData('comments', 'by_reply_to', $post_id);
         } catch (\Exception $e) {
