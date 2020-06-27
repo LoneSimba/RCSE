@@ -1,9 +1,0 @@
-{
-    "default": {
-        "unlocalized_name": "default",
-        "name": "По умолчанию",
-        "topics": {
-            "creation": true
-        }
-    }
-}

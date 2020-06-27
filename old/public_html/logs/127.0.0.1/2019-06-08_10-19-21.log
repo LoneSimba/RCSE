@@ -1,0 +1,20 @@
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\Configurator] Trying to obtain data (site) from main.json.
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\Configurator] Data obtained successfuly.
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\Configurator] Trying to obtain data (site) from main.json.
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\Configurator] Data obtained successfuly.
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\Configurator] Trying to obtain data (database) from main.json.
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\Configurator] Data obtained successfuly.
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\Database] Initializing Database connection (host: 127.0.0.1:3306, name: rcse).
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\Database] Database connected successfully.
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\Configurator] Trying to obtain data (database) from main.json.
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\Configurator] Data obtained successfuly.
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\Database] Initializing Database connection (host: 127.0.0.1:3306, name: rcse).
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\Database] Database connected successfully.
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\Configurator] Trying to obtain data (database) from main.json.
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\Configurator] Data obtained successfuly.
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\Database] Initializing Database connection (host: 127.0.0.1:3306, name: rcse).
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\Database] Database connected successfully.
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\User] Obtaining session DIFTzwP2vvqlxbUN.
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\User] Obtaining sessions.
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\User] Sessions obtained successfully.
+[2019-06-08 10:19:21.000][INFO][RCSE\Core\User] Session obtained successfully.

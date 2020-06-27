@@ -1,0 +1,28 @@
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Configurator] Trying to obtain data (site) from main.json.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Configurator] Data obtained successfuly.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Configurator] Trying to obtain data (site) from main.json.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Configurator] Data obtained successfuly.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Configurator] Trying to obtain data (database) from main.json.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Configurator] Data obtained successfuly.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Database] Initializing Database connection (host: 127.0.0.1:3306, name: rcse).
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Database] Database connected successfully.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Configurator] Trying to obtain data (database) from main.json.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Configurator] Data obtained successfuly.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Database] Initializing Database connection (host: 127.0.0.1:3306, name: rcse).
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Database] Database connected successfully.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Configurator] Trying to obtain data (database) from main.json.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Configurator] Data obtained successfuly.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Database] Initializing Database connection (host: 127.0.0.1:3306, name: rcse).
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Database] Database connected successfully.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\User] Obtaining session 6jbo350lETvUESYU.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\User] Obtaining sessions.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\User] Sessions obtained successfully.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\User] Session obtained successfully.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\User] Validation user session 6jbo350lETvUESYU.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\User] Session valid.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Database] Trying to obtain data from posts.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Configurator] Trying to obtain data (posts) from queries.json.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Configurator] Data obtained successfuly.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Database] Trying to prepare query.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Database] Trying to execute query.
+[2019-06-08 10:35:54.000][INFO][RCSE\Core\Database] Data obtained successfully.
