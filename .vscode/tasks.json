@@ -16,6 +16,14 @@
             "problemMatcher": [
                 "$gulp-tsc"
             ]
+        },
+        {
+            "type": "npm",
+            "script": "test",
+            "group": "test",
+            "problemMatcher": [],
+            "label": "npm: test",
+            "detail": "echo \"Error: no test specified\" && exit 1"
         }
     ]
 }

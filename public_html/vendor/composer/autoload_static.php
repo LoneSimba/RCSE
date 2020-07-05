@@ -9,35 +9,19 @@ class ComposerStaticInite57377d4a79edb5faec2080c3e15e31d
     public static $prefixLengthsPsr4 = array (
         'R' => 
         array (
-            'RCSE\\Interaction\\' => 17,
-            'RCSE\\Core\\Tools\\' => 16,
-            'RCSE\\Core\\Handlers\\' => 19,
-            'RCSE\\Core\\Exceptions\\' => 21,
             'RCSE\\Core\\' => 10,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'RCSE\\Interaction\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/rcse/interaction',
-        ),
-        'RCSE\\Core\\Tools\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/rcse/core/tools',
-        ),
-        'RCSE\\Core\\Handlers\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/rcse/core/handlers',
-        ),
-        'RCSE\\Core\\Exceptions\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/rcse/core/exceptions',
-        ),
         'RCSE\\Core\\' => 
         array (
             0 => __DIR__ . '/../..' . '/rcse/core',
         ),
+    );
+
+    public static $classMap = array (
+        'RCSE\\Core\\Database' => __DIR__ . '/../..' . '/rcse/core/Database.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -45,6 +29,7 @@ class ComposerStaticInite57377d4a79edb5faec2080c3e15e31d
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInite57377d4a79edb5faec2080c3e15e31d::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInite57377d4a79edb5faec2080c3e15e31d::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInite57377d4a79edb5faec2080c3e15e31d::$classMap;
 
         }, null, ClassLoader::class);
     }

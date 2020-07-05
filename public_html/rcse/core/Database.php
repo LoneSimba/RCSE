@@ -9,14 +9,15 @@ class Database
 
     private $control;
     private $pdo;
+    private $query_list = [];
 
-    public function __construct(Control $control)
+    public function __construct(Control $control) : void
     {
         $this->control = $control;
         $this->init();
     }
 
-    private function init()
+    private function init() : void
     {
         $conf = $this->control->getConfig('database');
         $dsn = 'mysql:host=' . $conf['host'] . ';port=' . $conf['port'] . ';dbname=' . $conf['name'];
@@ -24,7 +25,7 @@ class Database
         $this->control->log('Info', "Initializing Database connection (host: {$conf['host']}:{$conf['port']}, name: {$conf['name']}).", get_class($this));
 
         try {
-            $this->pdo = new \PDO($dsn, $conf['login'], $conf['passw'], [\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"]);
+            $this->pdo = new \PDO($dsn, $conf['user'], $conf['pass'], [\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"]);
         } catch (\PDOException $e) {
             $this->control->log('Fatal', "Failed to connect to database - {$e->getCode()}: {$e->getMessage()}.", get_class($this));
             throw new \Exception($e->getMessage(), (int) $e->getCode());
@@ -41,7 +42,7 @@ class Database
 
         foreach ($data as $key => $value) {
             foreach ($keywords as $value1) {
-                if ($value == $value1) {
+                if ($value == $value1 && gettype($value) != 'boolean') {
                     $contains = true;
                     break;
                 } else {
@@ -53,58 +54,59 @@ class Database
         return $contains;
     }
 
-    private function buildQuery(string $table, string $type, array $required, array $data = []): \PDOStatement
+    private function buildQuery(string $table, string $type, array $data = [], bool $safe = true): \PDOStatement
     {
+
     }
 
-    private function buildQuery_Select(string $table, array $required, array $data = []): \PDOStatement
+    /**
+     * buildQuery_Select builds and prepares SELECT statements with support of main additional args - WHERE, GROUP, ORDER, HAVING and LIMIT
+     *
+     * @param string $table Database table to be queried
+     * @param array $data Data array, containing query elements in subarrays - 'required' contains rows names, 'conditions' contains conditions for WHERE arg, 'group' contains condts for GROUP BY, 'order', 'having' and ' limit' do the same for each of args
+     * @param boolean $safe unused
+     * @return \PDOStatement Prepared PDO statement to be executed
+     */
+    private function buildQuery_Select(string $table, array $data = [], bool $safe = true): \PDOStatement
     {
 
         $query = "SELECT ";
 
-        for ($i = 0; $i < count($required); $i++) {
-            $query .= "`{$required[$i]}` ";
+        for ($i = 0; $i < count($data['required']); $i++) {
+            $query .= "`{$data['required'][$i]}` ";
         }
 
         $query .= "FROM `{$table}` ";
 
-        if (count($data) != 0) {
-            if (!$this->validateData($data)) {
+        if (count($data['conditions']) != 0) {
+            if (!$this->validateData($data['conditions'])) {
                 $query .= "WHERE ";
                 $item_count = 0;
-                foreach ($data as $key => $value) {
-                    $query .= "`{$key}` = ";
-                    switch (gettype($value)) {
-                        case 'integer':
-                        case 'double':
-                            $query .= $value;
-                            break;
-                        case 'string':
-                            $query .= "'{$value}'";
-                            break;
-                        case 'boolean':
-                            $query .= (int) $value;
-                            break;
-                    }
+                foreach ($data['conditions'] as $key => $value) {
+                    $query .= "`{$key}` = :{$key}";
                     $item_count++;
-                    if ($item_count < count($data)) $query .= " AND ";
+                    if ($item_count < count($data['conditions'])) $query .= " AND ";
                 }
             }
+        }
+
+        if(isset($data['group']) && !empty($data['group'])) {
+            $query .= " GROUP BY {$data['group'][0]} "
         }
 
         $query_prep = $this->pdo->prepare($query);
         return $query_prep;
     }
 
-    private function buildQuery_Insert(string $table, array $data): \PDOStatement
+    private function buildQuery_Insert(string $table, array $data, bool $safe = true): \PDOStatement
     {
 
         $query = "INSERT INTO `{$table}` ";
 
         if (count($data) != 0) {
             if (!$this->validateData($data)) {
-                if (gettype($data[0]) == 'array') {
-                    $data_keys = array_keys($data[0]);
+                if (gettype(current($data)) == 'array') {
+                    $data_keys = array_keys(current($data));
                     $query .= "(";
                     for ($i = 0; $i < count($data_keys); $i++) {
                         $query .= "`{$data_keys[$i]}`";
@@ -128,8 +130,9 @@ class Database
                                     break;
                             }
                             $item_count++;
-                            $query .= ($i < count($data[0]) - 1) ? "," : ")";
+                            $query .= ($item_count < count($data[$i])) ? "," : ")";
                         }
+                        $query .= ($i < count($data) - 1) ? "," : "";
                     }
                 } else {
                     $data_keys = array_keys($data);
@@ -155,7 +158,7 @@ class Database
                                 break;
                         }
                         $item_count++;
-                        $query .= ($i < count($data) - 1) ? "," : ")";
+                        $query .= ($item_count < count($data)) ? "," : ")";
                     }
                 }
             }
@@ -165,8 +168,60 @@ class Database
         return $query_prep;
     }
 
-    private function buildQuery_Update()
-    {}
+    private function buildQuery_Update(string $table, array $data, bool $safe = true): \PDOStatement
+    {
+        $query = "UPDATE `{$table}` SET ";
+
+        if (count($data) != 0) {
+            if (!$this->validateData($data['assigments'])) {
+                $item_count = 0;
+                foreach ($data['assigments'] as $key => $value) {
+                    $query .= "`{$key}` = ";
+                    switch (gettype($value)) {
+                        case 'integer':
+                        case 'double':
+                            $query .= $value;
+                            break;
+                        case 'string':
+                            $query .= "'{$value}'";
+                            break;
+                        case 'boolean':
+                            $query .= (int) $value;
+                            break;
+                    }
+                    $item_count++;
+                    $query .= ($item_count < count($data['assigments'])) ? ", " : "";
+                }
+            }
+            $item_count = 0;
+            $query .= " WHERE ";
+            foreach ($data['condition'] as $key => $value) {
+                $query .= "`{$key}` = ";
+                switch (gettype($value)) {
+                    case 'integer':
+                    case 'double':
+                        $query .= $value;
+                        break;
+                    case 'string':
+                        $query .= "'{$value}'";
+                        break;
+                    case 'boolean':
+                        $query .= (int) $value;
+                        break;
+                }
+                $item_count++;
+                $query .= ($item_count < count($data['condition'])) ? " AND " : "";
+            }
+        }
+
+        $query_prep = $this->pdo->prepare($query);
+        return $query_prep;
+    }
+
+    //TBD
+    private function buildQuery_Delete(string $table, array $data): \PDOStatement
+    {
+    }
 
     private function executeQuery(\PDOStatement $query): array
     {
