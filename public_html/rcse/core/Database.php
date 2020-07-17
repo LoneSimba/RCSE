@@ -34,6 +34,11 @@ class Database
         $this->control->log('Info', "Database connected successfully.", get_class($this));
     }
 
+    private function fillQueryList(): void
+    {
+
+    }
+
     private function validateData(array $data): bool
     {
 
@@ -54,8 +59,25 @@ class Database
         return $contains;
     }
 
-    private function buildQuery(string $table, string $type, array $data = [], bool $safe = true): \PDOStatement
+    private function buildQuery(string $table, string $type, array $data = []): \PDOStatement
     {
+        switch($type) {
+            case 'select':
+                return $this->buildQuery_Select($table, $data);
+            break;
+            case 'insert':
+                return $this->buildQuery_Insert($table, $data);
+            break;
+            case 'update':
+                return $this->buildQuery_Update($table, $data);
+            break;
+            case 'delete':
+                //return $this->buildQuery_Delete($table, $data);
+            break;
+            default:
+                $this->control->log('Error', "Unable to build query type '{$type}'", get_class($this));
+                throw new \Exception("Unable to build query type '{$type}'", 000011);
+            }
 
     }
 
@@ -63,11 +85,10 @@ class Database
      * buildQuery_Select builds and prepares SELECT statements with support of main additional args - WHERE, GROUP, ORDER, HAVING and LIMIT
      *
      * @param string $table Database table to be queried
-     * @param array $data Data array, containing query elements in subarrays - 'required' contains rows names, 'conditions' contains conditions for WHERE arg, 'group' contains condts for GROUP BY, 'order', 'having' and ' limit' do the same for each of args
-     * @param boolean $safe unused
+     * @param array $data Data array, containing query elements in subarrays - 'required' contains rows names, 'conditions' contains conditions for WHERE arg, 'group' contains condts for GROUP BY, 'order' and ' limit' do the same for each of args
      * @return \PDOStatement Prepared PDO statement to be executed
      */
-    private function buildQuery_Select(string $table, array $data = [], bool $safe = true): \PDOStatement
+    private function buildQuery_Select(string $table, array $data = []): \PDOStatement
     {
 
         $query = "SELECT ";
@@ -91,14 +112,28 @@ class Database
         }
 
         if(isset($data['group']) && !empty($data['group'])) {
-            $query .= " GROUP BY {$data['group'][0]} "
+            $query .= " GROUP BY {$data['group'][0]} ";
+             if (isset($data['group']['asc'])) $query .= " ASC ";
+             else if (isset($data['group']['desc'])) $query .= " DESC ";
+             else $query .= "";
+        }
+        
+        if(isset($data['order']) && !empty($data['order'])) {
+            $query .= " ORDER BY {$data['order'][0]} ";
+             if (isset($data['order']['asc'])) $query .= " ASC ";
+             else if (isset($data['order']['desc'])) $query .= " DESC ";
+             else $query .= "";
         }
 
+        if(isset($data['limit']) && !empty($data['limit'])) {
+            $query .= " LIMIT {$data['limit'][0]} ";
+        }
+        
         $query_prep = $this->pdo->prepare($query);
         return $query_prep;
     }
 
-    private function buildQuery_Insert(string $table, array $data, bool $safe = true): \PDOStatement
+    private function buildQuery_Insert(string $table, array $data): \PDOStatement
     {
 
         $query = "INSERT INTO `{$table}` ";
@@ -168,7 +203,7 @@ class Database
         return $query_prep;
     }
 
-    private function buildQuery_Update(string $table, array $data, bool $safe = true): \PDOStatement
+    private function buildQuery_Update(string $table, array $data): \PDOStatement
     {
         $query = "UPDATE `{$table}` SET ";
 
@@ -219,9 +254,8 @@ class Database
     }
 
     //TBD
-    private function buildQuery_Delete(string $table, array $data): \PDOStatement
-    {
-    }
+    /*private function buildQuery_Delete(string $table, array $data): \PDOStatement
+    {}*/
 
     private function executeQuery(\PDOStatement $query): array
     {
