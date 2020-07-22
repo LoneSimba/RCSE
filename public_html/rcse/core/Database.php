@@ -9,6 +9,7 @@ class Database
 
     private $control;
     private $pdo;
+    private $conf;
     private $query_list = [];
 
     public function __construct(Control $control) : void
@@ -19,13 +20,19 @@ class Database
 
     private function init() : void
     {
-        $conf = $this->control->getConfig('database');
-        $dsn = 'mysql:host=' . $conf['host'] . ';port=' . $conf['port'] . ';dbname=' . $conf['name'];
+        $this->conf = $this->control->getConfig('database');
+        $this->connectDatabase();
+        $this->fillQueryList();
+    }
+
+    private function connectDatabase(): void
+    {
+        $dsn = 'mysql:host=' . $this->conf['host'] . ';port=' . $this->conf['port'] . ';dbname=' . $this->conf['name'];
 
         $this->control->log('Info', "Initializing Database connection (host: {$conf['host']}:{$conf['port']}, name: {$conf['name']}).", get_class($this));
 
         try {
-            $this->pdo = new \PDO($dsn, $conf['user'], $conf['pass'], [\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"]);
+            $this->pdo = new \PDO($dsn, $this->conf['user'], $this->conf['pass'], [\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"]);
         } catch (\PDOException $e) {
             $this->control->log('Fatal', "Failed to connect to database - {$e->getCode()}: {$e->getMessage()}.", get_class($this));
             throw new \Exception($e->getMessage(), (int) $e->getCode());
@@ -36,7 +43,7 @@ class Database
 
     private function fillQueryList(): void
     {
-
+        $this->query_list[''] = $this->buildQuery();
     }
 
     private function validateData(array $data): bool
