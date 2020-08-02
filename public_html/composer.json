@@ -8,10 +8,13 @@
             "email": "vovamaster99@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "phpunit/phpunit": "^9.2"
+    },
     "autoload": {
         "psr-4": {
-            "RCSE\\Core\\": "./rcse/core"
+            "RCSE\\Core\\": "./rcse/core",
+            "RCSE\\Core\\Database\\": "./rcse/core/Database"
         }
     }
 }

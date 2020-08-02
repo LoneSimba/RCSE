@@ -3,4 +3,5 @@ public_html/logs/
 
 public_html/userdata/
 
-old/public_html/logs/
+old/
+node_modules
