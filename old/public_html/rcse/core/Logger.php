@@ -99,7 +99,7 @@ class Logger
     private function logFormatMessage(string $level, string $message, string $source)
     {
         $level = strtoupper($level);
-        $message_formatted = "[{$this->logGetTimestamp()}][{$level}][{$source}] {$message}";
-        return $message_formatted.PHP_EOL;
+        $message_formatted = "[{$this->logGetTimestamp()}][{$level}][{$source}] {$message}".PHP_EOL;
+        return $message_formatted;
     }
 }

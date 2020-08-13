@@ -8,15 +8,13 @@ class Database
 {
 
     private $control;
-    private $query_builder;
-    private $pdo;
+    private $dbh;
     private $conf;
-    private $query_list = [];
+    private $queryList = [];
 
     public function __construct(\RCSE\Core\Control $control)
     {
         $this->control = $control;
-        $this->query_builder = new QueryBuilder();
         $this->init();
     }
 
@@ -34,7 +32,7 @@ class Database
         $this->control->log('Info', "Initializing Database connection (host: {$conf['host']}:{$conf['port']}, name: {$conf['name']}).", get_class($this));
 
         try {
-            $this->pdo = new \PDO($dsn, $this->conf['user'], $this->conf['pass'], [\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"]);
+            $this->dbh = new \PDO($dsn, $this->conf['user'], $this->conf['pass'], [\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"]);
         } catch (\PDOException $e) {
             $this->control->log('Fatal', "Failed to connect to database - {$e->getCode()}: {$e->getMessage()}.", get_class($this));
             throw new \Exception($e->getMessage(), (int) $e->getCode());
@@ -45,36 +43,7 @@ class Database
 
     private function fillQueryList(): void
     {
-        $this->query_list[''] = $this->buildQuery();
+        $this->query_list = (new SelectQuery('users', ['*']))->prepare($this->dbh);
     }
 
-    private function validateData(array $data): bool
-    {
-
-        $keywords = ['OR', 'AND', 'SELECT', 'INSERT', 'CREATE', 'DELETE', 'UPDATE'];
-        $contains = false;
-
-        foreach ($data as $key => $value) {
-            foreach ($keywords as $value1) {
-                if ($value == $value1 && gettype($value) != 'boolean') {
-                    $contains = true;
-                    break;
-                } else {
-                    continue;
-                }
-            }
-        }
-
-        return $contains;
-    }
-
-    
-
-    private function executeQuery(\PDOStatement $query): array
-    {
-    }
-
-    public function getData(string $table, string $type, array $required, array $data = []): array
-    {
-    }
 }
