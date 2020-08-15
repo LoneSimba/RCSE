@@ -18,7 +18,6 @@ class Log
     private $logFile;
     private $logDir;
     private $fileHandler;
-    private $utils;
     private $messageLevels = [
         self::EMERGENCY => 0,
         self::ALERT => 1,
@@ -33,7 +32,6 @@ class Log
 
     public function __construct($levelThreshold = self::DEBUG)
     {
-        $this->utils = new Utils();
 
         $this->setLevelThreshold($levelThreshold);
         $this->setLogfilePath();
@@ -51,7 +49,7 @@ class Log
     private function setLogfilePath()
     {
         $datetime = $this->getTimestamp(false)->format('Y-m-d_H-i-s');
-        $path = "/logs/{$this->utils->utilsGetClientIP()}/";
+        $path = "/logs/{Utils::getClientIP()}/";
 
         $file = "{$datetime}.log";
 
