@@ -1,0 +1,16 @@
+* database
+   * host
+   * user
+   * pass
+   * port
+   * name
+* main
+   * sitename
+   * description
+   * keywords
+   * installed
+   * offline
+   * theme
+   * lang
+   * startPage
+   * plugins

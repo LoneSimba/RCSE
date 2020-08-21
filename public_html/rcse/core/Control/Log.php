@@ -48,7 +48,7 @@ class Log
 
     private function setLogfilePath()
     {
-        $datetime = $this->getTimestamp(false)->format('Y-m-d_H-i-s');
+        $datetime = Utils::getTimestamp(false)->format('Y-m-d');
         $path = "/logs/{Utils::getClientIP()}/";
 
         $file = "{$datetime}.log";
@@ -60,18 +60,6 @@ class Log
     public function setLevelThreshold($levelThreshold)
     {
         $this->levelThreshold = $levelThreshold;
-    }
-
-    private function getTimestamp(bool $formatted = true)
-    {
-        $stamp = date('Y-m-d H:i:s.v');
-        $date = new \DateTime($stamp);
-        
-        if($formatted) {
-            return $date->format('Y-m-d H:i:s.v');
-        } else {
-            return $date;
-        }
     }
 
     public function log($level, string $message, string $source)
@@ -88,7 +76,7 @@ class Log
     private function formatMessage(string $level, string $message, string $source)
     {
         $level = strtoupper($level);
-        $formattedMessage = "[{$this->getTimestamp()}][{$level}][{$source}] {$message}".PHP_EOL;
+        $formattedMessage = "[{Utils::getTimestamp()}][{$level}][{$source}] {$message}".PHP_EOL;
         return $formattedMessage;
     }
 }

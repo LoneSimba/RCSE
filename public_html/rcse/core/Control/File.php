@@ -62,11 +62,11 @@ class File
         }
         $this->fileStream = fopen($this->fileDir . $this->fileName, $mode."b");
         if ($this->fileStream == false) {
-            throw new \Exception("Failed to create file: {$this->fileName}!", 1000);
+            throw new \Exception("Failed to create or open file: {$this->fileName}!", 0x000100);
         }
 
         if (flock($this->fileStream, $lock) == false) {
-            throw new \Exception("Failed to lock the file: {$this->file_path}!", 1001);
+            throw new \Exception("Failed to lock file: {$this->file_path}!", 0x000101);
         }
 
         rewind($this->fileStream);
@@ -76,9 +76,9 @@ class File
     /**
      * Simply creates directory
      *
-     * @return void Returns nothing
+     * @return void
      */
-    private function createDir()
+    private function createDir() : void
     {
         mkdir($this->fileDir, $this->filePerms);
     }
@@ -86,16 +86,16 @@ class File
     /**
      * Checks, wether target directory is read-\write- able, if not - tries to chmod it
      *
-     * @return void Returns nothing
+     * @return void
      * @throws \Exception In case of chmod failure
      */
-    private function setPermissions()
+    private function setPermissions() : void
     {
         if (is_readable($this->fileDir) == false || is_writeable($this->fileDir) == false) {
             if (chmod($this->fileDir, $this->filePerms) == false) {
-                throw new \Exception("Failed to set file write-\\read- able: {$this->file_path}!", 1002);
+                throw new \Exception("Failed to set file permissions: {$this->file_path}!", 0x000102);
             } elseif (is_readable($this->fileDir) == false || is_writeable($this->fileDir) == false) {
-                throw new \Exception("Failed to set file write-\\read- able: {$this->file_path}!", 1002);
+                throw new \Exception("Failed to set file permissions: {$this->file_path}!", 0x000102);
             }
         }
     }
@@ -103,9 +103,9 @@ class File
     /**
      * Simply unlocks and closes file, also clears stat cache
      *
-     * @return void Returns nothing
+     * @return void 
      */
-    private function close()
+    private function close() : void
     {
         clearstatcache();
         flock($this->fileStream, LOCK_UN);
@@ -126,7 +126,7 @@ class File
         $file_contents = fread($this->fileStream, filesize($this->fileDir.$this->fileName));
 
         if ($file_contents == false) {
-            throw new \Exception("Failed to read from file: {$this->file_path}!", 1003);
+            throw new \Exception("Failed to read file contents: {$this->file_path}!", 0x000103);
         }
 
         $this->close();
@@ -137,33 +137,33 @@ class File
     /**
      * Tries to overwrite the whole file at once
      *
-     * @return void Returns nothing
+     * @return void 
      * @throws \Exception In case of fread failure
      */
-    public function write(string $contents)
+    public function write(string $contents) : bool
     {
         $this->open("c");
 
         file_put_contents($this->fileDir. $this->fileName, "");
         
-        if (fwrite($this->fileStream, $contents) == false) {
-            throw new \Exception("Failed to write to file: {$this->file_path}!", 1004);
-        }
+        $isWritten = fwrite($this->fileStream, $contents);
 
         $this->close();
+
+        return $isWritten;
     }
 
     /**
      * Tries to write a single line. Requires class init with $fileDir and $fileName
      *
      * @param string $contents Content to write
-     * @return void Returns nothing
+     * @return void 
      * @throws \Exception In case of fwrite failure
      */
-    public function writeLine(string $contents)
+    public function writeLine(string $contents) : void
     {
         if (fwrite($this->fileStream, $contents) == false) {
-            throw new \Exception("Failed to write line to file: {$this->file_path}!", 1005);
+            throw new \Exception("Failed to write line to file: {$this->file_path}!", 0x000105);
         }
         
         fflush($this->fileStream);

@@ -37,4 +37,15 @@ class Utils
         return $ip;
     }
 
+    public static function getTimestamp(bool $formatted = true)
+    {
+        $stamp = date('Y-m-d H:i:s');
+        $date = new \DateTime($stamp);
+        
+        if($formatted) {
+            return $date->format('Y-m-d H:i:s');
+        } else {
+            return $date;
+        }
+    }
 }

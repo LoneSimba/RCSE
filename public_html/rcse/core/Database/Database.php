@@ -35,7 +35,7 @@ class Database
             $this->dbh = new \PDO($dsn, $this->conf['user'], $this->conf['pass'], [\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"]);
         } catch (\PDOException $e) {
             $this->control->log('Fatal', "Failed to connect to database - {$e->getCode()}: {$e->getMessage()}.", get_class($this));
-            throw new \Exception($e->getMessage(), (int) $e->getCode());
+            throw new \Exception($e->getMessage(), 0x000200);
         }
 
         $this->control->log('Info', "Database connected successfully.", get_class($this));
