@@ -25,10 +25,12 @@ class Config
 
     public function setConfig(array $config) : bool
     {
-        
+        $contents = json_encode($config);
+
+        return $this->file->write($contents);
     }
 
-    public function createConfig(array $settings) : bool
+    /*public function createConfig(array $settings) : bool
     {
         $defaultConfig = [
             'database' => [
@@ -54,5 +56,7 @@ class Config
         foreach($settings as $key => $value) {
             $defaultConfig[$key] = $value;
         }
-    }
+
+        
+    }*/
 }

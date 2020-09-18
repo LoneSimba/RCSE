@@ -5,12 +5,12 @@ namespace RCSE\Core\Database;
 
 abstract class Query
 {
-    protected $statement = '';
+    public $result = [];
+    protected $statement = "";
     protected $pdoStatement;
-    protected $result = [];
     protected $data = [];
     protected $fields = [];
-    protected $table = '';
+    protected $table = "";
 
     public function __construct(string $table, array $fields)
     {
@@ -28,7 +28,7 @@ abstract class Query
      */
     public function addData(array $data) : Query 
     { 
-        array_push($this->data, $data); 
+        $this->data = array_merge($this->data, $data); 
         return $this;
     }
 
@@ -88,12 +88,18 @@ abstract class Query
         $this->pdoStatement->execute();
     }
 
+    /**
+     * Fetches the result of query execution and puts it into $result array
+     *
+     * @return void
+     */
+    public function fetchDataArray() { $this->result = $this->pdoStatement->fetchAll(); }
+
+    public function getStatement() { return $this->statement; }
     
-    protected function addField(array $fields) { array_push($this->fields, $fields); }
+    protected function addField(array $fields) { $this->fields = array_merge($this->fields, $fields); }
 
     protected function setTable(string $table) { $this->table = $table; }
-
-    protected abstract function buildStatement();
 
     protected function bindData()
     {
@@ -105,4 +111,6 @@ abstract class Query
             throw new \Exception("Failed to bind data - keys does not match", 0x000202);
         }
     }
+    
+    protected abstract function buildStatement();
 }

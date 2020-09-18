@@ -7,6 +7,6 @@ class SelectQuery extends Query
 {
     protected function buildStatement()
     {
-        $this->statement = "SELECT ". join(", ", $this->fields) ." FROM `{$this->table}`";
+        $this->statement = "SELECT ". implode(", ", $this->fields) ." FROM `{$this->table}`";
     }
 }

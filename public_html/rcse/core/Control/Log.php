@@ -6,14 +6,14 @@ use RCSE\Core\Utils;
 
 class Log
 {
-    const EMERGENCY = 'emergency';
-    const ALERT = 'alert';
-    const CRITICAL = 'critical';
-    const ERROR = 'error';
-    const WARNING = 'warning';
-    const NOTICE = 'notice';
-    const INFO = 'info';
-    const DEBUG = 'debug';
+    const EMERGENCY = 'Emergency';
+    const ALERT = 'Alert';
+    const CRITICAL = 'Critical';
+    const ERROR = 'Error';
+    const WARNING = 'Warning';
+    const NOTICE = 'Notice';
+    const INFO = 'Info';
+    const DEBUG = 'Debug';
 
     private $logFile;
     private $logDir;
