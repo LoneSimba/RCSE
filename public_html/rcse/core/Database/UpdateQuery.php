@@ -13,7 +13,7 @@ class UpdateQuery extends Query
 
         foreach($paramFields as $key => $val)
         {
-            $this->statement .= "{$this->fields[$key]} = :{$val}";
+            $this->statement .= "{$this->fields[$key]} = {$val}";
             $this->statement .= ($key == count($this->fields) - 1) ? "" : ", ";
         }
     }

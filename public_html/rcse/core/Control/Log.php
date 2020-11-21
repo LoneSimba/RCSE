@@ -15,10 +15,10 @@ class Log
     const INFO = 'Info';
     const DEBUG = 'Debug';
 
-    private $logFile;
-    private $logDir;
-    private $fileHandler;
-    private $messageLevels = [
+    private string $logFile;
+    private string $logDir;
+    private File $fileHandler;
+    private array $messageLevels = [
         self::EMERGENCY => 0,
         self::ALERT => 1,
         self::CRITICAL => 2,
@@ -28,7 +28,7 @@ class Log
         self::INFO => 6,
         self::DEBUG => 7
     ];
-    private $levelThreshold = self::DEBUG;
+    private string $levelThreshold = self::DEBUG;
 
     public function __construct($levelThreshold = self::DEBUG)
     {
@@ -37,7 +37,7 @@ class Log
         $this->setLogfilePath();
 
         $this->fileHandler = new File($this->logDir, $this->logFile);
-        $this->fileHandler->open("c");
+        $this->fileHandler->open("a+");
 
     }
 
@@ -49,7 +49,7 @@ class Log
     private function setLogfilePath()
     {
         $datetime = Utils::getTimestamp(false)->format('Y-m-d');
-        $path = "/logs/{Utils::getClientIP()}/";
+        $path = "/logs/". Utils::getClientIP() ."/";
 
         $file = "{$datetime}.log";
 
@@ -76,7 +76,7 @@ class Log
     private function formatMessage(string $level, string $message, string $source)
     {
         $level = strtoupper($level);
-        $formattedMessage = "[{Utils::getTimestamp()}][{$level}][{$source}] {$message}".PHP_EOL;
+        $formattedMessage = "[". Utils::getTimestamp() ."][{$level}][{$source}] {$message}".PHP_EOL;
         return $formattedMessage;
     }
 }

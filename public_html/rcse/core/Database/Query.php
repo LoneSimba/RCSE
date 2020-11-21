@@ -3,19 +3,23 @@ declare(strict_types=1);
 
 namespace RCSE\Core\Database;
 
+use Exception;
+use PDO;
+use PDOStatement;
+
 abstract class Query
 {
-    public $result = [];
-    protected $statement = "";
-    protected $pdoStatement;
-    protected $data = [];
-    protected $fields = [];
-    protected $table = "";
+    public $result;
+    protected string $statement;
+    protected PDOStatement $pdoStatement;
+    protected array $data = [];
+    protected array $fields = [];
+    protected string $table;
 
-    public function __construct(string $table, array $fields)
+    public function __construct(string $_table, array $_fields)
     {
-        $this->addField($fields);
-        $this->setTable($table);
+        $this->addField($_fields);
+        $this->setTable($_table);
         $this->buildStatement();
     }
 
@@ -37,13 +41,13 @@ abstract class Query
      *
      * @todo Should think of way to provide multiple types of comparison and separators
      * @param array $data Array of data with keys representing table fields
-     * @param boolean $shouldBeEqueal Either fields should be equeal to provided data
+     * @param boolean $shouldBeEqual Either fields should be equeal to provided data
      * @param boolean $disjunctive Should be multiple fields be true at the same time
      * @return Query
      */
-    public function addWhere(array $data, bool $shouldBeEqueal = true, bool $disjunctive = false) : Query
+    public function addWhere(array $data, bool $shouldBeEqual = true, bool $disjunctive = false) : Query
     {
-        $compSign = ($shouldBeEqueal) ? " = " : " != ";
+        $compSign = ($shouldBeEqual) ? " = " : " != ";
         $separator = ($disjunctive) ? " OR " : " AND ";
         
         if ($this->statement == '') 
@@ -55,7 +59,7 @@ abstract class Query
         $counter = 0;
         foreach($data as $key => $val)
         {
-            $string .= "`{$key}`{$compSign}{$val}";
+            $string .= "{$key}{$compSign}{$val}";
             if($counter < count($data)-1) $string .= "{$separator}";
         }
 
@@ -66,10 +70,10 @@ abstract class Query
     /**
      * Prepares an PDOStatement using provided database handler
      *
-     * @param \PDO $dbh PDO database handler
+     * @param PDO $dbh PDO database handler
      * @return Query
      */
-    public function prepare(\PDO $dbh) : Query
+    public function prepare(PDO $dbh) : Query
     {
         if(empty($this->statement)) $this->buildStatement();
         $this->pdoStatement = $dbh->prepare($this->statement);
@@ -79,13 +83,16 @@ abstract class Query
     /**
      * Executes prepared statement, if statement has not been built or prepared throws an exception.
      *
-     * @return void
+     * @return Query
+     * @throws Exception
      */
     public function execute() 
     {
-        if(empty($this->statement) || empty($this->pdoStatement)) throw new \Exception("Failed to execute statement - statement has not been built or prepared.", 0x000203);
+        if(empty($this->statement) || empty($this->pdoStatement)) throw new Exception("Failed to execute statement - statement has not been built or prepared.", 0x000203);
         $this->bindData();
         $this->pdoStatement->execute();
+
+        return $this;
     }
 
     /**
@@ -93,9 +100,19 @@ abstract class Query
      *
      * @return void
      */
-    public function fetchDataArray() { $this->result = $this->pdoStatement->fetchAll(); }
+    public function fetchDataArray() {
+        if(is_null($this->getErrorMessage()[1])) {
+            $this->result = ($this->pdoStatement->columnCount() > 0) ? $this->pdoStatement->fetchAll(PDO::FETCH_ASSOC) : [];
+        }
+        else
+        {
+            $this->result = false;
+        }
+    }
 
     public function getStatement() { return $this->statement; }
+
+    public function getErrorMessage() { return $this->pdoStatement->errorInfo(); }
     
     protected function addField(array $fields) { $this->fields = array_merge($this->fields, $fields); }
 
@@ -103,12 +120,8 @@ abstract class Query
 
     protected function bindData()
     {
-        if(array_intersect_key($this->data, array_flip($this->fields))) {
-            foreach($this->data as $key => $value) {
-                $this->pdoStatement->bindParam($key, $value);
-            }
-        } else {
-            throw new \Exception("Failed to bind data - keys does not match", 0x000202);
+        foreach($this->data as $key => $value) {
+            $this->pdoStatement->bindValue($key, $value);
         }
     }
     

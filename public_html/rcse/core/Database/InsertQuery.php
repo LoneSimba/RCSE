@@ -7,7 +7,7 @@ class InsertQuery extends Query
 {
     protected function buildStatement()
     {
-        $this->statement = "INSERT INTO `{$this->table}`(". implode(", ", $this->fields) .") VALUES ";
+        $this->statement = "INSERT INTO `{$this->table}`(". implode(", ", $this->fields) .") VALUES (";
 
         $paramFields = str_replace("`", "", $this->fields);
 
@@ -17,5 +17,6 @@ class InsertQuery extends Query
         }
 
         $this->statement .= implode(", ", $paramFields);
+        $this->statement .= ")";
     }
 }

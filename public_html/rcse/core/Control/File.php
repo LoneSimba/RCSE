@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace RCSE\Core\Control;
 
-use RCSE\Core\File as CoreFile;
+use Exception;
 
 /** File Handler, provides functions to write and read files */
 class File
 {
     private $fileStream;
-    private $fileName;
-    private $fileDir;
+    private string $fileName;
+    private string $fileDir;
     private $rootDir;
-    private $filePerms = 0777;
+    private int $filePerms = 0777;
 
     /**
      * If you intend to use writeLine, you'll have to set $fileDir and $fileName here
@@ -29,7 +29,7 @@ class File
 
     public function __destruct()
     {
-        if ($this->fileSteram) {
+        if ($this->fileStream) {
             $this->close();
         }
     }
@@ -38,11 +38,10 @@ class File
      * Tries to open and lock file, based on $mode.
      *
      * @param string $mode fopen mode - "c" for creating and writing, "r" for reading
-     * @return void Doesn't return anything, fills the $fileStream variable of class
-     * @throws \Exception In case of fopen failure
-     * @throws \Exception In case of flock failure
+     * @return File
+     * @throws Exception In case of flock failure
      */
-    public function open(string $mode) : \RCSE\Core\Control\File
+    public function open(string $mode) : File
     {
         $lock = "";
         
@@ -56,17 +55,18 @@ class File
                 case "r":
                     $lock = LOCK_SH;
                     break;
+                case "a+":
                 case "c":
                     $lock = LOCK_EX;
                     break;
         }
-        $this->fileStream = fopen($this->fileDir . $this->fileName, $mode."b");
+        $this->fileStream = fopen($this->fileDir . $this->fileName, $mode);
         if ($this->fileStream == false) {
-            throw new \Exception("Failed to create or open file: {$this->fileName}!", 0x000100);
+            throw new Exception("Failed to create or open file: {$this->fileName}!", 0x000100);
         }
 
         if (flock($this->fileStream, $lock) == false) {
-            throw new \Exception("Failed to lock file: {$this->file_path}!", 0x000101);
+            throw new Exception("Failed to lock file: {$this->fileDir}.{$this->fileName}!", 0x000101);
         }
 
         rewind($this->fileStream);
@@ -87,15 +87,15 @@ class File
      * Checks, wether target directory is read-\write- able, if not - tries to chmod it
      *
      * @return void
-     * @throws \Exception In case of chmod failure
+     * @throws Exception In case of chmod failure
      */
     private function setPermissions() : void
     {
         if (is_readable($this->fileDir) == false || is_writeable($this->fileDir) == false) {
             if (chmod($this->fileDir, $this->filePerms) == false) {
-                throw new \Exception("Failed to set file permissions: {$this->file_path}!", 0x000102);
+                throw new Exception("Failed to set file permissions: {$this->fileDir}.{$this->fileName}!", 0x000102);
             } elseif (is_readable($this->fileDir) == false || is_writeable($this->fileDir) == false) {
-                throw new \Exception("Failed to set file permissions: {$this->file_path}!", 0x000102);
+                throw new Exception("Failed to set file permissions: {$this->fileDir}.{$this->fileName}!", 0x000102);
             }
         }
     }
@@ -116,17 +116,16 @@ class File
      * Tries to read target file
      *
      * @return string Contents of file
-     * @throws \Exception In case of fread failure
+     * @throws Exception In case of fread failure
      */
     public function read() : string
     {
-        $file_contents = "";
         $this->open("r");
 
         $file_contents = fread($this->fileStream, filesize($this->fileDir.$this->fileName));
 
         if ($file_contents == false) {
-            throw new \Exception("Failed to read file contents: {$this->file_path}!", 0x000103);
+            throw new Exception("Failed to read file contents: {$this->fileDir}.{$this->fileName}!", 0x000103);
         }
 
         $this->close();
@@ -138,7 +137,7 @@ class File
      * Tries to overwrite the whole file at once
      *
      * @return void 
-     * @throws \Exception In case of fread failure
+     * @throws Exception In case of fread failure
      */
     public function write(string $contents) : bool
     {
@@ -158,12 +157,12 @@ class File
      *
      * @param string $contents Content to write
      * @return void 
-     * @throws \Exception In case of fwrite failure
+     * @throws Exception In case of fwrite failure
      */
     public function writeLine(string $contents) : void
     {
         if (fwrite($this->fileStream, $contents) == false) {
-            throw new \Exception("Failed to write line to file: {$this->file_path}!", 0x000105);
+            throw new Exception("Failed to write line to file: {$this->fileDir}.{$this->fileName}!", 0x000105);
         }
         
         fflush($this->fileStream);

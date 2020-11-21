@@ -5,9 +5,9 @@ namespace RCSE\Core\Control;
 
 class Config
 {
-    private $configFileDir = "/config/";
-    private $configFileName = "config.json";
-    private $file;
+    private string $configFileDir = "/config/";
+    private string $configFileName = "config.json";
+    private File $file;
 
 
     public function __construct()
@@ -17,8 +17,7 @@ class Config
 
     public function getConfig(string $type) : array
     {
-        $contents = json_decode($this->file->read());
-
+        $contents = json_decode($this->file->read(), true);
         return (array_key_exists($type, $contents)) ? $contents[$type] : [];
         
     }

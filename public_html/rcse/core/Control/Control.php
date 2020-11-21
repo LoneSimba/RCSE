@@ -5,14 +5,14 @@ namespace RCSE\Core\Control;
 
 class Control
 {
-    public $log;
-    public $config;
-    public $permissions;
+    public Log $log;
+    public Config $config;
+    //public $permissions;
 
     public function __construct() 
     {
         $this->log = new Log();
         $this->config = new Config();
-        $this->permission = new Permissions($this);
+        //$this->permission = new Permissions($this);
     }
 }
