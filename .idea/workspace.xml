@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand />
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8569871a-719e-450e-8394-70c83b7fece3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/public_html/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/composer.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/public_html/composer.json</pharConfigPath>
+    <execution>
+      <executable path="C:\Users\vovam\AppData\Roaming\Composer\vendor\bin\phpcs.bat" />
+    </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="composer.json" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="KEEP" />
+  </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="http://rcse/public_html" id="6530469d-00bb-4dda-8649-1a6bd6344b48" name="rcse" />
+      <server host="rcse" id="d8446d5e-27ac-4a0e-8834-b79a8e9b2580" name="rcse (1)" />
+    </servers>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4">
+    <include_path>
+      <path value="$PROJECT_DIR$/public_html/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/public_html/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/public_html/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/public_html/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/public_html/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/public_html/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/public_html/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/public_html/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/public_html/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/public_html/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/public_html/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/public_html/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/public_html/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/public_html/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/public_html/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/public_html/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/public_html/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/public_html/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/public_html/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/public_html/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/public_html/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/public_html/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/public_html/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/public_html/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/public_html/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/public_html/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/public_html/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/public_html/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/public_html/vendor/composer" />
+      <path value="$PROJECT_DIR$/public_html/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/public_html/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/public_html/vendor/webmozart/assert" />
+    </include_path>
+  </component>
+  <component name="PhpXdebugProxy" ide_key="PHPSTORM" host="127.0.0.1" port="9000" />
+  <component name="ProjectId" id="1kZbtOlAvacf0by3g1aChOPXdFr" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mariadb&#10;mysql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public_html/test/unit" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="LogHighlighting" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\OpenServer\domains\RCSE\public_html\test\unit" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="RCSE Debug" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="rcse">
+      <method v="2" />
+    </configuration>
+    <configuration name="RCSE TestXDebug" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="rcse" start_url="/test/Test-debug.php">
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="PHP Web Page.RCSE Debug" />
+      <item itemvalue="PHP Web Page.RCSE TestXDebug" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SshConsoleOptionsProvider">
+    <option name="myEncoding" value="UTF-8" />
+    <option name="myConnectionType" value="NONE" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8569871a-719e-450e-8394-70c83b7fece3" name="Default Changelist" comment="" />
+      <created>1605911275308</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605911275308</updated>
+      <workItem from="1605911277202" duration="3850000" />
+      <workItem from="1605915356064" duration="17254000" />
+    </task>
+    <task id="LOCAL-00001" summary="Numerous additions:&#10;Created basic permissions handler&#10;New functions to user and user groups, new class UserSession&#10;Created authorization handler&#10;Fixed issue in Query's bind - now it uses bindValues instead of bindParams&#10;Updated DB model&#10;Minor PHPDoc and codestyle changes">
+      <created>1605977529229</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605977529229</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="V1-Overhaul" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Numerous additions:&#10;Created basic permissions handler&#10;New functions to user and user groups, new class UserSession&#10;Created authorization handler&#10;Fixed issue in Query's bind - now it uses bindValues instead of bindParams&#10;Updated DB model&#10;Minor PHPDoc and codestyle changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Numerous additions:&#10;Created basic permissions handler&#10;New functions to user and user groups, new class UserSession&#10;Created authorization handler&#10;Fixed issue in Query's bind - now it uses bindValues instead of bindParams&#10;Updated DB model&#10;Minor PHPDoc and codestyle changes" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="547" y="174" key="#CLI_Interpreters" timestamp="1605912944993">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="547" y="174" key="#CLI_Interpreters/0.0.1920.1040@0.0.1920.1040" timestamp="1605912944993" />
+    <state x="594" y="472" width="909" height="543" key="#Log_Highlighting_(ideolog)" timestamp="1605971468234">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="594" y="472" width="909" height="543" key="#Log_Highlighting_(ideolog)/0.0.1920.1040@0.0.1920.1040" timestamp="1605971468234" />
+    <state x="674" y="162" key="#PHP" timestamp="1605912947671">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="674" y="162" key="#PHP/0.0.1920.1040@0.0.1920.1040" timestamp="1605912947671" />
+    <state x="414" y="175" width="1092" height="834" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605965536423">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" width="1092" height="834" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605965536423" />
+    <state x="0" y="86" key="CommitChangelistDialog2" timestamp="1605977574210">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="0" y="86" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1605977574210" />
+    <state x="740" y="353" key="FileChooserDialogImpl" timestamp="1605916469730">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="353" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605916469730" />
+    <state width="1877" height="236" key="GridCell.Tab.0.bottom" timestamp="1605977113773">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="236" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605977113773" />
+    <state width="1877" height="236" key="GridCell.Tab.0.center" timestamp="1605977113772">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="236" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605977113772" />
+    <state width="1877" height="236" key="GridCell.Tab.0.left" timestamp="1605977113772">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="236" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605977113772" />
+    <state width="1877" height="236" key="GridCell.Tab.0.right" timestamp="1605977113773">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="236" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605977113773" />
+    <state width="1877" height="236" key="GridCell.Tab.1.bottom" timestamp="1605977113773">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="236" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605977113773" />
+    <state width="1877" height="236" key="GridCell.Tab.1.center" timestamp="1605977113773">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="236" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605977113773" />
+    <state width="1877" height="236" key="GridCell.Tab.1.left" timestamp="1605977113773">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="236" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605977113773" />
+    <state width="1877" height="236" key="GridCell.Tab.1.right" timestamp="1605977113773">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="236" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605977113773" />
+    <state width="1877" height="226" key="GridCell.Tab.2.bottom" timestamp="1605916278218">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="226" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605916278218" />
+    <state width="1877" height="226" key="GridCell.Tab.2.center" timestamp="1605916278218">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="226" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605916278218" />
+    <state width="1877" height="226" key="GridCell.Tab.2.left" timestamp="1605916278217">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="226" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605916278217" />
+    <state width="1877" height="226" key="GridCell.Tab.2.right" timestamp="1605916278218">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="226" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605916278218" />
+    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1605965325787">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1920.1040@0.0.1920.1040" timestamp="1605965325787" />
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1605960350175">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605960350175" />
+    <state x="761" y="222" key="RollbackChangesDialog" timestamp="1605977546346">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="761" y="222" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605977546346" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1605972128192">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605972128192" />
+    <state x="807" y="433" key="VCS.ChangelistChooser" timestamp="1605977596792">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="807" y="433" key="VCS.ChangelistChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1605977596792" />
+    <state x="0" y="414" key="VCS.EditChangelistDialog" timestamp="1605978089685">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="0" y="414" key="VCS.EditChangelistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605978089685" />
+    <state x="694" y="328" width="532" height="540" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1605916474404">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="694" y="328" width="532" height="540" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605916474404" />
+    <state x="953" y="0" width="974" height="1047" key="dock-window-1" timestamp="1605961648642">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="953" y="0" width="974" height="1047" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1605961648642" />
+    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1605916551438">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="119" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605916551438" />
+  </component>
+</project>

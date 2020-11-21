@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/public_html/rcse/core" isTestSource="false" packagePrefix="RCSE\Core\" />
+      <sourceFolder url="file://$MODULE_DIR$/public_html/rcse/core/Database" isTestSource="false" packagePrefix="RCSE\Core\Database\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/public_html" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/old" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/doctrine/instantiator" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/phar-io/manifest" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/phar-io/version" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/phpdocumentor/reflection-common" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/phpdocumentor/reflection-docblock" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/phpdocumentor/type-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/phpspec/prophecy" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/phpunit/php-code-coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/phpunit/php-file-iterator" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/phpunit/php-invoker" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/phpunit/php-text-template" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/phpunit/php-timer" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/phpunit/php-token-stream" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/phpunit/phpunit" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/sebastian/code-unit" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/sebastian/code-unit-reverse-lookup" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/sebastian/comparator" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/sebastian/diff" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/sebastian/environment" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/sebastian/exporter" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/sebastian/global-state" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/sebastian/object-enumerator" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/sebastian/object-reflector" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/sebastian/recursion-context" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/sebastian/resource-operations" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/sebastian/type" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/sebastian/version" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/theseer/tokenizer" />
+      <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/webmozart/assert" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
