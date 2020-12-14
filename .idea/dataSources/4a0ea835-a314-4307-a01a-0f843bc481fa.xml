@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="MySQL - rcse@localhost">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.19">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.20">
     <root id="1">
       <ServerVersion>8.0.19</ServerVersion>
       <DefaultEngine>InnoDB</DefaultEngine>
@@ -892,14 +892,14 @@
       <Host>localhost</Host>
       <ObjectGrants>SHUTDOWN,SUPER
 BACKUP_ADMIN,CLONE_ADMIN,CONNECTION_ADMIN,PERSIST_RO_VARIABLES_ADMIN,SESSION_VARIABLES_ADMIN,SYSTEM_USER,SYSTEM_VARIABLES_ADMIN
-SELECT|performance_schema:null
-SELECT|mysql.user:null
+SELECT|performance_schema
+SELECT|mysql.user
 </ObjectGrants>
     </user>
     <user id="282" parent="1" name="mysql.sys">
       <Host>localhost</Host>
-      <ObjectGrants>TRIGGER|sys:null
-SELECT|sys.sys_config:null
+      <ObjectGrants>TRIGGER|sys
+SELECT|sys.sys_config
 </ObjectGrants>
     </user>
     <user id="283" parent="1" name="mysql">
@@ -935,215 +935,248 @@ APPLICATION_PASSWORD_ADMIN,AUDIT_ADMIN,BACKUP_ADMIN,BINLOG_ADMIN,BINLOG_ENCRYPTI
 APPLICATION_PASSWORD_ADMIN,AUDIT_ADMIN,BACKUP_ADMIN,BINLOG_ADMIN,BINLOG_ENCRYPTION_ADMIN,CLONE_ADMIN,CONNECTION_ADMIN,ENCRYPTION_KEY_ADMIN,GROUP_REPLICATION_ADMIN,INNODB_REDO_LOG_ARCHIVE,PERSIST_RO_VARIABLES_ADMIN,REPLICATION_APPLIER,REPLICATION_SLAVE_ADMIN,RESOURCE_GROUP_ADMIN,RESOURCE_GROUP_USER,ROLE_ADMIN,SERVICE_CONNECTION_ADMIN,SESSION_VARIABLES_ADMIN,SET_USER_ID,SYSTEM_USER,SYSTEM_VARIABLES_ADMIN,TABLE_ENCRYPTION_ADMIN,XA_RECOVER_ADMIN!
 </ObjectGrants>
     </user>
-    <table id="289" parent="6" name="groups"/>
-    <table id="290" parent="6" name="sessions"/>
-    <table id="291" parent="6" name="users"/>
-    <column id="292" parent="289" name="group_id">
+    <table id="289" parent="6" name="auth_keys"/>
+    <table id="290" parent="6" name="groups"/>
+    <table id="291" parent="6" name="sessions"/>
+    <table id="292" parent="6" name="users"/>
+    <column id="293" parent="289" name="key_id">
       <Position>1</Position>
-      <DataType>varchar(36)|0s</DataType>
+      <DataType>varchar(6)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="293" parent="289" name="group_title">
+    <column id="294" parent="289" name="user_id">
       <Position>2</Position>
-      <DataType>varchar(45)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="294" parent="289" name="group_perms">
-      <Position>3</Position>
-      <DataType>json|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="295" parent="289" name="group_parent_id">
-      <Position>4</Position>
       <DataType>varchar(36)|0s</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <index id="296" parent="289" name="group_id_UNIQUE">
-      <ColNames>group_id</ColNames>
+    <column id="295" parent="289" name="key_expires">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="296" parent="289" name="key_id_UNIQUE">
+      <ColNames>key_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="297" parent="289" name="fk_groups_groups1_idx">
-      <ColNames>group_parent_id</ColNames>
+    <index id="297" parent="289" name="user_id_idx">
+      <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
     <key id="298" parent="289" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>group_id</ColNames>
+      <ColNames>key_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="299" parent="289" name="group_id_UNIQUE">
-      <ColNames>group_id</ColNames>
-      <UnderlyingIndexName>group_id_UNIQUE</UnderlyingIndexName>
+    <key id="299" parent="289" name="key_id_UNIQUE">
+      <ColNames>key_id</ColNames>
+      <UnderlyingIndexName>key_id_UNIQUE</UnderlyingIndexName>
     </key>
-    <foreign-key id="300" parent="289" name="fk_groups_groups1">
-      <ColNames>group_parent_id</ColNames>
-      <RefTableName>groups</RefTableName>
-      <RefColNames>group_id</RefColNames>
-    </foreign-key>
-    <column id="301" parent="290" name="session_id">
-      <Position>1</Position>
-      <DataType>varchar(36)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="302" parent="290" name="session_key">
-      <Position>2</Position>
-      <DataType>varchar(36)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="303" parent="290" name="user_id">
-      <Position>3</Position>
-      <DataType>varchar(36)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="304" parent="290" name="session_ip">
-      <Position>4</Position>
-      <DataType>varchar(16)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="305" parent="290" name="session_geo">
-      <Position>5</Position>
-      <DataType>varchar(45)|0s</DataType>
-    </column>
-    <column id="306" parent="290" name="session_started">
-      <Position>6</Position>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="307" parent="290" name="session_last">
-      <Position>7</Position>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="308" parent="290" name="session_browser">
-      <Position>8</Position>
-      <DataType>varchar(45)|0s</DataType>
-    </column>
-    <column id="309" parent="290" name="session_os">
-      <Position>9</Position>
-      <DataType>varchar(45)|0s</DataType>
-    </column>
-    <index id="310" parent="290" name="session_id_UNIQUE">
-      <ColNames>session_id</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <index id="311" parent="290" name="session_key_UNIQUE">
-      <ColNames>session_key</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <index id="312" parent="290" name="fk_sessions_users1_idx">
-      <ColNames>user_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="313" parent="290" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>session_id
-session_key</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <key id="314" parent="290" name="session_id_UNIQUE">
-      <ColNames>session_id</ColNames>
-      <UnderlyingIndexName>session_id_UNIQUE</UnderlyingIndexName>
-    </key>
-    <key id="315" parent="290" name="session_key_UNIQUE">
-      <ColNames>session_key</ColNames>
-      <UnderlyingIndexName>session_key_UNIQUE</UnderlyingIndexName>
-    </key>
-    <foreign-key id="316" parent="290" name="fk_sessions_users1">
+    <foreign-key id="300" parent="289" name="user_id">
       <ColNames>user_id</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>user_id</RefColNames>
     </foreign-key>
-    <column id="317" parent="291" name="user_id">
+    <column id="301" parent="290" name="group_id">
       <Position>1</Position>
       <DataType>varchar(36)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="318" parent="291" name="user_login">
+    <column id="302" parent="290" name="group_title">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="319" parent="291" name="user_email">
+    <column id="303" parent="290" name="group_perms">
+      <Position>3</Position>
+      <DataType>json|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="304" parent="290" name="group_parent_id">
+      <Position>4</Position>
+      <DataType>varchar(36)|0s</DataType>
+    </column>
+    <index id="305" parent="290" name="group_id_UNIQUE">
+      <ColNames>group_id</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="306" parent="290" name="fk_groups_groups1_idx">
+      <ColNames>group_parent_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="307" parent="290" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>group_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="308" parent="290" name="group_id_UNIQUE">
+      <ColNames>group_id</ColNames>
+      <UnderlyingIndexName>group_id_UNIQUE</UnderlyingIndexName>
+    </key>
+    <foreign-key id="309" parent="290" name="fk_groups_groups1">
+      <ColNames>group_parent_id</ColNames>
+      <RefTableName>groups</RefTableName>
+      <RefColNames>group_id</RefColNames>
+    </foreign-key>
+    <column id="310" parent="291" name="session_id">
+      <Position>1</Position>
+      <DataType>varchar(36)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="311" parent="291" name="user_id">
+      <Position>2</Position>
+      <DataType>varchar(36)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="312" parent="291" name="session_ips">
+      <Position>3</Position>
+      <DataType>json|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="313" parent="291" name="session_geo">
+      <Position>4</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="314" parent="291" name="session_start">
+      <Position>5</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="315" parent="291" name="session_end">
+      <Position>6</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="316" parent="291" name="session_browser">
+      <Position>7</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <column id="317" parent="291" name="session_os">
+      <Position>8</Position>
+      <DataType>varchar(45)|0s</DataType>
+    </column>
+    <index id="318" parent="291" name="session_id_UNIQUE">
+      <ColNames>session_id</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="319" parent="291" name="fk_sessions_users1_idx">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="320" parent="291" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>session_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="321" parent="291" name="session_id_UNIQUE">
+      <ColNames>session_id</ColNames>
+      <UnderlyingIndexName>session_id_UNIQUE</UnderlyingIndexName>
+    </key>
+    <foreign-key id="322" parent="291" name="fk_sessions_users1">
+      <ColNames>user_id</ColNames>
+      <RefTableName>users</RefTableName>
+      <RefColNames>user_id</RefColNames>
+    </foreign-key>
+    <column id="323" parent="292" name="user_id">
+      <Position>1</Position>
+      <DataType>varchar(36)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="324" parent="292" name="user_login">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="325" parent="292" name="user_email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="320" parent="291" name="user_passhash">
+    <column id="326" parent="292" name="user_passhash">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="321" parent="291" name="group_id">
+    <column id="327" parent="292" name="group_id">
       <Position>5</Position>
       <DataType>varchar(36)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="322" parent="291" name="user_bdate">
+    <column id="328" parent="292" name="user_bdate">
       <Position>6</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="323" parent="291" name="user_regdate">
+    <column id="329" parent="292" name="user_regdate">
       <Position>7</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="324" parent="291" name="user_avatar">
+    <column id="330" parent="292" name="user_avatar">
       <Position>8</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;default&apos;</DefaultExpression>
     </column>
-    <column id="325" parent="291" name="user_prefs">
+    <column id="331" parent="292" name="user_prefs">
       <Position>9</Position>
       <DataType>json|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="326" parent="291" name="user_perms">
+    <column id="332" parent="292" name="user_perms">
       <Position>10</Position>
       <DataType>json|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="327" parent="291" name="user_id_UNIQUE">
+    <column id="333" parent="292" name="user_key">
+      <Position>11</Position>
+      <DataType>varchar(36)|0s</DataType>
+    </column>
+    <column id="334" parent="292" name="user_verified">
+      <Position>12</Position>
+      <DataType>tinyint|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <index id="335" parent="292" name="user_id_UNIQUE">
       <ColNames>user_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="328" parent="291" name="user_login_UNIQUE">
+    <index id="336" parent="292" name="user_login_UNIQUE">
       <ColNames>user_login</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="329" parent="291" name="user_email_UNIQUE">
+    <index id="337" parent="292" name="user_email_UNIQUE">
       <ColNames>user_email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="330" parent="291" name="fk_users_groups_idx">
+    <index id="338" parent="292" name="fk_users_groups_idx">
       <ColNames>group_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="331" parent="291" name="PRIMARY">
+    <key id="339" parent="292" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>user_id
 user_login
 user_email</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="332" parent="291" name="user_id_UNIQUE">
+    <key id="340" parent="292" name="user_id_UNIQUE">
       <ColNames>user_id</ColNames>
       <UnderlyingIndexName>user_id_UNIQUE</UnderlyingIndexName>
     </key>
-    <key id="333" parent="291" name="user_login_UNIQUE">
+    <key id="341" parent="292" name="user_login_UNIQUE">
       <ColNames>user_login</ColNames>
       <UnderlyingIndexName>user_login_UNIQUE</UnderlyingIndexName>
     </key>
-    <key id="334" parent="291" name="user_email_UNIQUE">
+    <key id="342" parent="292" name="user_email_UNIQUE">
       <ColNames>user_email</ColNames>
       <UnderlyingIndexName>user_email_UNIQUE</UnderlyingIndexName>
     </key>
-    <foreign-key id="335" parent="291" name="fk_users_groups">
+    <foreign-key id="343" parent="292" name="fk_users_groups">
       <ColNames>group_id</ColNames>
       <RefTableName>groups</RefTableName>
       <RefColNames>group_id</RefColNames>
