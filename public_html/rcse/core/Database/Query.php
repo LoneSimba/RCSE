@@ -9,12 +9,13 @@ use PDOStatement;
 
 abstract class Query
 {
-    public $result;
-    protected string $statement;
+    public array $result;
+
     protected PDOStatement $pdoStatement;
+    protected string $statement;
+    protected string $table;
     protected array $data = [];
     protected array $fields = [];
-    protected string $table;
 
     public function __construct(string $_table, array $_fields)
     {
@@ -28,9 +29,9 @@ abstract class Query
      *
      * @todo Should check data for embedded statements
      * @param array $data Array of data to add with keys representing fields
-     * @return Query
+     * @return self
      */
-    public function addData(array $data) : Query 
+    public function addData(array $data) : self
     { 
         $this->data = array_merge($this->data, $data); 
         return $this;
@@ -41,26 +42,23 @@ abstract class Query
      *
      * @todo Should think of way to provide multiple types of comparison and separators
      * @param array $data Array of data with keys representing table fields
-     * @param boolean $shouldBeEqual Either fields should be equeal to provided data
+     * @param boolean $shouldBeEqual Either fields should be equal to provided data
      * @param boolean $disjunctive Should be multiple fields be true at the same time
-     * @return Query
+     * @return self
      */
-    public function addWhere(array $data, bool $shouldBeEqual = true, bool $disjunctive = false) : Query
+    public function addWhere(array $data, bool $shouldBeEqual = true, bool $disjunctive = false) : self
     {
         $compSign = ($shouldBeEqual) ? " = " : " != ";
         $separator = ($disjunctive) ? " OR " : " AND ";
         
-        if ($this->statement == '') 
-        {
-            $this->buildStatement();
-        }
+        if (empty($this->statement)) $this->buildStatement();
 
         $string = " WHERE ";
         $counter = 0;
         foreach($data as $key => $val)
         {
             $string .= "{$key}{$compSign}{$val}";
-            if($counter < count($data)-1) $string .= "{$separator}";
+            if ($counter < count($data)-1) $string .= "{$separator}";
         }
 
         $this->statement .= $string;
@@ -71,9 +69,9 @@ abstract class Query
      * Prepares an PDOStatement using provided database handler
      *
      * @param PDO $dbh PDO database handler
-     * @return Query
+     * @return self
      */
-    public function prepare(PDO $dbh) : Query
+    public function prepare(PDO $dbh) : self
     {
         if(empty($this->statement)) $this->buildStatement();
         $this->pdoStatement = $dbh->prepare($this->statement);
@@ -83,12 +81,14 @@ abstract class Query
     /**
      * Executes prepared statement, if statement has not been built or prepared throws an exception.
      *
-     * @return Query
+     * @return self
+     * @todo Should throw QueryNotBuiltException instead of regular one
      * @throws Exception
      */
-    public function execute() 
+    public function execute() : self
     {
-        if(empty($this->statement) || empty($this->pdoStatement)) throw new Exception("Failed to execute statement - statement has not been built or prepared.", 0x000203);
+        if (empty($this->statement) || empty($this->pdoStatement))
+            throw new Exception("Failed to execute statement - statement has not been built or prepared.", 0x000203);
         $this->bindData();
         $this->pdoStatement->execute();
 
@@ -99,31 +99,45 @@ abstract class Query
      * Fetches the result of query execution and puts it into $result array
      *
      * @return void
+     * @todo Should throw QueryExecutionFailure
+     * @throws Exception
      */
-    public function fetchDataArray() {
-        if(is_null($this->getErrorMessage()[1])) {
+    public function fetchDataArray() : void
+    {
+        if (is_null($this->getErrorMessage()[1]))
+        {
             $this->result = ($this->pdoStatement->columnCount() > 0) ? $this->pdoStatement->fetchAll(PDO::FETCH_ASSOC) : [];
         }
         else
         {
-            $this->result = false;
+            throw new Exception("Query execution resulted in following error: {$this->getErrorMessage()[2]}", 0x000204);
         }
     }
 
-    public function getStatement() { return $this->statement; }
+    /**
+     * Returns current statement
+     *
+     * @return string
+     */
+    public function getStatement() : string { return $this->statement; }
 
-    public function getErrorMessage() { return $this->pdoStatement->errorInfo(); }
+    /**
+     * Returns errorInfo array for executed pdoStatement
+     *
+     * @return array
+     */
+    public function getErrorMessage() : array { return $this->pdoStatement->errorInfo(); }
     
-    protected function addField(array $fields) { $this->fields = array_merge($this->fields, $fields); }
+    protected function addField(array $fields) : void { $this->fields = array_merge($this->fields, $fields); }
 
-    protected function setTable(string $table) { $this->table = $table; }
+    protected function setTable(string $table) : void { $this->table = $table; }
 
-    protected function bindData()
+    protected function bindData() : void
     {
         foreach($this->data as $key => $value) {
             $this->pdoStatement->bindValue($key, $value);
         }
     }
     
-    protected abstract function buildStatement();
+    protected abstract function buildStatement() : void;
 }

@@ -5,7 +5,7 @@ namespace RCSE\Core\Database;
 
 class InsertQuery extends Query
 {
-    protected function buildStatement()
+    protected function buildStatement() : void
     {
         $this->statement = "INSERT INTO `{$this->table}`(". implode(", ", $this->fields) .") VALUES (";
 

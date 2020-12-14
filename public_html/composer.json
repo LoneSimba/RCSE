@@ -9,13 +9,18 @@
         }
     ],
     "require": {
-        "phpunit/phpunit": "^9.2",
-        "ext-json": "*"
+      "phpunit/phpunit": "^9.2",
+      "ext-json": "*",
+      "ext-pdo": "*",
+        "phpmailer/phpmailer": "^6.2"
     },
     "autoload": {
         "psr-4": {
             "RCSE\\Core\\": "./rcse/core",
-            "RCSE\\Core\\Database\\": "./rcse/core/Database"
+            "RCSE\\Core\\Database\\": "./rcse/core/Database",
+            "RCSE\\Core\\Control\\": "./rcse/core/Control",
+            "RCSE\\Core\\Secure\\": "./rcse/core/Secure",
+            "RCSE\\Core\\User\\": "./rcse/core/User"
         }
     }
 }

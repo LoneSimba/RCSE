@@ -5,7 +5,7 @@ namespace RCSE\Core\Database;
 
 class UpdateQuery extends Query
 {
-    protected function buildStatement()
+    protected function buildStatement() : void
     {
         $this->statement = "UPDATE `{$this->table}` SET ";
 

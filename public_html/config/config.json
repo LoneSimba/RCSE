@@ -5,5 +5,14 @@
         "pass" : "root",
         "port" : "3306",
         "name" : "rcse"
+    },
+    "site" : {
+    },
+    "mailer" : {
+        "smtp-usr": "siluet-stalker99@yandex.ru",
+        "smtp-nam": "Vladimir",
+        "smtp-srv": "ssl://smtp.yandex.ru",
+        "smtp-prt": 465,
+        "smtp-pss": "20LiF3AfT3rArMy"
     }
 }

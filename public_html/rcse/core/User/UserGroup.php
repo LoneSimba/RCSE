@@ -28,17 +28,17 @@ class UserGroup extends APermissionUser
     /**
      * Updates DB entry to add $permission
      *
-     * @param array $permission Permission array to add
+     * @param array $permissions Permission array to add
      * @return void
      * @throws Exception
      */
-    public function addPermission(array $permission)
+    public function addPermission(array $permissions) : void
     {
-        if (!$this->hasPermission($permission))
+        if (!$this->hasPermission($permissions))
         {
             $query = (new UpdateQuery('groups', ['`group_perms`'=>':perms']))->addWhere(['group_id'=>':id']);
             $newPerms = json_decode($this->data['group_perms'], true);
-            $newPerms += $permission;
+            $newPerms += $permissions;
             $query->addData([':id'=>$this->data['group_id'], ':perms'=>json_encode($newPerms)]);
             $this->db->executeCustomQuery($query);
             $this->getData($this->data['group_id']);
@@ -54,7 +54,8 @@ class UserGroup extends APermissionUser
     public function getPermissions() : array
     {
         $parent = [];
-        if (isset($this->parentGroup)) $parent = json_decode($this->parentGroup->data['group_perms'], true);
+        if (isset($this->parentGroup))
+            $parent = json_decode($this->parentGroup->data['group_perms'], true);
         return array_flip(array_merge($parent, json_decode($this->data['group_perms'], true)));
     }
 
@@ -62,7 +63,8 @@ class UserGroup extends APermissionUser
     {
         $this->db->addQueryData('sel_group_by_id', [':id' => $id]);
         $this->data = $this->db->executeAndGetResult('sel_group_by_id')[0];
-        if (isset($this->data['group_parent_id'])) $this->parentGroup = new UserGroup($this->data['group_parent_id'], $this->db);
+        if (isset($this->data['group_parent_id']))
+            $this->parentGroup = new UserGroup($this->data['group_parent_id'], $this->db);
         $this->perms = $this->getPermissions();
     }
 

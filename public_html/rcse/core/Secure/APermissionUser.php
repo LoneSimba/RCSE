@@ -28,5 +28,5 @@ abstract class APermissionUser
     }
     
     public abstract function getPermissions() : array;
-    public abstract function addPermission(array $permissions);
+    public abstract function addPermission(array $permissions) : void;
 }

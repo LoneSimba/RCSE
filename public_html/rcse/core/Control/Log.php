@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace RCSE\Core\Control;
+use Exception;
 use RCSE\Core\Utils;
 
 class Log
@@ -15,9 +16,10 @@ class Log
     const INFO = 'Info';
     const DEBUG = 'Debug';
 
+    private File $fileHandler;
     private string $logFile;
     private string $logDir;
-    private File $fileHandler;
+    private string $levelThreshold;
     private array $messageLevels = [
         self::EMERGENCY => 0,
         self::ALERT => 1,
@@ -28,27 +30,41 @@ class Log
         self::INFO => 6,
         self::DEBUG => 7
     ];
-    private string $levelThreshold = self::DEBUG;
 
     public function __construct($levelThreshold = self::DEBUG)
     {
-
-        $this->setLevelThreshold($levelThreshold);
         $this->setLogfilePath();
-
-        $this->fileHandler = new File($this->logDir, $this->logFile);
-        $this->fileHandler->open("a+");
-
+        $this->levelThreshold = $levelThreshold;
+        $this->fileHandler = (new File($this->logDir, $this->logFile))->open("a+");
     }
 
-    public function __destruct()
+    /**
+     * Writes $message to log file
+     *
+     * @param string $level Message level, see Log constants
+     * @param string $message
+     * @param string $source
+     * @throws Exception
+     */
+    public function log(string $level, string $message, string $source) : void
     {
-        $this->fileHandler->__destruct();
+        if (!($this->messageLevels[$this->levelThreshold] <= $this->messageLevels[$level]))
+        {
+            $formattedMessage = $this->formatMessage($level, $message, $source);
+
+            $this->fileHandler->writeLine($formattedMessage);
+        }
     }
 
-    private function setLogfilePath()
+    /**
+     * Generates logfile path and name
+     *
+     * @returns void
+     * @throws Exception
+     */
+    private function setLogfilePath() : void
     {
-        $datetime = Utils::getTimestamp(false)->format('Y-m-d');
+        $datetime = Utils::getTimestamp('Y-m-d');
         $path = "/logs/". Utils::getClientIP() ."/";
 
         $file = "{$datetime}.log";
@@ -57,26 +73,18 @@ class Log
         $this->logFile = $file;
     }
 
-    public function setLevelThreshold($levelThreshold)
-    {
-        $this->levelThreshold = $levelThreshold;
-    }
-
-    public function log($level, string $message, string $source)
-    {
-        if($this->messageLevels[$this->levelThreshold] <= $this->messageLevels[$level]) {
-            return;
-        }
-
-        $formattedMessage = $this->formatMessage($level, $message, $source);
-
-        $this->fileHandler->writeLine($formattedMessage);
-    }
-
-    private function formatMessage(string $level, string $message, string $source)
+    /**
+     * Formats given message
+     *
+     * @param string $level
+     * @param string $message
+     * @param string $source
+     * @return string
+     * @throws Exception
+     */
+    private function formatMessage(string $level, string $message, string $source): string
     {
         $level = strtoupper($level);
-        $formattedMessage = "[". Utils::getTimestamp() ."][{$level}][{$source}] {$message}".PHP_EOL;
-        return $formattedMessage;
+        return "[". Utils::getTimestamp() ."][{$level}][{$source}] {$message}".PHP_EOL;
     }
 }

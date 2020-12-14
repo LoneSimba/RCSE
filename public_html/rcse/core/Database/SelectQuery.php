@@ -5,7 +5,7 @@ namespace RCSE\Core\Database;
 
 class SelectQuery extends Query
 {
-    protected function buildStatement()
+    protected function buildStatement() : void
     {
         $this->statement = "SELECT ". implode(", ", $this->fields) ." FROM `{$this->table}`";
     }
