@@ -252,6 +252,11 @@ header #head_bar #head_account #head_account_popup #head_account_pane form #head
   color: whitesmoke;
   border: 1px solid #111e41;
 }
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input[type=button]:hover {
+  background-color: #3e475f;
+  border-color: #414b67;
+  cursor: pointer;
+}
 header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input[type=button] + input[type=button] {
   background-color: #bfbfbf;
   color: #091023;
@@ -260,11 +265,6 @@ header #head_bar #head_account #head_account_popup #head_account_pane form #head
 header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input[type=button] + input[type=button]:hover {
   background-color: #999;
   border-color: #8e8e8e;
-  cursor: pointer;
-}
-header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input[type=button]:hover {
-  background-color: #3e475f;
-  border-color: #414b67;
   cursor: pointer;
 }
 

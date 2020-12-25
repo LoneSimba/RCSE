@@ -279,7 +279,6 @@ header {
                 font-size: 12pt;
                 font-weight: bold;
                 padding: 10px 0;
-
               }
 
               input:first-child {
@@ -298,6 +297,12 @@ header {
                 color: whitesmoke;
                 border: 1px solid adjust-color($main_color, $lightness: 7.5%);
 
+                &:hover {
+                  background-color: #3e475f;
+                  border-color: #414b67;
+                  cursor: pointer;
+                }
+
                 & + input[type=button] {
                   background-color: $main_font_color;
                   color: $main_color;
@@ -309,18 +314,10 @@ header {
                     cursor: pointer;
                   }
                 }
-
-                &:hover {
-                  background-color: #3e475f;
-                  border-color: #414b67;
-                  cursor: pointer;
-                }
               }
             }
 
-            #head_account_form_sign_in {
-
-            }
+            #head_account_form_sign_in {}
           }
         }
       }
