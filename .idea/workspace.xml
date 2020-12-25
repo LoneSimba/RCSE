@@ -10,29 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8569871a-719e-450e-8394-70c83b7fece3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/resources/resources.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/images/arrow-point-to-right.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/images/logo_shad.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/images/logo_shad_adv.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/images/unnamed.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/images/user.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/images/user_gray.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/scripts/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/scss/_base.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/scss/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/scss/main.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/style.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/RCSE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RCSE.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/User/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/User/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS-old/images/svg/мир.ai" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/scss/main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/scripts/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/scripts/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/scss/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/scss/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/style.css.map" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +117,6 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="NewWatcherDialog.advanced.open" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
@@ -154,6 +135,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\OpenServer\domains\RCSE\old\public_html\resources\themes" />
       <recent name="C:\OpenServer\domains\RCSE\public_html\resources\themes\rcs\prototypes\styles\main" />
       <recent name="C:\OpenServer\domains\RCSE\public_html\resources\themes\rcs\prototypes\styles\main\scss" />
       <recent name="C:\OpenServer\domains\RCSE\public_html\test\unit" />
@@ -230,7 +212,7 @@
       <workItem from="1608633125551" duration="2160000" />
       <workItem from="1608716369449" duration="4448000" />
       <workItem from="1608766545610" duration="40000" />
-      <workItem from="1608881763963" duration="4608000" />
+      <workItem from="1608881763963" duration="8327000" />
     </task>
     <task id="LOCAL-00001" summary="Numerous additions:&#10;Created basic permissions handler&#10;New functions to user and user groups, new class UserSession&#10;Created authorization handler&#10;Fixed issue in Query's bind - now it uses bindValues instead of bindParams&#10;Updated DB model&#10;Minor PHPDoc and codestyle changes">
       <created>1605977529229</created>
@@ -274,7 +256,28 @@
       <option name="project" value="LOCAL" />
       <updated>1607979808201</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Configured SCSS and watcher">
+      <created>1608888322820</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1608888322820</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Started work on new RCS default design:&#10;Created base structure prototype&#10;Updated various logo types&#10;Moved old design to old files">
+      <created>1608888767243</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1608888767243</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fixed issues suggested by Codacy:&#10;Avoid direct usage of superglobals _SERVER, _POST&#10;Other minor troubles">
+      <created>1608891063418</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1608891063418</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,7 +327,10 @@
     <MESSAGE value="PHPStorm configuration added, updated composer dependencies" />
     <MESSAGE value="Removed 'node_modules' folder, installed phpmailer" />
     <MESSAGE value="Numerous changes&#10;Removed obsolete QueryBuilder&#10;Code refactoring&#10;More type defined fields and functions&#10;Log and Config class should be instantiated in every class they're used in&#10;Moved old design from RCS to RCS-old&#10;New design rcs (WIP)&#10;New class Mail (WIP)&#10;File:&#10;New file lock type check&#10;Logs it's exceptions&#10;Log:&#10;Removed destructor&#10;Database:&#10;Renamed all sel_user_full_* queries to sel_user_safe_*&#10;New queries&#10;Authorization:&#10;Ongoing work on login and register functions&#10;Changed checkCredentials to findUser&#10;Changed insertNewUser to createNewUser&#10;New function createNewSession&#10;User:&#10;Edited addPermission function&#10;New functions verifyAccount, generateKey, generateAuthKey, saveData, checkCredentials&#10;UserSession:&#10;New functions saveData, endNow&#10;Utils:&#10;Removed function transformType&#10;Edited function getTimestamp&#10;New arrays knownOSs, knownBrowsers&#10;New functions generateKey, getClientBrowser, getClientOS" />
-    <option name="LAST_COMMIT_MESSAGE" value="Numerous changes&#10;Removed obsolete QueryBuilder&#10;Code refactoring&#10;More type defined fields and functions&#10;Log and Config class should be instantiated in every class they're used in&#10;Moved old design from RCS to RCS-old&#10;New design rcs (WIP)&#10;New class Mail (WIP)&#10;File:&#10;New file lock type check&#10;Logs it's exceptions&#10;Log:&#10;Removed destructor&#10;Database:&#10;Renamed all sel_user_full_* queries to sel_user_safe_*&#10;New queries&#10;Authorization:&#10;Ongoing work on login and register functions&#10;Changed checkCredentials to findUser&#10;Changed insertNewUser to createNewUser&#10;New function createNewSession&#10;User:&#10;Edited addPermission function&#10;New functions verifyAccount, generateKey, generateAuthKey, saveData, checkCredentials&#10;UserSession:&#10;New functions saveData, endNow&#10;Utils:&#10;Removed function transformType&#10;Edited function getTimestamp&#10;New arrays knownOSs, knownBrowsers&#10;New functions generateKey, getClientBrowser, getClientOS" />
+    <MESSAGE value="Configured SCSS and watcher" />
+    <MESSAGE value="Started work on new RCS default design:&#10;Created base structure prototype&#10;Updated various logo types&#10;Moved old design to old files" />
+    <MESSAGE value="Fixed issues suggested by Codacy:&#10;Avoid direct usage of superglobals _SERVER, _POST&#10;Other minor troubles" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed issues suggested by Codacy:&#10;Avoid direct usage of superglobals _SERVER, _POST&#10;Other minor troubles" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

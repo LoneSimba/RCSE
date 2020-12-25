@@ -1,8 +1,6 @@
 
 /public_html/logs/*
-
 /public_html/userdata/*
 
 /old/*
-/node_modules/*
 /doc/old/*
