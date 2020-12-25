@@ -67,7 +67,7 @@ class User extends APermissionUser
      */
     public function verifyAccount(string $key) : bool
     {
-        if (!$this->data['user_verified'])
+        if (!(bool) $this->data['user_verified'])
         {
             if (md5($key) == $this->data['user_key'])
             {
@@ -81,6 +81,8 @@ class User extends APermissionUser
                 return false;
             }
         }
+
+        return true;
     }
 
     /**

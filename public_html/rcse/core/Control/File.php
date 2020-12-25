@@ -5,6 +5,7 @@ namespace RCSE\Core\Control;
 
 use Exception;
 use http\Exception\UnexpectedValueException;
+use RCSE\Core\ServerArray;
 
 /** File Handler, provides functions to write and read files */
 class File
@@ -24,7 +25,7 @@ class File
     public function __construct(string $fileDir, string $fileName)
     {
         $this->log = new Log();
-        $this->rootDir = $_SERVER['DOCUMENT_ROOT']; 
+        $this->rootDir = (string) ServerArray::get('DOCUMENT_ROOT');
         $this->fileDir = $this->rootDir . $fileDir;
         $this->fileName = $fileName;
     }

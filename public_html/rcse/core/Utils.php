@@ -107,12 +107,12 @@ class Utils
      */
     public static function getClientIP() : string
     {
-        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-            $ip = $_SERVER['HTTP_CLIENT_IP'];
-        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        if (!empty(ServerArray::get('HTTP_CLIENT_IP'))) {
+            $ip = ServerArray::get('HTTP_CLIENT_IP');
+        } elseif (!empty(ServerArray::get('HTTP_X_FORWARDED_FOR'))) {
+            $ip = ServerArray::get('HTTP_X_FORWARDED_FOR');
         } else {
-            $ip = $_SERVER['REMOTE_ADDR'];
+            $ip = ServerArray::get('REMOTE_ADDR');
         }
 
         return $ip;
@@ -166,7 +166,7 @@ class Utils
      */
     public static function getClientBrowser() : string
     {
-        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+        $user_agent = ServerArray::get('HTTP_USER_AGENT');
         foreach (self::$knownBrowsers as $key => $val)
         {
             if (strpos($user_agent, $key)) return $val;
@@ -180,7 +180,7 @@ class Utils
      */
     public static function getClientOS() : string
     {
-        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+        $user_agent = ServerArray::get('HTTP_USER_AGENT');
         foreach (self::$knownOSs as $key => $val)
         {
             if (strpos($user_agent, $key)) return $val;

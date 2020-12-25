@@ -40,11 +40,11 @@ abstract class Query
     /**
      * Add 'WHERE' part to statement. Notice - should be called before calling prepare().
      *
-     * @todo Should think of way to provide multiple types of comparison and separators
      * @param array $data Array of data with keys representing table fields
-     * @param boolean $shouldBeEqual Either fields should be equal to provided data
-     * @param boolean $disjunctive Should be multiple fields be true at the same time
+     * @param bool $shouldBeEqual Either fields should be equal to provided data
+     * @param bool $disjunctive Should be multiple fields be true at the same time
      * @return self
+     *@todo Should think of way to provide multiple types of comparison and separators
      */
     public function addWhere(array $data, bool $shouldBeEqual = true, bool $disjunctive = false) : self
     {
@@ -139,5 +139,5 @@ abstract class Query
         }
     }
     
-    protected abstract function buildStatement() : void;
+    abstract protected function buildStatement() : void;
 }

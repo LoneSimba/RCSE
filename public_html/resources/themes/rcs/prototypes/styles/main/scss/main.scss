@@ -10,7 +10,7 @@ $header_account_popup_bcg_color: #3a404f;
 $header_account_popup_width: 256px;
 $header_account_popup_border_color: $main_color;
 $header_folds_border_radius: 8px;
-$hover_overlay_color: rgba(255, 255, 255, 0.20);
+$hover_overlay_color: rgba(255, 255, 255, 0.2);
 
 header {
   position: fixed;
@@ -180,6 +180,7 @@ header {
         #head_menu_slider_button_arrow {
           width: 12px;
           height: 12px;
+          //noinspection CssUnknownTarget,CssUnknownTarget
           background: url("../../../images/arrow-point-to-right.svg") center no-repeat;
           background-size: 83.3%;
           transition: 1s all ease-out;
@@ -211,6 +212,7 @@ header {
         justify-content: center;
         align-items: flex-end;
         border-radius: $header_account_img_size/2;
+        //noinspection CssUnknownTarget,CssUnknownTarget
         background: url("../../../images/user_gray.svg") center no-repeat;
 
         #head_account_img_arrow {
@@ -218,6 +220,7 @@ header {
           width: $header_account_img_size/2.7;
           position: relative;
           bottom: -6px;
+          //noinspection CssUnknownTarget,CssUnknownTarget
           background: url("../../../images/arrow-point-to-right.svg") center no-repeat $main_font_color;
           background-size: 75%;
           border-radius: $header_account_img_size/5.4;

@@ -7,14 +7,14 @@ use RCSE\Core\Utils;
 
 class Log
 {
-    const EMERGENCY = 'Emergency';
-    const ALERT = 'Alert';
-    const CRITICAL = 'Critical';
-    const ERROR = 'Error';
-    const WARNING = 'Warning';
-    const NOTICE = 'Notice';
-    const INFO = 'Info';
-    const DEBUG = 'Debug';
+    public const EMERGENCY = 'Emergency';
+    public const ALERT = 'Alert';
+    public const CRITICAL = 'Critical';
+    public const ERROR = 'Error';
+    public const WARNING = 'Warning';
+    public const NOTICE = 'Notice';
+    public const INFO = 'Info';
+    public const DEBUG = 'Debug';
 
     private File $fileHandler;
     private string $logFile;

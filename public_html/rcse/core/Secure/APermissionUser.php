@@ -14,7 +14,7 @@ abstract class APermissionUser
      * Checks whether has permissions.
      *
      * @param array $permissions Array of permissions to check.
-     * @return boolean
+     * @return bool
      */
     public function hasPermission(array $permissions) : bool
     {
@@ -27,6 +27,6 @@ abstract class APermissionUser
         return ($err_cnt > 0);
     }
     
-    public abstract function getPermissions() : array;
-    public abstract function addPermission(array $permissions) : void;
+    abstract public function getPermissions() : array;
+    abstract public function addPermission(array $permissions) : void;
 }
