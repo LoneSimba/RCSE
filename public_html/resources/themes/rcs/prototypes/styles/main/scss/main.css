@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  height: 48px;
+  width: 100%;
+  background-color: #091023;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+header #head_bar {
+  height: 48px;
+  width: 960px;
+}
+header #head_bar #logo_link img {
+  height: 72px;
+}
+
+/*# sourceMappingURL=main.css.map */

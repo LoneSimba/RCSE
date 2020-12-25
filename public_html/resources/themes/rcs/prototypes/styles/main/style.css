@@ -1,0 +1,267 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  position: fixed;
+  height: 56px;
+  width: 100%;
+  background-color: #091023;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 0 5px 3px #696969;
+  z-index: 200;
+}
+header #head_bar {
+  height: 56px;
+  width: 960px;
+  display: flex;
+}
+header #head_bar #logo_link img {
+  height: 98px;
+}
+header #head_bar #head_menu_wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider_back {
+  height: 40px;
+  width: 8px;
+  background-color: #bfbfbf;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider {
+  position: relative;
+  display: flex;
+  width: auto;
+  max-width: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition: 2s all ease-out;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider.open {
+  visibility: visible;
+  max-width: 650px;
+  transition: 2s all ease-in;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider ul {
+  display: flex;
+  list-style-type: none;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider ul li {
+  position: relative;
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  font-size: 20pt;
+  font-weight: bold;
+  color: #bfbfbf;
+  padding: 0 8px;
+  text-align: center;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider ul li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider ul li:hover > #fold_menu_first {
+  display: block;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  display: none;
+  min-width: 100%;
+  background-color: #091023;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul {
+  display: flex;
+  flex-direction: column;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li {
+  flex-direction: column;
+  padding-bottom: 4px;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li:hover > #fold_menu_second {
+  display: block;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li #fold_menu_second {
+  position: absolute;
+  display: none;
+  left: 100%;
+  width: 100%;
+  background-color: #091023;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li #fold_menu_second ul li + li:before {
+  content: " ";
+  display: block;
+  height: 1px;
+  width: 90%;
+  background-color: #bfbfbf;
+  align-self: center;
+  position: static;
+  margin-bottom: 4px;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li:before {
+  content: " ";
+  display: block;
+  height: 1px;
+  width: 90%;
+  background-color: #bfbfbf;
+  align-self: center;
+  position: static;
+  margin-bottom: 4px;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider ul li + li:before {
+  content: " ";
+  display: block;
+  width: 1px;
+  height: 40px;
+  background-color: #bfbfbf;
+  position: relative;
+  left: -8px;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 12px;
+  background-color: #bfbfbf;
+  height: 40px;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+  cursor: pointer;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider_button.active > #head_menu_slider_button_arrow {
+  transform: rotate(180deg);
+  transition: 1s all ease-in;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider_button #head_menu_slider_button_arrow {
+  width: 12px;
+  height: 12px;
+  background: url("../../../images/arrow-point-to-right.svg") center no-repeat;
+  background-size: 83.3%;
+  transition: 1s all ease-out;
+}
+header #head_bar #head_account {
+  position: relative;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding: 0 8px;
+}
+header #head_bar #head_account:hover, header #head_bar #head_account.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+header #head_bar #head_account.active > #head_account_img > #head_account_img_arrow {
+  transform: rotate(270deg);
+}
+header #head_bar #head_account #head_account_img {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border-radius: 20px;
+  background: url("../../../images/user_gray.svg") center no-repeat;
+}
+header #head_bar #head_account #head_account_img #head_account_img_arrow {
+  height: 14.8148148148px;
+  width: 14.8148148148px;
+  position: relative;
+  bottom: -6px;
+  background: url("../../../images/arrow-point-to-right.svg") center no-repeat #bfbfbf;
+  background-size: 75%;
+  border-radius: 7.4074074074px;
+  transition: 1s all ease-out;
+  transform: rotate(90deg);
+}
+header #head_bar #head_account #head_account_popup {
+  position: absolute;
+  left: -212px;
+  top: 56px;
+  width: 256px;
+  height: auto;
+  max-height: 0;
+  visibility: hidden;
+  overflow: hidden;
+  background-color: #3a404f;
+  border: 2px solid #091023;
+  border-top: none;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 3px 5px #696969;
+  transition: 1s all ease-out;
+  z-index: 100;
+  cursor: auto;
+  padding: 5px;
+}
+header #head_bar #head_account #head_account_popup.open {
+  max-height: 512px;
+  visibility: visible;
+  transition: 2s all ease-in;
+}
+header #head_bar #head_account #head_account_popup #head_account_pane {
+  width: 246px;
+  padding: 5px;
+  background-color: #091023;
+  border: 1px solid #0e1937;
+  border-radius: 8px;
+}
+header #head_bar #head_account #head_account_popup #head_account_pane form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main, header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input, header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in input {
+  width: 75%;
+  font-family: Arial, sans-serif;
+  font-size: 12pt;
+  font-weight: bold;
+  padding: 10px 0;
+}
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input:first-child, header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in input:first-child {
+  border-radius: 8px 8px 0 0;
+}
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input:last-child, header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in input:last-child {
+  border-radius: 0 0 8px 8px;
+}
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input[type=button] {
+  background-color: #0e1937;
+  color: whitesmoke;
+  border: 1px solid #111e41;
+}
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input[type=button] + input[type=button] {
+  background-color: #bfbfbf;
+  color: #091023;
+  border: 1px solid #b2b2b2;
+}
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input[type=button] + input[type=button]:hover {
+  background-color: #999999;
+  border-color: #8e8e8e;
+  cursor: pointer;
+}
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input[type=button]:hover {
+  background-color: #3e475f;
+  border-color: #414b67;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -2,24 +2,67 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./styles/main/style.css">
+    <script lang="text/javascript" src="../../../libs/jquery-3.3.1.min.js"></script>
+    <script lang="text/javascript" src="./scripts/main.js"></script>
     <title>Title</title>
 </head>
 <body>
     <header>
         <div id="head_bar">
             <a id="logo_link">
-                <img src="../images/logo.svg" alt="logo.svg">
+                <img src="../images/logo_shad_adv.svg" alt="logo.svg">
             </a>
             <div id="head_menu_wrapper">
-                <div id="head_menu_slider">
+                <div id="head_menu_slider_back"></div>
+                <div id="head_menu_slider" class="open">
                     <ul>
-
+                        <li>Первый</li>
+                        <li>Второй</li>
+                        <li>Третий</li>
+                        <!--<li>Вложенный
+                            <div id="fold_menu_first">
+                                <ul>
+                                    <li>Вложенный раз</li>
+                                    <li>Влож. два</li>
+                                    <li>Влож. три</li>
+                                    <li>Еще один
+                                        <div id="fold_menu_second">
+                                            <ul>
+                                                <li>Один</li>
+                                                <li>Два</li>
+                                                <li>Три</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>-->
                     </ul>
+                </div>
+                <div id="head_menu_slider_button" class="active">
+                    <div id="head_menu_slider_button_arrow"></div>
                 </div>
             </div>
             <div id="head_account">
-
+                <div id="head_account_img">
+                    <div id="head_account_img_arrow"></div>
+                </div>
+                <div id="head_account_popup">
+                    <div id="head_account_pane">
+                        <form action="" method="post">
+                            <div id="head_account_form_main">
+                                <input type="button" value="Вход">
+                                <input type="button" value="Регистрация">
+                            </div>
+                            <div id="head_account_form_sign_in">
+                                <input type="text" id="login" placeholder="Логин или почта">
+                                <input type="password" id="password" placeholder="Пароль">
+                                <input type="submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
