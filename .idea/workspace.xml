@@ -2,7 +2,7 @@
 <project version="4">
   <component name="AnalysisUIOptions">
     <option name="SCOPE_TYPE" value="8" />
-    <option name="CUSTOM_SCOPE_NAME" value="1" />
+    <option name="CUSTOM_SCOPE_NAME" value="root" />
   </component>
   <component name="BranchesTreeState">
     <expand />
@@ -10,73 +10,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8569871a-719e-450e-8394-70c83b7fece3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/doc/db_new.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/doc/db_new.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/db_new.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/doc/db_new.mwb.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/errcodes.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/errcodes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/gulpfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/config/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Control/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Control/File.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Control/Log.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Control/Log.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Database/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Database/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Database/InsertQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Database/InsertQuery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Database/Query.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Database/Query.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Database/QueryBuilder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Database/SelectQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Database/SelectQuery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Database/UpdateQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Database/UpdateQuery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Secure/APermissionUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Secure/APermissionUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Secure/Authorization.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Secure/Authorization.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Secure/Permissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Secure/Permissions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/resources/resources.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/images/arrow-point-to-right.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/images/logo_shad.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/images/logo_shad_adv.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/images/unnamed.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/images/user.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/images/user_gray.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/scripts/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/scss/_base.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/scss/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/scss/main.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/style.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/RCSE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RCSE.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/rcse/core/User/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/User/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/User/UserGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/User/UserGroup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/User/UserSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/User/UserSession.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Utils.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Utils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/images/svg/faq.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/RCS-old/images/svg/faq.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/images/svg/forum.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/RCS-old/images/svg/forum.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/images/svg/home.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/RCS-old/images/svg/home.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/images/svg/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/RCS-old/images/svg/logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/images/svg/news.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/images/svg/мир.ai" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/create_post.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/create_post/_base.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/create_post/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/create_post/style.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/create_topic.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/forum.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/home/_base.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/home/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/home/style.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/login/_base.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/login/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/login/style.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/news.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/post.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/post/_base.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/post/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/post/style.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/register.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/register/_base.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/register/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/register/style.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/structure.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/structure/_base.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/structure/header.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/structure/main.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/structure/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/structure/style.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/topic.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/topic/_base.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/topic/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/topic/style.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/user.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/user/_base.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/user/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/pages/user/style.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS/theme.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/test/Test-debug.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/test/Test-debug.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/RCS-old/images/svg/мир.ai" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/scss/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +56,7 @@
         <option value="composer.json" />
         <option value="HTML File" />
         <option value="SCSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -107,8 +64,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="KEEP" />
   </component>
+  <component name="JsBowerSettings">
+    <node-interpreter value="project" />
+    <bower-package value="" />
+    <bower.json value="" />
+  </component>
   <component name="NamedScopeManager">
-    <scope name="1" pattern="file[RCSE]:public_html//*" />
+    <scope name="1" pattern="file[RCSE]:public_html/resources/themes/rcs/prototypes/styles/main/scss/*" />
+    <scope name="root" pattern="file[RCSE]:public_html//*&amp;&amp;!file[RCSE]:public_html/vendor/*&amp;&amp;!file[RCSE]:public_html/test/*&amp;&amp;!file:public_html/composer.lock&amp;&amp;!file:public_html/composer.json&amp;&amp;!file:public_html/resources/libs/jquery-3.3.1.min.js&amp;&amp;!file[RCSE]:public_html/resources/themes/RCS-old//*" />
   </component>
   <component name="PhpServers">
     <servers>
@@ -167,13 +130,16 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mariadb&#10;mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="NewWatcherDialog.advanced.open" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public_html/test/unit" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public_html/resources/libs/jquery-3.3.1.min.js" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -183,11 +149,13 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\OpenServer\domains\RCSE\public_html\resources\themes\rcs\prototypes\styles\main" />
+      <recent name="C:\OpenServer\domains\RCSE\public_html\resources\themes\rcs\prototypes\styles\main\scss" />
       <recent name="C:\OpenServer\domains\RCSE\public_html\test\unit" />
     </key>
   </component>
@@ -253,7 +221,16 @@
       <workItem from="1607755337985" duration="2328000" />
       <workItem from="1607807309771" duration="11075000" />
       <workItem from="1607863422893" duration="1788000" />
-      <workItem from="1607891633994" duration="7817000" />
+      <workItem from="1607891633994" duration="20581000" />
+      <workItem from="1608115383928" duration="10311000" />
+      <workItem from="1608187246978" duration="31043000" />
+      <workItem from="1608496457873" duration="1295000" />
+      <workItem from="1608581741960" duration="2635000" />
+      <workItem from="1608586828438" duration="3592000" />
+      <workItem from="1608633125551" duration="2160000" />
+      <workItem from="1608716369449" duration="4448000" />
+      <workItem from="1608766545610" duration="40000" />
+      <workItem from="1608881763963" duration="4608000" />
     </task>
     <task id="LOCAL-00001" summary="Numerous additions:&#10;Created basic permissions handler&#10;New functions to user and user groups, new class UserSession&#10;Created authorization handler&#10;Fixed issue in Query's bind - now it uses bindValues instead of bindParams&#10;Updated DB model&#10;Minor PHPDoc and codestyle changes">
       <created>1605977529229</created>
@@ -290,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607978613459</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Numerous changes&#10;Removed obsolete QueryBuilder&#10;Code refactoring&#10;More type defined fields and functions&#10;Log and Config class should be instantiated in every class they're used in&#10;Moved old design from RCS to RCS-old&#10;New design rcs (WIP)&#10;New class Mail (WIP)&#10;File:&#10;New file lock type check&#10;Logs it's exceptions&#10;Log:&#10;Removed destructor&#10;Database:&#10;Renamed all sel_user_full_* queries to sel_user_safe_*&#10;New queries&#10;Authorization:&#10;Ongoing work on login and register functions&#10;Changed checkCredentials to findUser&#10;Changed insertNewUser to createNewUser&#10;New function createNewSession&#10;User:&#10;Edited addPermission function&#10;New functions verifyAccount, generateKey, generateAuthKey, saveData, checkCredentials&#10;UserSession:&#10;New functions saveData, endNow&#10;Utils:&#10;Removed function transformType&#10;Edited function getTimestamp&#10;New arrays knownOSs, knownBrowsers&#10;New functions generateKey, getClientBrowser, getClientOS">
+      <created>1607979808201</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1607979808201</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,7 +298,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="HEAD" />
+                        <option value="origin/V1-Overhaul" />
                       </list>
                     </value>
                   </entry>
@@ -339,6 +323,11 @@
     <MESSAGE value="Numerous additions:&#10;Created basic permissions handler&#10;New functions to user and user groups, new class UserSession&#10;Created authorization handler&#10;Fixed issue in Query's bind - now it uses bindValues instead of bindParams&#10;Updated DB model&#10;Minor PHPDoc and codestyle changes" />
     <MESSAGE value="PHPStorm configuration added, updated composer dependencies" />
     <MESSAGE value="Removed 'node_modules' folder, installed phpmailer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed 'node_modules' folder, installed phpmailer" />
+    <MESSAGE value="Numerous changes&#10;Removed obsolete QueryBuilder&#10;Code refactoring&#10;More type defined fields and functions&#10;Log and Config class should be instantiated in every class they're used in&#10;Moved old design from RCS to RCS-old&#10;New design rcs (WIP)&#10;New class Mail (WIP)&#10;File:&#10;New file lock type check&#10;Logs it's exceptions&#10;Log:&#10;Removed destructor&#10;Database:&#10;Renamed all sel_user_full_* queries to sel_user_safe_*&#10;New queries&#10;Authorization:&#10;Ongoing work on login and register functions&#10;Changed checkCredentials to findUser&#10;Changed insertNewUser to createNewUser&#10;New function createNewSession&#10;User:&#10;Edited addPermission function&#10;New functions verifyAccount, generateKey, generateAuthKey, saveData, checkCredentials&#10;UserSession:&#10;New functions saveData, endNow&#10;Utils:&#10;Removed function transformType&#10;Edited function getTimestamp&#10;New arrays knownOSs, knownBrowsers&#10;New functions generateKey, getClientBrowser, getClientOS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Numerous changes&#10;Removed obsolete QueryBuilder&#10;Code refactoring&#10;More type defined fields and functions&#10;Log and Config class should be instantiated in every class they're used in&#10;Moved old design from RCS to RCS-old&#10;New design rcs (WIP)&#10;New class Mail (WIP)&#10;File:&#10;New file lock type check&#10;Logs it's exceptions&#10;Log:&#10;Removed destructor&#10;Database:&#10;Renamed all sel_user_full_* queries to sel_user_safe_*&#10;New queries&#10;Authorization:&#10;Ongoing work on login and register functions&#10;Changed checkCredentials to findUser&#10;Changed insertNewUser to createNewUser&#10;New function createNewSession&#10;User:&#10;Edited addPermission function&#10;New functions verifyAccount, generateKey, generateAuthKey, saveData, checkCredentials&#10;UserSession:&#10;New functions saveData, endNow&#10;Utils:&#10;Removed function transformType&#10;Edited function getTimestamp&#10;New arrays knownOSs, knownBrowsers&#10;New functions generateKey, getClientBrowser, getClientOS" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
