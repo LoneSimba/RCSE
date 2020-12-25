@@ -63,6 +63,15 @@ header #head_bar #head_menu_wrapper #head_menu_slider ul li {
   padding: 0 8px;
   text-align: center;
 }
+header #head_bar #head_menu_wrapper #head_menu_slider ul li + li::before {
+  content: " ";
+  display: block;
+  width: 1px;
+  height: 40px;
+  background-color: #bfbfbf;
+  position: relative;
+  left: -8px;
+}
 header #head_bar #head_menu_wrapper #head_menu_slider ul li:hover {
   background-color: rgba(255, 255, 255, 0.2);
   cursor: pointer;
@@ -84,6 +93,16 @@ header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul 
 header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li {
   flex-direction: column;
   padding-bottom: 4px;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li::before {
+  content: " ";
+  display: block;
+  height: 1px;
+  width: 90%;
+  background-color: #bfbfbf;
+  align-self: center;
+  position: static;
+  margin-bottom: 4px;
 }
 header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li #fold_menu_second {
   position: absolute;
@@ -108,27 +127,8 @@ header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul 
 header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li:hover > #fold_menu_second {
   display: block;
 }
-header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li::before {
-  content: " ";
-  display: block;
-  height: 1px;
-  width: 90%;
-  background-color: #bfbfbf;
-  align-self: center;
-  position: static;
-  margin-bottom: 4px;
-}
 header #head_bar #head_menu_wrapper #head_menu_slider ul li:hover > #fold_menu_first {
   display: block;
-}
-header #head_bar #head_menu_wrapper #head_menu_slider ul li + li::before {
-  content: " ";
-  display: block;
-  width: 1px;
-  height: 40px;
-  background-color: #bfbfbf;
-  position: relative;
-  left: -8px;
 }
 header #head_bar #head_menu_wrapper #head_menu_slider_button {
   display: flex;

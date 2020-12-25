@@ -77,6 +77,16 @@ header {
             padding: 0 8px;
             text-align: center;
 
+            & + li::before {
+              content: " ";
+              display: block;
+              width: 1px;
+              height: $header_account_img_size;
+              background-color: $main_font_color;
+              position: relative;
+              left: -8px;
+            }
+
             &:hover {
               background-color: $hover_overlay_color;
               cursor: pointer;
@@ -99,6 +109,17 @@ header {
                 li {
                   flex-direction: column;
                   padding-bottom: 4px;
+
+                  &::before {
+                    content: " ";
+                    display: block;
+                    height: 1px;
+                    width: 90%;
+                    background-color: $main_font_color;
+                    align-self: center;
+                    position: static;
+                    margin-bottom: 4px;
+                  }
 
                   #fold_menu_second {
                     position: absolute;
@@ -128,33 +149,12 @@ header {
                     display: block;
                   }
                 }
-
-                li::before {
-                  content: " ";
-                  display: block;
-                  height: 1px;
-                  width: 90%;
-                  background-color: $main_font_color;
-                  align-self: center;
-                  position: static;
-                  margin-bottom: 4px;
-                }
               }
             }
 
             &:hover > #fold_menu_first {
               display: block;
             }
-          }
-
-          li + li::before {
-            content: " ";
-            display: block;
-            width: 1px;
-            height: $header_account_img_size;
-            background-color: $main_font_color;
-            position: relative;
-            left: -8px;
           }
         }
       }
