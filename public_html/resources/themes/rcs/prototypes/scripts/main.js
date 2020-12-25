@@ -1,3 +1,16 @@
+function hideOnClickOutside(acctButton, acctMenu) {
+    let accButton = $(acctButton)[0];
+    let accPopup = $(acctMenu)[0];
+
+    $(document).on("mouseup", function (e) {
+        if (!e.target.closest(acctMenu)?.length && $(acctMenu).is(":visible")) {
+            accButton.classList.remove("active");
+            accPopup.classList.remove("open");
+            $(document).off("mouseup");
+        }
+    });
+}
+
 function toggleMenu(acctButton, acctMenu, canBeClickedOutside = true) {
     let accButton = $(acctButton)[0];
     let accPopup = $(acctMenu)[0];
@@ -5,19 +18,6 @@ function toggleMenu(acctButton, acctMenu, canBeClickedOutside = true) {
     accButton.classList.toggle("active");
     accPopup.classList.toggle("open");
     if (!canBeClickedOutside) hideOnClickOutside(acctButton, acctMenu);
-}
-
-function hideOnClickOutside(acctButton, acctMenu) {
-    let accButton = $(acctButton)[0];
-    let accPopup = $(acctMenu)[0];
-
-    $(document).on('mouseup', function(e) {
-        if (!e.target.closest(acctMenu)?.length && $(acctMenu).is(":visible")) {
-            accButton.classList.remove("active");
-            accPopup.classList.remove("open");
-            $(document).off("mouseup");
-        }
-    });
 }
 
 $(function() {

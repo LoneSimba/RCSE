@@ -67,9 +67,6 @@ header #head_bar #head_menu_wrapper #head_menu_slider ul li:hover {
   background-color: rgba(255, 255, 255, 0.2);
   cursor: pointer;
 }
-header #head_bar #head_menu_wrapper #head_menu_slider ul li:hover > #fold_menu_first {
-  display: block;
-}
 header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first {
   position: absolute;
   top: 40px;
@@ -88,9 +85,6 @@ header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul 
   flex-direction: column;
   padding-bottom: 4px;
 }
-header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li:hover > #fold_menu_second {
-  display: block;
-}
 header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li #fold_menu_second {
   position: absolute;
   display: none;
@@ -101,7 +95,7 @@ header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul 
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
 }
-header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li #fold_menu_second ul li + li:before {
+header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li #fold_menu_second ul li + li::before {
   content: " ";
   display: block;
   height: 1px;
@@ -111,7 +105,10 @@ header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul 
   position: static;
   margin-bottom: 4px;
 }
-header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li:before {
+header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li:hover > #fold_menu_second {
+  display: block;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul li::before {
   content: " ";
   display: block;
   height: 1px;
@@ -121,7 +118,10 @@ header #head_bar #head_menu_wrapper #head_menu_slider ul li #fold_menu_first ul 
   position: static;
   margin-bottom: 4px;
 }
-header #head_bar #head_menu_wrapper #head_menu_slider ul li + li:before {
+header #head_bar #head_menu_wrapper #head_menu_slider ul li:hover > #fold_menu_first {
+  display: block;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider ul li + li::before {
   content: " ";
   display: block;
   width: 1px;
@@ -141,16 +141,16 @@ header #head_bar #head_menu_wrapper #head_menu_slider_button {
   border-top-right-radius: 4px;
   cursor: pointer;
 }
-header #head_bar #head_menu_wrapper #head_menu_slider_button.active > #head_menu_slider_button_arrow {
-  transform: rotate(180deg);
-  transition: 1s all ease-in;
-}
 header #head_bar #head_menu_wrapper #head_menu_slider_button #head_menu_slider_button_arrow {
   width: 12px;
   height: 12px;
   background: url("../../../images/arrow-point-to-right.svg") center no-repeat;
   background-size: 83.3%;
   transition: 1s all ease-out;
+}
+header #head_bar #head_menu_wrapper #head_menu_slider_button.active > #head_menu_slider_button_arrow {
+  transform: rotate(180deg);
+  transition: 1s all ease-in;
 }
 header #head_bar #head_account {
   position: relative;
@@ -163,9 +163,6 @@ header #head_bar #head_account {
 header #head_bar #head_account:hover, header #head_bar #head_account.active {
   background-color: rgba(255, 255, 255, 0.2);
   cursor: pointer;
-}
-header #head_bar #head_account.active > #head_account_img > #head_account_img_arrow {
-  transform: rotate(270deg);
 }
 header #head_bar #head_account #head_account_img {
   width: 40px;
@@ -186,6 +183,9 @@ header #head_bar #head_account #head_account_img #head_account_img_arrow {
   border-radius: 7.4074074074px;
   transition: 1s all ease-out;
   transform: rotate(90deg);
+}
+header #head_bar #head_account.active > #head_account_img > #head_account_img_arrow {
+  transform: rotate(270deg);
 }
 header #head_bar #head_account #head_account_popup {
   position: absolute;
@@ -224,23 +224,27 @@ header #head_bar #head_account #head_account_popup #head_account_pane form {
   flex-direction: column;
   align-items: center;
 }
-header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main, header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in {
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main,
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
-header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input, header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in input {
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input,
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in input {
   width: 75%;
   font-family: Arial, sans-serif;
   font-size: 12pt;
   font-weight: bold;
   padding: 10px 0;
 }
-header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input:first-child, header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in input:first-child {
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input:first-child,
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in input:first-child {
   border-radius: 8px 8px 0 0;
 }
-header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input:last-child, header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in input:last-child {
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input:last-child,
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in input:last-child {
   border-radius: 0 0 8px 8px;
 }
 header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input[type=button] {
@@ -254,7 +258,7 @@ header #head_bar #head_account #head_account_popup #head_account_pane form #head
   border: 1px solid #b2b2b2;
 }
 header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input[type=button] + input[type=button]:hover {
-  background-color: #999999;
+  background-color: #999;
   border-color: #8e8e8e;
   cursor: pointer;
 }

@@ -28,7 +28,6 @@ header {
     display: flex;
 
     #logo_link {
-
       img {
         height: $header_height*1.75;
       }
@@ -83,10 +82,6 @@ header {
               cursor: pointer;
             }
 
-            &:hover > #fold_menu_first {
-              display: block;
-            }
-
             #fold_menu_first {
               position: absolute;
               top: $header_height - 16px;
@@ -105,10 +100,6 @@ header {
                   flex-direction: column;
                   padding-bottom: 4px;
 
-                  &:hover > #fold_menu_second {
-                    display: block;
-                  }
-
                   #fold_menu_second {
                     position: absolute;
                     display: none;
@@ -120,8 +111,7 @@ header {
                     border-bottom-left-radius: $header_folds_border_radius;
 
                     ul {
-
-                      li + li:before {
+                      li + li::before {
                         content: " ";
                         display: block;
                         height: 1px;
@@ -133,9 +123,13 @@ header {
                       }
                     }
                   }
+
+                  &:hover > #fold_menu_second {
+                    display: block;
+                  }
                 }
 
-                li:before {
+                li::before {
                   content: " ";
                   display: block;
                   height: 1px;
@@ -147,9 +141,13 @@ header {
                 }
               }
             }
+
+            &:hover > #fold_menu_first {
+              display: block;
+            }
           }
 
-          li + li:before {
+          li + li::before {
             content: " ";
             display: block;
             width: 1px;
@@ -172,11 +170,6 @@ header {
         border-top-right-radius: 4px;
         cursor: pointer;
 
-        &.active > #head_menu_slider_button_arrow {
-          transform: rotate(180deg);
-          transition: 1s all ease-in;
-        }
-
         #head_menu_slider_button_arrow {
           width: 12px;
           height: 12px;
@@ -184,6 +177,11 @@ header {
           background: url("../../../images/arrow-point-to-right.svg") center no-repeat;
           background-size: 83.3%;
           transition: 1s all ease-out;
+        }
+
+        &.active > #head_menu_slider_button_arrow {
+          transform: rotate(180deg);
+          transition: 1s all ease-in;
         }
       }
     }
@@ -196,13 +194,10 @@ header {
       margin-left: auto;
       padding: 0 8px;
 
-      &:hover, &.active {
+      &:hover,
+      &.active {
         background-color: $hover_overlay_color;
         cursor: pointer;
-      }
-
-      &.active > #head_account_img > #head_account_img_arrow {
-        transform: rotate(270deg);
       }
 
       #head_account_img {
@@ -227,6 +222,10 @@ header {
           transition: 1s all ease-out;
           transform: rotate(90deg);
         }
+      }
+
+      &.active > #head_account_img > #head_account_img_arrow {
+        transform: rotate(270deg);
       }
 
       #head_account_popup {
@@ -267,7 +266,8 @@ header {
             flex-direction: column;
             align-items: center;
 
-            #head_account_form_main, #head_account_form_sign_in {
+            #head_account_form_main,
+            #head_account_form_sign_in {
               display: flex;
               flex-direction: column;
               align-items: center;
@@ -304,7 +304,7 @@ header {
                   border: 1px solid adjust-color($main_font_color, $lightness: -5%);
 
                   &:hover {
-                    background-color: #999999;
+                    background-color: #999;
                     border-color: #8e8e8e;
                     cursor: pointer;
                   }
