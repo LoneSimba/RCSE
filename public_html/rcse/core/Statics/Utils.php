@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace RCSE\Core;
+namespace RCSE\Core\Statics;
 
 use DateTime;
 use Exception;
@@ -107,12 +107,12 @@ class Utils
      */
     public static function getClientIP() : string
     {
-        if (!empty(ServerArray::get('HTTP_CLIENT_IP'))) {
-            $ip = ServerArray::get('HTTP_CLIENT_IP');
-        } elseif (!empty(ServerArray::get('HTTP_X_FORWARDED_FOR'))) {
-            $ip = ServerArray::get('HTTP_X_FORWARDED_FOR');
+        if (!empty(GlobalArrays::getServerArrayEntry('HTTP_CLIENT_IP'))) {
+            $ip = GlobalArrays::getServerArrayEntry('HTTP_CLIENT_IP');
+        } elseif (!empty(GlobalArrays::getServerArrayEntry('HTTP_X_FORWARDED_FOR'))) {
+            $ip = GlobalArrays::getServerArrayEntry('HTTP_X_FORWARDED_FOR');
         } else {
-            $ip = ServerArray::get('REMOTE_ADDR');
+            $ip = GlobalArrays::getServerArrayEntry('REMOTE_ADDR');
         }
 
         return $ip;
@@ -121,14 +121,13 @@ class Utils
     /**
      * Returns current timestamp
      *
-     * @param bool $formatted
+     * @param string $format
+     * @param string $interval
      * @return string
-     * @throws Exception
      */
-    public static function getTimestamp(string $format = 'Y-m-d H:i:s') : string
+    public static function getTimestamp(string $format = 'Y-m-d H:i:s', string $interval = 'now') : string
     {
-        $date = new DateTime();
-        return $date->format($format);
+        return date($format, strtotime($interval));
     }
 
     /**
@@ -166,7 +165,7 @@ class Utils
      */
     public static function getClientBrowser() : string
     {
-        $user_agent = ServerArray::get('HTTP_USER_AGENT');
+        $user_agent = GlobalArrays::getServerArrayEntry('HTTP_USER_AGENT');
         foreach (self::$knownBrowsers as $key => $val)
         {
             if (strpos($user_agent, $key)) return $val;
@@ -180,7 +179,7 @@ class Utils
      */
     public static function getClientOS() : string
     {
-        $user_agent = ServerArray::get('HTTP_USER_AGENT');
+        $user_agent = GlobalArrays::getServerArrayEntry('HTTP_USER_AGENT');
         foreach (self::$knownOSs as $key => $val)
         {
             if (strpos($user_agent, $key)) return $val;

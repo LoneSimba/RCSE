@@ -12,7 +12,7 @@ class Config
 
     public function __construct()
     {
-        $this->file = (new File($this->configFileDir, $this->configFileName))->open("r");
+        $this->file = (new File($this->configFileDir, $this->configFileName));
     }
 
     public function getConfig(string $type) : array

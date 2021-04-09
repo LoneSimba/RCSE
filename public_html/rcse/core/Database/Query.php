@@ -17,6 +17,11 @@ abstract class Query
     protected array $data = [];
     protected array $fields = [];
 
+    /**
+     * Query constructor.
+     * @param string $_table Table to interact
+     * @param array $_fields Fields to interact
+     */
     public function __construct(string $_table, array $_fields)
     {
         $this->addField($_fields);
@@ -27,11 +32,10 @@ abstract class Query
     /**
      * Adds $data to inner array, should be associative with keys representing fields
      *
-     * @todo Should check data for embedded statements
      * @param array $data Array of data to add with keys representing fields
      * @return self
      */
-    public function addData(array $data) : self
+    public function addData(array $data): self
     { 
         $this->data = array_merge($this->data, $data); 
         return $this;
@@ -46,19 +50,19 @@ abstract class Query
      * @return self
      *@todo Should think of way to provide multiple types of comparison and separators
      */
-    public function addWhere(array $data, bool $shouldBeEqual = true, bool $disjunctive = false) : self
+    public function addWhere(array $data, bool $shouldBeEqual = true, bool $disjunctive = false): self
     {
-        $compSign = ($shouldBeEqual) ? " = " : " != ";
+        $compSign = ($shouldBeEqual) ? "=" : "!=";
         $separator = ($disjunctive) ? " OR " : " AND ";
-        
-        if (empty($this->statement)) $this->buildStatement();
 
         $string = " WHERE ";
         $counter = 0;
         foreach($data as $key => $val)
         {
+            if (strpos($val, ":") === false) $val = "'{$val}'";
             $string .= "{$key}{$compSign}{$val}";
-            if ($counter < count($data)-1) $string .= "{$separator}";
+            if (!($counter == count($data)-1)) $string .= "{$separator}";
+            $counter++;
         }
 
         $this->statement .= $string;
@@ -71,9 +75,8 @@ abstract class Query
      * @param PDO $dbh PDO database handler
      * @return self
      */
-    public function prepare(PDO $dbh) : self
+    public function prepare(PDO $dbh): self
     {
-        if(empty($this->statement)) $this->buildStatement();
         $this->pdoStatement = $dbh->prepare($this->statement);
         return $this;
     }
@@ -85,10 +88,10 @@ abstract class Query
      * @todo Should throw QueryNotBuiltException instead of regular one
      * @throws Exception
      */
-    public function execute() : self
+    public function execute(): self
     {
-        if (empty($this->statement) || empty($this->pdoStatement))
-            throw new Exception("Failed to execute statement - statement has not been built or prepared.", 0x000203);
+        if (empty($this->pdoStatement))
+            throw new Exception("Failed to execute statement - statement has not been prepared.", 0x000203);
         $this->bindData();
         $this->pdoStatement->execute();
 
@@ -102,14 +105,11 @@ abstract class Query
      * @todo Should throw QueryExecutionFailure
      * @throws Exception
      */
-    public function fetchDataArray() : void
+    public function fetchDataArray(): void
     {
-        if (is_null($this->getErrorMessage()[1]))
-        {
+        if (is_null($this->getErrorMessage()[1])) {
             $this->result = ($this->pdoStatement->columnCount() > 0) ? $this->pdoStatement->fetchAll(PDO::FETCH_ASSOC) : [];
-        }
-        else
-        {
+        } else {
             throw new Exception("Query execution resulted in following error: {$this->getErrorMessage()[2]}", 0x000204);
         }
     }
@@ -119,25 +119,25 @@ abstract class Query
      *
      * @return string
      */
-    public function getStatement() : string { return $this->statement; }
+    public function getStatement(): string { return $this->statement; }
 
     /**
      * Returns errorInfo array for executed pdoStatement
      *
      * @return array
      */
-    public function getErrorMessage() : array { return $this->pdoStatement->errorInfo(); }
+    public function getErrorMessage(): array { return $this->pdoStatement->errorInfo(); }
     
-    protected function addField(array $fields) : void { $this->fields = array_merge($this->fields, $fields); }
+    protected function addField(array $fields): void { $this->fields = array_merge($this->fields, $fields); }
 
-    protected function setTable(string $table) : void { $this->table = $table; }
+    protected function setTable(string $table): void { $this->table = $table; }
 
-    protected function bindData() : void
+    protected function bindData(): void
     {
-        foreach($this->data as $key => $value) {
+        foreach ($this->data as $key => $value) {
             $this->pdoStatement->bindValue($key, $value);
         }
     }
     
-    abstract protected function buildStatement() : void;
+    abstract protected function buildStatement(): void;
 }

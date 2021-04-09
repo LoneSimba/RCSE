@@ -10,17 +10,15 @@ use RCSE\Core\Control\Log;
 
 class Database
 {
-    private Config $config;
     private PDO $dbh;
     private Log $log;
     private array $conf;
     private array $queryList;
 
-    public function __construct()
+    public function __construct(Log $log)
     {
-        $this->config = new Config();
-        $this->log = new Log();
-        $this->conf = $this->config->getConfig('database');
+        $this->log = $log;
+        $this->conf = (new Config())->getConfig('database');
         $this->connectDatabase();
         $this->fillQueryList();
     }
@@ -100,7 +98,7 @@ class Database
     {
         $this->queryList['sel_user_all'] = (new SelectQuery('users', ['`*`']))->prepare($this->dbh);
         $this->queryList['sel_user_safe_by_id'] = (new SelectQuery('users',
-            ['`user_id`', '`user_login`', '`user_email`', '`group_id`', '`user_regdate`', '`user_bdate`', '`user_avatar`', '`user_prefs`', '`user_perms`']))
+            ['`user_id`', '`user_login`', '`user_email`', '`group_id`', '`user_regdate`', '`user_bdate`', '`user_avatar`', '`user_prefs`', '`user_perms`', '`user_key`', '`user_verified`']))
             ->addWhere(['`user_id`'=>':user_id'])->prepare($this->dbh);
         $this->queryList['sel_user_safe_by_email'] = (new SelectQuery('users',
             ['`user_id`', '`user_login`', '`user_email`', '`group_id`', '`user_regdate`', '`user_bdate`', '`user_avatar`', '`user_prefs`', '`user_perms`']))
@@ -108,6 +106,8 @@ class Database
         $this->queryList['sel_user_safe_by_login'] = (new SelectQuery('users',
             ['`user_id`', '`user_login`', '`user_email`', '`group_id`', '`user_regdate`', '`user_bdate`', '`user_avatar`', '`user_prefs`', '`user_perms`']))
             ->addWhere(['`user_login`'=>':user_login'])->prepare($this->dbh);
+        $this->queryList['sel_user_passhash_by_id'] = (new SelectQuery('users', ['user_passhash']))
+            ->addWhere(['`user_id`'=>':user_id'])->prepare($this->dbh);
         $this->queryList['upd_user_safe_by_id'] = (new UpdateQuery('users',
             ['`group_id`', '`user_bdate`', '`user_avatar`', '`user_prefs`', '`user_perms`']))
             ->addWhere(['`user_id`' => ':user_id'])->prepare($this->dbh);
@@ -115,7 +115,7 @@ class Database
             ['`user_login`', '`user_email`', '`user_passhash`']))
             ->addWhere(['`user_id`' => ':user_id'])->prepare($this->dbh);
         $this->queryList['ins_user_full'] = (new InsertQuery('users',
-            ['`user_id`', '`user_login`', '`user_email`', '`user_passhash`', '`group_id`', '`user_bdate`', '`user_regdate`', '`user_prefs`', '`user_perms`']))
+            ['`user_id`', '`user_login`', '`user_email`', '`user_passhash`', '`group_id`', '`user_bdate`', '`user_regdate`', '`user_prefs`', '`user_perms`', '`user_verified`']))
             ->prepare($this->dbh);
     
         $this->queryList['sel_group_all'] = (new SelectQuery('groups', ['`*`']))->prepare($this->dbh);
@@ -133,9 +133,12 @@ class Database
             ->addWhere(['`session_id`'=>':session_id'])->prepare($this->dbh);
 
         $this->queryList['sel_auth_key_by_user_id'] = (new SelectQuery('auth_keys', ['`*`']))
-            ->addWhere(['`user_id`'=>':user_id'])->prepare($this->dbh);
+            ->addWhere(['`key_id`' => ':key_id','`user_id`'=>':user_id'])->prepare($this->dbh);
         $this->queryList['ins_auth_key_full'] = (new InsertQuery('auth_keys', ['`key_id`', '`user_id`', '`key_expires`']))
             ->prepare($this->dbh);
+        $this->queryList['del_auth_key'] = (new DeleteQuery('auth_keys'))
+            ->addWhere(['`key_id`'=>':key_id'])->prepare($this->dbh);
+
 
     }
 

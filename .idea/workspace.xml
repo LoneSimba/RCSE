@@ -10,11 +10,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8569871a-719e-450e-8394-70c83b7fece3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/auth_keys_delete_expired event.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/rcse/core/Database/DeleteQuery.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/rcse/core/Secure/Session.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/rcse/core/Statics/GlobalArrays.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/test/1.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/test/ajax_action.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/test/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/test/login_act.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/test/passw.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/test/r.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/test/restore.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/test/verify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/RCSE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RCSE.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4a0ea835-a314-4307-a01a-0f843bc481fa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4a0ea835-a314-4307-a01a-0f843bc481fa.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/scripts/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/scripts/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/Schematic.vsdx" beforeDir="false" afterPath="$PROJECT_DIR$/doc/Schematic.vsdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/db_new.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/doc/db_new.mwb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/db_new.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/doc/db_new.mwb.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/config/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Control/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Control/Config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Control/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Control/File.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Control/Log.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Control/Log.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Control/Mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Control/Mail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Database/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Database/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Database/InsertQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Database/InsertQuery.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Database/Query.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Database/Query.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Database/UpdateQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Database/UpdateQuery.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/PostArray.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Secure/Authorization.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Secure/Authorization.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/ServerArray.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/SessionArray.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/User/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/User/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/User/UserSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/User/UserSession.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Utils.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Statics/Utils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/scss/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/scss/main.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/style.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/test/Test-debug.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/test/Test-debug.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/test/reg_action.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/test/reg_action.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,15 +73,28 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="composer.json" />
-        <option value="HTML File" />
         <option value="SCSS File" />
+        <option value="HTML File" />
         <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="V1-Overhaul" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="KEEP" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="JsBowerSettings">
     <node-interpreter value="project" />
@@ -55,12 +105,13 @@
     <scope name="1" pattern="file[RCSE]:public_html/resources/themes/rcs/prototypes/styles/main/scss/*" />
     <scope name="root" pattern="file[RCSE]:public_html//*&amp;&amp;!file[RCSE]:public_html/vendor/*&amp;&amp;!file[RCSE]:public_html/test/*&amp;&amp;!file:public_html/composer.lock&amp;&amp;!file:public_html/composer.json&amp;&amp;!file:public_html/resources/libs/jquery-3.3.1.min.js&amp;&amp;!file[RCSE]:public_html/resources/themes/RCS-old//*" />
   </component>
+  <component name="PhpDebugGeneral" xdebug_show_addresses="true" />
   <component name="PhpServers">
     <servers>
-      <server host="http://rcse/public_html" id="6530469d-00bb-4dda-8649-1a6bd6344b48" name="rcse" />
-      <server host="rcse" id="d8446d5e-27ac-4a0e-8834-b79a8e9b2580" name="rcse (1)" />
+      <server host="rcse" id="6530469d-00bb-4dda-8649-1a6bd6344b48" name="rcse" />
     </servers>
   </component>
+  <component name="PhpWebServerValidation" path_to_validation_script="C:\OpenServer\domains\RCSE\public_html\test" selected_validation_type="LOCAL" web_path_to_validation_script="http://rcse/test" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4">
     <include_path>
       <path value="$PROJECT_DIR$/public_html/vendor/myclabs/deep-copy" />
@@ -120,7 +171,7 @@
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public_html/resources/libs/jquery-3.3.1.min.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public_html/test" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -130,26 +181,30 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+    <property name="settings.editor.selected.configurable" value="inlay.hints.JavaScript" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\OpenServer\domains\RCSE\public_html\test" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\OpenServer\domains\RCSE\public_html\rcse\core\Static" />
       <recent name="C:\OpenServer\domains\RCSE\old\public_html\resources\themes" />
       <recent name="C:\OpenServer\domains\RCSE\public_html\resources\themes\rcs\prototypes\styles\main" />
       <recent name="C:\OpenServer\domains\RCSE\public_html\resources\themes\rcs\prototypes\styles\main\scss" />
       <recent name="C:\OpenServer\domains\RCSE\public_html\test\unit" />
     </key>
   </component>
-  <component name="RunManager" selected="PHP Web Page.RCSE Debug">
-    <configuration name="RCSE Debug" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="rcse">
+  <component name="RunManager" selected="PHP Web Page.RCSE TestXDebug">
+    <configuration name="RCSE Test Debug" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="rcse" start_url="/test/Test-regform.php">
       <method v="2" />
     </configuration>
     <configuration name="RCSE TestXDebug" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="rcse" start_url="/test/Test-debug.php">
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="PHP Web Page.RCSE Debug" />
+      <item itemvalue="PHP Web Page.RCSE Test Debug" />
       <item itemvalue="PHP Web Page.RCSE TestXDebug" />
     </list>
   </component>
@@ -212,7 +267,66 @@
       <workItem from="1608633125551" duration="2160000" />
       <workItem from="1608716369449" duration="4448000" />
       <workItem from="1608766545610" duration="40000" />
-      <workItem from="1608881763963" duration="8327000" />
+      <workItem from="1608881763963" duration="12423000" />
+      <workItem from="1608983712987" duration="3205000" />
+      <workItem from="1609052613676" duration="84000" />
+      <workItem from="1609065286338" duration="6938000" />
+      <workItem from="1609138857745" duration="4570000" />
+      <workItem from="1609225810636" duration="186000" />
+      <workItem from="1609227530436" duration="766000" />
+      <workItem from="1609261279925" duration="596000" />
+      <workItem from="1609319778506" duration="1895000" />
+      <workItem from="1609406059469" duration="1305000" />
+      <workItem from="1609835230489" duration="273000" />
+      <workItem from="1609835575046" duration="672000" />
+      <workItem from="1609855116904" duration="6373000" />
+      <workItem from="1609884984486" duration="1425000" />
+      <workItem from="1609932512579" duration="314000" />
+      <workItem from="1609968834044" duration="10403000" />
+      <workItem from="1610043355576" duration="740000" />
+      <workItem from="1610058442064" duration="21418000" />
+      <workItem from="1610279151673" duration="607000" />
+      <workItem from="1610309162981" duration="7624000" />
+      <workItem from="1610433542916" duration="1357000" />
+      <workItem from="1610495365263" duration="269000" />
+      <workItem from="1610525970620" duration="1012000" />
+      <workItem from="1610537548107" duration="5557000" />
+      <workItem from="1610606865146" duration="2530000" />
+      <workItem from="1610693494441" duration="3218000" />
+      <workItem from="1610917806959" duration="974000" />
+      <workItem from="1611011088600" duration="12000" />
+      <workItem from="1611134861266" duration="219000" />
+      <workItem from="1611135120237" duration="31284000" />
+      <workItem from="1611297631500" duration="1648000" />
+      <workItem from="1611387503448" duration="413000" />
+      <workItem from="1611441832078" duration="13000" />
+      <workItem from="1611472043062" duration="722000" />
+      <workItem from="1611591575191" duration="787000" />
+      <workItem from="1611644299322" duration="600000" />
+      <workItem from="1611786590332" duration="478000" />
+      <workItem from="1611816957301" duration="4993000" />
+      <workItem from="1611868052897" duration="39000" />
+      <workItem from="1612304854076" duration="636000" />
+      <workItem from="1612336724215" duration="172000" />
+      <workItem from="1612338110938" duration="4877000" />
+      <workItem from="1612370115271" duration="890000" />
+      <workItem from="1612384402572" duration="36000" />
+      <workItem from="1612421445476" duration="1701000" />
+      <workItem from="1612467298942" duration="186000" />
+      <workItem from="1612508013205" duration="3866000" />
+      <workItem from="1612593313839" duration="600000" />
+      <workItem from="1613282929323" duration="2558000" />
+      <workItem from="1613456813601" duration="37000" />
+      <workItem from="1613901762345" duration="4694000" />
+      <workItem from="1614842410912" duration="3207000" />
+      <workItem from="1614874369593" duration="4080000" />
+      <workItem from="1614924320836" duration="3923000" />
+      <workItem from="1615235873287" duration="628000" />
+      <workItem from="1615359495827" duration="1189000" />
+      <workItem from="1615726065359" duration="1286000" />
+      <workItem from="1616130157481" duration="2187000" />
+      <workItem from="1616136333045" duration="1303000" />
+      <workItem from="1617946817833" duration="756000" />
     </task>
     <task id="LOCAL-00001" summary="Numerous additions:&#10;Created basic permissions handler&#10;New functions to user and user groups, new class UserSession&#10;Created authorization handler&#10;Fixed issue in Query's bind - now it uses bindValues instead of bindParams&#10;Updated DB model&#10;Minor PHPDoc and codestyle changes">
       <created>1605977529229</created>
@@ -277,7 +391,42 @@
       <option name="project" value="LOCAL" />
       <updated>1608891063418</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="MOAR Codacy-suggested issues fixes">
+      <created>1608892009028</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1608892009028</updated>
+    </task>
+    <task id="LOCAL-00011" summary=".gitignore updated:&#10;node_modules is not being excluded anymore as there is nothing to exclude :p">
+      <created>1608892175223</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1608892175223</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Even MOAR Codacy-suggested issues fixed">
+      <created>1608894024014</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1608894024014</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Even MOAR Codacy-suggested issues fixed">
+      <created>1608894200567</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1608894200567</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Hopefully, last Codacy-suggested issues fix for today">
+      <created>1608894714902</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1608894714902</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,7 +450,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/V1-Overhaul" />
+                        <option value="HEAD" />
                       </list>
                     </value>
                   </entry>
@@ -330,7 +479,43 @@
     <MESSAGE value="Configured SCSS and watcher" />
     <MESSAGE value="Started work on new RCS default design:&#10;Created base structure prototype&#10;Updated various logo types&#10;Moved old design to old files" />
     <MESSAGE value="Fixed issues suggested by Codacy:&#10;Avoid direct usage of superglobals _SERVER, _POST&#10;Other minor troubles" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed issues suggested by Codacy:&#10;Avoid direct usage of superglobals _SERVER, _POST&#10;Other minor troubles" />
+    <MESSAGE value="MOAR Codacy-suggested issues fixes" />
+    <MESSAGE value=".gitignore updated:&#10;node_modules is not being excluded anymore as there is nothing to exclude :p" />
+    <MESSAGE value="Even MOAR Codacy-suggested issues fixed" />
+    <MESSAGE value="Hopefully, last Codacy-suggested issues fix for today" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hopefully, last Codacy-suggested issues fix for today" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint type="php-exception">
+          <properties name="Any" />
+          <option name="timeStamp" value="14" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/public_html/test/passw.php</url>
+          <line>8</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/public_html/test/ajax_action.js</url>
+          <line>77</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog>
+          <selected-grouping-rules>
+            <grouping-rule id="by-file" />
+          </selected-grouping-rules>
+        </breakpoints-dialog>
+      </breakpoints-dialog>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="login_act.php">
+        <watch expression="$GLOBALS" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace RCSE\Core\Control;
 use Exception;
-use RCSE\Core\Utils;
+use RCSE\Core\Statics\Utils;
 
 class Log
 {
@@ -37,6 +37,7 @@ class Log
         $this->levelThreshold = $levelThreshold;
         $this->fileHandler = (new File($this->logDir, $this->logFile))->open("a+");
     }
+
 
     /**
      * Writes $message to log file

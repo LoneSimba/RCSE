@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace RCSE\Core\User;
 
 use RCSE\Core\Database\Database;
-use RCSE\Core\Utils;
+use RCSE\Core\Statics\Utils;
 
 class UserSession
 {

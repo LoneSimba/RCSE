@@ -4,10 +4,11 @@ declare(strict_types=1);
 namespace RCSE\Core\User;
 use Exception;
 use RCSE\Core\Database\Database;
+use RCSE\Core\Database\InsertQuery;
 use RCSE\Core\Database\SelectQuery;
 use RCSE\Core\Database\UpdateQuery;
 use RCSE\Core\Secure\APermissionUser;
-use RCSE\Core\Utils;
+use RCSE\Core\Statics\Utils;
 
 class User extends APermissionUser
 {
@@ -32,10 +33,9 @@ class User extends APermissionUser
      * @return void
      * @throws Exception
      */
-    public function addPermission(array $permissions) : void
+    public function addPermission(array $permissions): void
     {
-        if (!$this->hasPermission($permissions))
-        {
+        if (!$this->hasPermission($permissions)) {
             /*$query = (new UpdateQuery('users', ['`user_perms`'=>':perms']))->addWhere(['user_id'=>':id']);
             $newPerms = json_decode($this->data['user_perms'], true);
             $newPerms += $permission;
@@ -43,7 +43,7 @@ class User extends APermissionUser
             $this->db->executeCustomQuery($query);
             $this->getData($this->data['user_id']);*/
 
-            $this->ownPerms .= $permissions;
+            $this->ownPerms[] = $permissions;
             $this->perms = $this->getPermissions();
         }
     }
@@ -53,9 +53,20 @@ class User extends APermissionUser
      *
      * @return array
      */
-    public function getPermissions() : array
+    public function getPermissions(): array
     {
         return array_merge($this->group->perms, $this->ownPerms);
+    }
+
+    public function changePassword(string $password): void
+    {
+        $this->db->addQueryData('upd_user_credentials_by_id', [
+            ':user_id' => $this->data['user_id'],
+            ':user_login' => $this->data['user_login'],
+            ':user_email' => $this->data['user_email'],
+            ':user_passhash' => password_hash($password, PASSWORD_DEFAULT)
+        ]);
+        $this->db->executeAndGetResult('upd_user_credentials_by_id');
     }
 
     /**
@@ -65,21 +76,16 @@ class User extends APermissionUser
      * @return bool
      * @throws Exception
      */
-    public function verifyAccount(string $key) : bool
+    public function verifyAccount(string $key): bool
     {
-        if (!(bool) $this->data['user_verified'])
-        {
-            if (md5($key) == $this->data['user_key'])
-            {
-                $query = (new UpdateQuery('users', ['`user_key`'=>null ,'`user_verified`'=>true]))
-                    ->addWhere(['`user_id`'=>$this->data['user_id']]);
-                $this->db->executeCustomQuery($query);
-                return true;
-            }
-            else
-            {
+        if (!(bool) $this->data['user_verified']) {
+            if (!$this->verifyKey($key)) {
                 return false;
             }
+
+            $query = (new UpdateQuery('users', [ '`user_verified`' => true ]))
+                ->addWhere([ '`user_id`' => $this->data['user_id'] ]);
+            $this->db->executeCustomQuery($query);
         }
 
         return true;
@@ -88,26 +94,86 @@ class User extends APermissionUser
     /**
      * Generates key of given length for various usages and writes it to database
      *
-     * @param int $length
      * @return string
      * @throws Exception
      */
-    public function generateKey(int $length) : string
+    public function generateVerificationKey(): string
     {
-        $key = Utils::generateKey($length);
-        $query = (new UpdateQuery('users', ['`user_key`'=>':key']))
-            ->addWhere(['`user_id`'=>$this->data['user_id']]);
-        $query->addData([':key'=>md5($key)]);
+        $key = Utils::generateKey(6);
+        $query = (new UpdateQuery('users', [ '`user_key`' ]))
+            ->addWhere([ '`user_id`' => $this->data['user_id'] ]);
+        $query->addData([ ':user_key' => md5($key) ]);
         $this->db->executeCustomQuery($query);
         return $key;
     }
 
-    public function generateAuthKey() : string
+    /**
+     * Verifies given key
+     *
+     * @param string $key
+     * @return bool
+     * @throws Exception
+     */
+    public function verifyKey(string $key): bool
     {
-        $key = Utils::generateKey(6);
-        $this->db->addQueryData('ins_auth_key_full', [$key, $this->data['user_id'], Utils::getTimestamp()]);
+        if (md5($key) == $this->data['user_key']) {
+            $query = (new UpdateQuery('users', [ '`user_key`' ]))
+                ->addWhere([ '`user_id`' => $this->data['user_id' ]]);
+            $query->addData([ ':user_key' => null ]);
+            $this->db->executeCustomQuery($query);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public function generateAuthKey(): string
+    {
+
+        $key = Utils::generateKey(3);
+        $this->db->addQueryData('ins_auth_key_full', [
+            ':key_id' => $key,
+            ':user_id' => $this->data['user_id'],
+            ':key_expires' => Utils::getTimestamp('Y-m-d H:i:s', "+10 minutes")
+        ]);
         $this->db->executeAndGetResult('ins_auth_key_full');
         return $key;
+    }
+
+    public function verifyAuthKey(string $key): bool
+    {
+        $this->db->addQueryData('sel_auth_key_by_user_id', [
+            ':key_id' => $key,
+            ':user_id' => $this->data['user_id']
+        ]);
+
+        if(!empty($this->db->executeAndGetResult('sel_auth_key_by_user_id')[0])) {
+            $this->db->addQueryData('del_auth_key', [ ':key_id' => $key ]);
+            $this->db->executeAndGetResult('del_auth_key');
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getSecretQuestion(): array
+    {
+        $query = (new SelectQuery('secret_questions', [ '`*`' ]))
+            ->addWhere([ '`user_id`' => $this->data['user_id'] ]);
+        return $this->db->executeCustomQuery($query)[0];
+    }
+
+    public function setSecretQuestion(string $text, string $answer): void
+    {
+        $query = (new InsertQuery('secret_questions', [ '`question_text`', '`question_answer`' ]))->addUpdate();
+        $query->addData([ ':question_text' => $text, ':question_answer' => md5($answer) ]);
+        $this->db->executeCustomQuery($query);
+    }
+
+    public function checkSecretQuestion(string $answer): bool
+    {
+        return !empty($question = $this->getSecretQuestion()) && ($question['question_answer'] == md5($answer));
     }
 
     /**
@@ -115,13 +181,11 @@ class User extends APermissionUser
      *
      * @throws Exception
      */
-    public function saveData()
+    public function saveData(): void
     {
         $query_data = [];
-        foreach ($this->data as $key => $val)
-        {
-            switch ($key)
-            {
+        foreach ($this->data as $key => $val) {
+            switch ($key) {
                 case 'user_id':
                 case 'group_id':
                 case 'user_bdate':
@@ -148,17 +212,16 @@ class User extends APermissionUser
      * @return bool
      * @throws Exception
      */
-    public function checkCredentials(string $pass) : bool
+    public function checkCredentials(string $pass): bool
     {
-        $query = (new SelectQuery('users', ['`user_passhash`']))->addWhere(['user_id' => $this->data['user_id']]);
-
-        $passhash = $this->db->executeCustomQuery($query)[0]['user_passhash'];
-        return $passhash == password_hash($pass, PASSWORD_DEFAULT);
+        $this->db->addQueryData('sel_user_passhash_by_id', [ ':user_id' => $this->data['user_id'] ]);
+        $passhash = $this->db->executeAndGetResult('sel_user_passhash_by_id')[0]['user_passhash'];
+        return password_verify($pass, $passhash);
     }
 
-    private function getData(string $id) : void
+    private function getData(string $id): void
     {
-        $this->db->addQueryData('sel_user_full_by_id', [':user_id'=>$id]);
+        $this->db->addQueryData('sel_user_safe_by_id', [ ':user_id' => $id ]);
         $this->data = $this->db->executeAndGetResult('sel_user_safe_by_id')[0];
         $this->group = new UserGroup($this->data['group_id'], $this->db);
         $this->prefs = json_decode($this->data['user_prefs'], true);

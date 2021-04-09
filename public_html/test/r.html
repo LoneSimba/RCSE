@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $("#r").on("click", function(e) {
+                e.preventDefault();
+                let formData = $("#r").serialize();
+
+                $.ajax({
+                    url: "passw.php",
+                    type: "post",
+                    data: "type=req&"+formData,
+                    mimeType: "multipart/form-data",
+                    cache: false,
+                    processData: false,
+                    success: function(data)
+                    {
+                        let text = "";
+                        switch(data)
+                        {
+                            case '1':
+                                text = "<b>Success</b>";
+                                break;
+                            case '0':
+                                text = "<b>User not found</b>";
+                                break;
+                            case '-2':
+                                text = "<b>User not verified</b>";
+                                break;
+                            case '-3':
+                                text = "<b>User password incorrect</b>";
+                                break;
+                            default:
+                                text = "<b>Error</b>";
+                        }
+
+                        $("#result").html(text);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<form action="" method="post" id="r">
+    <input name="login" type="text">
+    <input type="submit" value="Restore">
+    <div id="result"></div>
+</form>
+</body>
+</html>

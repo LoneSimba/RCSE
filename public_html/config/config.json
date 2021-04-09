@@ -7,12 +7,18 @@
         "name" : "rcse"
     },
     "site" : {
+        "mail-features": true
     },
     "mailer" : {
-        "smtp-usr": "siluet-stalker99@yandex.ru",
-        "smtp-nam": "Vladimir",
-        "smtp-srv": "ssl://smtp.yandex.ru",
-        "smtp-prt": 465,
-        "smtp-pss": "20LiF3AfT3rArMy"
+        "smtp" : {
+            "smtp-usr": "siluet-stalker99@yandex.ru",
+            "smtp-nam": "Vladimir",
+            "smtp-srv": "ssl://smtp.yandex.ru",
+            "smtp-prt": 465,
+            "smtp-pss": "xffeenqfuhbktorn"
+        },
+        "addresses" : {
+            "no-reply": "siluet-stalker99@ya.ru"
+        }
     }
 }

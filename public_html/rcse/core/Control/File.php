@@ -4,18 +4,16 @@ declare(strict_types=1);
 namespace RCSE\Core\Control;
 
 use Exception;
-use http\Exception\UnexpectedValueException;
-use RCSE\Core\ServerArray;
+use RCSE\Core\Statics\GlobalArrays;
 
 /** File Handler, provides functions to write and read files */
 class File
 {
     private $fileStream;
-    private Log $log;
     private string $fileName;
     private string $fileDir;
     private string $rootDir;
-    private int $filePerms;
+    private int $filePerms = 0777;
 
     /**
      *
@@ -24,8 +22,7 @@ class File
      */
     public function __construct(string $fileDir, string $fileName)
     {
-        $this->log = new Log();
-        $this->rootDir = (string) ServerArray::get('DOCUMENT_ROOT');
+        $this->rootDir = (string) GlobalArrays::getServerArrayEntry('DOCUMENT_ROOT');
         $this->fileDir = $this->rootDir . $fileDir;
         $this->fileName = $fileName;
     }
@@ -43,13 +40,11 @@ class File
      * @param string $mode fopen mode - "w"/"a+" for creating and writing, "r" for reading
      * @return self
      * @throws Exception
-     * @throws UnexpectedValueException
      */
-    public function open(string $mode) : self
+    public function open(string $mode): self
     {
-        if (!preg_match("/(?i)a\+|r|w/", $mode))
-        {
-            throw new UnexpectedValueException("File open mode should either be w, a+ or r, {$mode} used instead.", 0x000105);
+        if (!preg_match("/(?i)a\+|r|w/", $mode)) {
+            throw new Exception("File open mode should either be w, a+ or r, {$mode} used instead.", 0x000105);
         }
 
         $lock = "";
@@ -69,15 +64,16 @@ class File
                 $lock = LOCK_EX;
                 break;
         }
+
         $this->fileStream = fopen($this->fileDir . $this->fileName, $mode);
         if ($this->fileStream == false) {
-            $this->log->log('Error', "Failed to create or open file: {$this->fileName}!", self::class);
+            //$this->log->log('Error', "Failed to create or open file: {$this->fileName}!", self::class);
             //@todo Exception should be replaced with FileNotFoundException
             throw new Exception("Failed to create or open file: {$this->fileName}!", 0x000100);
         }
 
         if (flock($this->fileStream, $lock) == false) {
-            $this->log->log('Error', "Failed to lock file: {$this->fileName}!", self::class);
+            //$this->log->log('Error', "Failed to lock file: {$this->fileName}!", self::class);
             //@todo Exception should be replaced with ObtainFileLockException
             throw new Exception("Failed to lock file: {$this->fileDir}.{$this->fileName}!", 0x000101);
         }
@@ -92,15 +88,14 @@ class File
      * @return string Contents of file
      * @throws Exception
      */
-    public function read() : string
+    public function read(): string
     {
         $this->open("r");
 
         $file_contents = fread($this->fileStream, fstat($this->fileStream)['size']);
 
-        if ($file_contents == false)
-        {
-            $this->log->log('Error', "Failed to read file contents: {$this->fileDir}{$this->fileName}!", self::class);
+        if ($file_contents == false) {
+            //$this->log->log('Error', "Failed to read file contents: {$this->fileDir}{$this->fileName}!", self::class);
             //@todo Should be replaced with FileReadingFailedException
             throw new Exception("Failed to read file contents: {$this->fileDir}{$this->fileName}!", 0x000103);
         }
@@ -117,13 +112,12 @@ class File
      * @return bool True if succeeds
      * @throws Exception
      */
-    public function write(string $contents) : bool
+    public function write(string $contents): bool
     {
         $this->open("w");
 
-        if (!fwrite($this->fileStream, $contents))
-        {
-            $this->log->log('Error', "Failed to write file: {$this->fileDir}{$this->fileName}!", self::class);
+        if (!fwrite($this->fileStream, $contents)) {
+            //$this->log->log('Error', "Failed to write file: {$this->fileDir}{$this->fileName}!", self::class);
             //@todo Should be replaced with FileWritingFailedException
             throw new Exception("Failed to write file: {$this->fileDir}{$this->fileName}!", 0x000104);
         }
@@ -139,11 +133,10 @@ class File
      * @return bool True is succeeds
      * @throws Exception
      */
-    public function writeLine(string $contents) : bool
+    public function writeLine(string $contents): bool
     {
-        if (!fwrite($this->fileStream, $contents))
-        {
-            $this->log->log('Error', "Failed to write line to file: {$this->fileDir}{$this->fileName}!", self::class);
+        if (!fwrite($this->fileStream, $contents)) {
+            //$this->log->log('Error', "Failed to write line to file: {$this->fileDir}{$this->fileName}!", self::class);
             //@todo Should be replaced with FileWritingFailedException
             throw new Exception("Failed to write line to file: {$this->fileDir}{$this->fileName}!", 0x000104);
         }
@@ -158,14 +151,13 @@ class File
      * @return void
      * @throws Exception In case of chmod failure
      */
-    private function setPermissions() : void
+    private function setPermissions(): void
     {
-        if (!is_readable($this->fileDir) || !is_writeable($this->fileDir))
-        {
+        if (!is_readable($this->fileDir) || !is_writeable($this->fileDir)) {
             if ((!chmod($this->fileDir, $this->filePerms)) ||
                 (!is_readable($this->fileDir) || !is_writeable($this->fileDir)))
             {
-                $this->log->log('Error', "Failed to set file permissions: {$this->fileDir}{$this->fileName}!", self::class);
+                //$this->log->log('Error', "Failed to set file permissions: {$this->fileDir}{$this->fileName}!", self::class);
                 //@todo Exception should be replaced with FileInaccessibleException
                 throw new Exception("Failed to set file permissions: {$this->fileDir}{$this->fileName}!", 0x000102);
             }
@@ -177,7 +169,7 @@ class File
      *
      * @return void 
      */
-    private function close() : void
+    private function close(): void
     {
         clearstatcache();
         fflush($this->fileStream);

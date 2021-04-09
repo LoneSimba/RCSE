@@ -237,10 +237,12 @@ header #head_bar #head_account #head_account_popup #head_account_pane form #head
   font-family: Arial, sans-serif;
   font-size: 12pt;
   font-weight: bold;
+  text-align: center;
   padding: 10px 0;
+  box-sizing: border-box;
 }
-header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input:first-child,
-header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in input:first-child {
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input:first-of-type,
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in input:first-of-type {
   border-radius: 8px 8px 0 0;
 }
 header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input:last-child,
@@ -263,6 +265,24 @@ header #head_bar #head_account #head_account_popup #head_account_pane form #head
   border: 1px solid #b2b2b2;
 }
 header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_main input[type=button] + input[type=button]:hover {
+  background-color: #999;
+  border-color: #8e8e8e;
+  cursor: pointer;
+}
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in input {
+  background-color: #bfbfbf;
+  color: #091023;
+  border: 1px solid #b2b2b2;
+}
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in input::placeholder {
+  color: #091023;
+  font-weight: normal;
+}
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in input:focus {
+  background-color: #cccccc;
+  outline: none;
+}
+header #head_bar #head_account #head_account_popup #head_account_pane form #head_account_form_sign_in input[type=submit]:hover {
   background-color: #999;
   border-color: #8e8e8e;
   cursor: pointer;
