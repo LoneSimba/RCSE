@@ -12,7 +12,7 @@ switch($reqData['type'])
         break;
     case "res":
         unset($reqData['type']);
-        echo $auth->restorePassword($reqData);
+        echo $auth->restorePasswordWithKey($reqData);
         break;
     case "chg":
         unset($reqData['type']);

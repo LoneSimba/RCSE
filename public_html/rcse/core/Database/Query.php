@@ -70,28 +70,14 @@ abstract class Query
     }
 
     /**
-     * Prepares an PDOStatement using provided database handler
-     *
-     * @param PDO $dbh PDO database handler
-     * @return self
-     */
-    public function prepare(PDO $dbh): self
-    {
-        $this->pdoStatement = $dbh->prepare($this->statement);
-        return $this;
-    }
-
-    /**
      * Executes prepared statement, if statement has not been built or prepared throws an exception.
      *
+     * @param PDO $dbh
      * @return self
-     * @todo Should throw QueryNotBuiltException instead of regular one
-     * @throws Exception
      */
-    public function execute(): self
+    public function execute(PDO $dbh): self
     {
-        if (empty($this->pdoStatement))
-            throw new Exception("Failed to execute statement - statement has not been prepared.", 0x000203);
+        $this->pdoStatement = $dbh->prepare($this->statement);
         $this->bindData();
         $this->pdoStatement->execute();
 

@@ -36,9 +36,10 @@ $(function() {
     }
 });
 
-function authAction1F(e, formData, )
+function authAction1F(e, formData)
 {
     e.preventDefault();
+    $("#2f_login").val($("#1f_login").val());
 
     $.ajax({
         url: "login_act.php",

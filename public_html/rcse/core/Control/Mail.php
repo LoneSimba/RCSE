@@ -72,6 +72,14 @@ class Mail
         $this->mailer->Port = $this->conf['smtp-prt'];
         $this->mailer->Username = $this->conf['smtp-usr'];
         $this->mailer->Password = $this->conf['smtp-pss'];
+        $this->mailer->SMTPSecure = 'ssl';
+        $this->mailer->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
 
         try
         {

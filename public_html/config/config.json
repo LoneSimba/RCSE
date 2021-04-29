@@ -11,14 +11,14 @@
     },
     "mailer" : {
         "smtp" : {
-            "smtp-usr": "siluet-stalker99@yandex.ru",
-            "smtp-nam": "Vladimir",
-            "smtp-srv": "ssl://smtp.yandex.ru",
+            "smtp-usr": "test@russiancraft.su",
+            "smtp-nam": "RCSE",
+            "smtp-srv": "mail.russiancraft.su",
             "smtp-prt": 465,
-            "smtp-pss": "xffeenqfuhbktorn"
+            "smtp-pss": "K8y0Q7b7"
         },
         "addresses" : {
-            "no-reply": "siluet-stalker99@ya.ru"
+            "no-reply": "test@russiancraft.su"
         }
     }
 }

@@ -9,49 +9,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8569871a-719e-450e-8394-70c83b7fece3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/auth_keys_delete_expired event.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/rcse/core/Database/DeleteQuery.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/rcse/core/Secure/Session.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/rcse/core/Statics/GlobalArrays.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/test/1.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/test/ajax_action.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/test/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/test/login_act.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/test/passw.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/test/r.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/test/restore.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public_html/test/verify.php" afterDir="false" />
+    <list default="true" id="8569871a-719e-450e-8394-70c83b7fece3" name="Default Changelist" comment="Auth system &amp; site prototype&#10;Created and tested auth system, with full reg\auth\pass restore functionality (still have to finish restoration w\o email being used, perhaps, later)&#10;Started job on new RCS site prototype">
+      <change afterPath="$PROJECT_DIR$/public_html/test/mail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/RCSE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RCSE.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4a0ea835-a314-4307-a01a-0f843bc481fa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4a0ea835-a314-4307-a01a-0f843bc481fa.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/Schematic.vsdx" beforeDir="false" afterPath="$PROJECT_DIR$/doc/Schematic.vsdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/db_new.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/doc/db_new.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/db_new.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/doc/db_new.mwb.bak" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/config/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Control/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Control/Config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Control/File.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Control/File.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Control/Log.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Control/Log.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Control/Mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Control/Mail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Database/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Database/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Database/InsertQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Database/InsertQuery.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Database/Query.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Database/Query.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Database/UpdateQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Database/UpdateQuery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/PostArray.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Secure/Authorization.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Secure/Authorization.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/ServerArray.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/SessionArray.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/User/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/User/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/User/UserSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/User/UserSession.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/rcse/core/Utils.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/rcse/core/Statics/Utils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/scss/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/scss/main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/resources/themes/rcs/prototypes/styles/main/style.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/test/Test-debug.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/test/Test-debug.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public_html/test/reg_action.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/test/reg_action.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/test/ajax_action.js" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/test/ajax_action.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/test/login_act.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/test/login_act.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/test/passw.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/test/passw.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public_html/test/restore.html" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/test/restore.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,7 +297,15 @@
       <workItem from="1615726065359" duration="1286000" />
       <workItem from="1616130157481" duration="2187000" />
       <workItem from="1616136333045" duration="1303000" />
-      <workItem from="1617946817833" duration="756000" />
+      <workItem from="1617946817833" duration="2029000" />
+      <workItem from="1617950499197" duration="612000" />
+      <workItem from="1617951215658" duration="636000" />
+      <workItem from="1618080625532" duration="594000" />
+      <workItem from="1618731073460" duration="104000" />
+      <workItem from="1618734303058" duration="3853000" />
+      <workItem from="1618755729530" duration="8646000" />
+      <workItem from="1618866786303" duration="96000" />
+      <workItem from="1619716117281" duration="1182000" />
     </task>
     <task id="LOCAL-00001" summary="Numerous additions:&#10;Created basic permissions handler&#10;New functions to user and user groups, new class UserSession&#10;Created authorization handler&#10;Fixed issue in Query's bind - now it uses bindValues instead of bindParams&#10;Updated DB model&#10;Minor PHPDoc and codestyle changes">
       <created>1605977529229</created>
@@ -426,7 +405,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608894714902</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Auth system &amp; site prototype&#10;Created and tested auth system, with full reg\auth\pass restore functionality (still have to finish restoration w\o email being used, perhaps, later)&#10;Started job on new RCS site prototype">
+      <created>1617947956021</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1617947956021</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,7 +469,8 @@
     <MESSAGE value=".gitignore updated:&#10;node_modules is not being excluded anymore as there is nothing to exclude :p" />
     <MESSAGE value="Even MOAR Codacy-suggested issues fixed" />
     <MESSAGE value="Hopefully, last Codacy-suggested issues fix for today" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hopefully, last Codacy-suggested issues fix for today" />
+    <MESSAGE value="Auth system &amp; site prototype&#10;Created and tested auth system, with full reg\auth\pass restore functionality (still have to finish restoration w\o email being used, perhaps, later)&#10;Started job on new RCS site prototype" />
+    <option name="LAST_COMMIT_MESSAGE" value="Auth system &amp; site prototype&#10;Created and tested auth system, with full reg\auth\pass restore functionality (still have to finish restoration w\o email being used, perhaps, later)&#10;Started job on new RCS site prototype" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -492,16 +479,6 @@
           <properties name="Any" />
           <option name="timeStamp" value="14" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/public_html/test/passw.php</url>
-          <line>8</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/public_html/test/ajax_action.js</url>
-          <line>77</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog>

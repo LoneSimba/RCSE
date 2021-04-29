@@ -43,8 +43,8 @@ class Authorization
 
         $usr = new User($id, $this->db);
 
-        if ((bool)$usr->data['user_verified']) {
-            if($usr->checkCredentials($data['password'])) {
+        if ((bool) $usr->data['user_verified']) {
+            if ($usr->checkCredentials($data['password'])) {
                 if ($this->isMailUsed) {
                     $this->sendNewAuthKey($id);
                     return '2FRequired';

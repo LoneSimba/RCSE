@@ -2,13 +2,13 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/public_html/rcse/core/Secure" isTestSource="false" packagePrefix="RCSE\Core\Secure\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/public_html/rcse/core/Control" isTestSource="false" packagePrefix="RCSE\Core\Control\" />
-      <sourceFolder url="file://$MODULE_DIR$/public_html/rcse/core" isTestSource="false" packagePrefix="RCSE\Core\" />
-      <sourceFolder url="file://$MODULE_DIR$/public_html/rcse/core/Database" isTestSource="false" packagePrefix="RCSE\Core\Database\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/public_html/rcse/core/User" isTestSource="false" packagePrefix="RCSE\Core\User\" />
+      <sourceFolder url="file://$MODULE_DIR$/public_html/./rcse/core" isTestSource="false" packagePrefix="RCSE\Core\" />
+      <sourceFolder url="file://$MODULE_DIR$/public_html/./rcse/core/Control" isTestSource="false" packagePrefix="RCSE\Core\Control\" />
+      <sourceFolder url="file://$MODULE_DIR$/public_html/./rcse/core/Database" isTestSource="false" packagePrefix="RCSE\Core\Database\" />
+      <sourceFolder url="file://$MODULE_DIR$/public_html/./rcse/core/Secure" isTestSource="false" packagePrefix="RCSE\Core\Secure\" />
+      <sourceFolder url="file://$MODULE_DIR$/public_html/./rcse/core/User" isTestSource="false" packagePrefix="RCSE\Core\User\" />
       <excludeFolder url="file://$MODULE_DIR$/old" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/vendor/doctrine/instantiator" />
