@@ -2,25 +2,40 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Jetstream\HasTeams;
-use Laravel\Sanctum\HasApiTokens;
+use App\Traits\Models\HasUuid;
+use App\ParameterObjects\Source;
+use App\Contracts\Models\{Parameterizable, Permissionable};
 
-class User extends Authenticatable
+use Illuminate\Support\{Carbon, Str};
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\{SoftDeletes, Factories\HasFactory};
+
+use Laravel\{Fortify\TwoFactorAuthenticatable, Jetstream\HasProfilePhoto, Jetstream\HasTeams, Sanctum\HasApiTokens};
+
+/**
+ * @property string $id
+ * @property string $name
+ * @property string $email
+ * @property Carbon|null $email_verified_at
+ * @property string $perm_group_id
+ * @property string|null $current_team_id
+ * @property string|null $profile_photo_path
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property Carbon|null $deleted_at
+ */
+class User extends Authenticatable implements Parameterizable, Permissionable
 {
-    use HasApiTokens;
-    use HasFactory;
-    use HasProfilePhoto;
+    use HasUuid;
     use HasTeams;
+    use HasFactory;
+    use HasApiTokens;
+    use HasProfilePhoto;
+
     use Notifiable;
-    use TwoFactorAuthenticatable;
     use SoftDeletes;
+    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -28,7 +43,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -62,4 +79,24 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function permGroup()
+    {
+        return $this->belongsTo(PermGroup::class);
+    }
+
+    public function perms()
+    {
+        return $this->hasMany(Permission::class, 'owner_id', 'id');
+    }
+
+    public function parameterize(): Source
+    {
+        return new Source($this->id, self::sourceType());
+    }
+
+    public static function sourceType(): string
+    {
+        return Str::snake(self::class);
+    }
 }

@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
+use App\Traits\Models\HasUuid;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Laravel\Jetstream\Events\TeamCreated;
-use Laravel\Jetstream\Events\TeamDeleted;
-use Laravel\Jetstream\Events\TeamUpdated;
+
 use Laravel\Jetstream\Team as JetstreamTeam;
+use Laravel\Jetstream\Events\{TeamCreated, TeamDeleted, TeamUpdated};
 
 class Team extends JetstreamTeam
 {
+    use HasUuid;
     use HasFactory;
 
     /**
