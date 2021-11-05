@@ -28,6 +28,10 @@ class AppServiceProvider extends ServiceProvider implements DeferrableProvider
         $this->app->bind(Contracts\Repositories\UserRepository::class, function () {
             return new Repositories\UserRepository(new Models\User());
         });
+
+        $this->app->bind(Contracts\Repositories\PermissionRepository::class, function () {
+            return new Repositories\PermissionRepository(new Models\Permission());
+        });
     }
 
     /**

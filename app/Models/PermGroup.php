@@ -6,8 +6,8 @@ use App\Traits\Models\HasUuid;
 use App\ParameterObjects\Source;
 use App\Contracts\Models\{Parameterizable, Permissionable};
 
-use Illuminate\Database\Eloquent\{Collection, Model};
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\{Collection, Model};
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 /**
@@ -49,5 +49,15 @@ class PermGroup extends Model implements Parameterizable, Permissionable
     public static function sourceType(): string
     {
         return Str::snake(class_basename(self::class));
+    }
+
+    public function isAllowed(string $permission): bool
+    {
+        $perm = $this->perms->where('permission', $permission)->first();
+        if ($perm) {
+            return $perm->allow;
+        }
+
+        return (bool)$this->parent?->isAllowed($permission);
     }
 }

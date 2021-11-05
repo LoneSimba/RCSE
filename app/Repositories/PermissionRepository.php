@@ -2,11 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Models\PermGroup;
-use App\Models\Permission;
-use App\Models\User;
 use App\ParameterObjects\Source;
 use App\Contracts\Models\Permissionable;
+use App\Models\{PermGroup, Permission, User};
 use App\Contracts\Repositories\PermissionRepository as PermissionRepositoryContract;
 
 use Illuminate\Database\Eloquent\Collection;
@@ -63,5 +61,9 @@ class PermissionRepository extends Repository implements PermissionRepositoryCon
                 ->all();
             array_push($ids, $model->id);
         }
+
+        return $this->getModel()
+            ->whereIn('owner_id', $ids)
+            ->get();
     }
 }

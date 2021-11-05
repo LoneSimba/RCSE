@@ -95,6 +95,16 @@ class User extends Authenticatable implements Parameterizable, Permissionable
         return new Source($this->id, self::sourceType());
     }
 
+    public function isAllowed(string $permission): bool
+    {
+        $perm = $this->perms->where('permission', $permission)->first();
+        if ($perm) {
+            return $perm->allow;
+        }
+
+        return $this->permGroup->isAllowed($permission);
+    }
+
     public static function sourceType(): string
     {
         return Str::snake(self::class);
