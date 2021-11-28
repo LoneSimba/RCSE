@@ -21,17 +21,9 @@ class AppServiceProvider extends ServiceProvider implements DeferrableProvider
      */
     public function register()
     {
-        $this->app->bind(Contracts\Services\UserService::class, function () {
-            return new Services\UserService();
-        });
+        $this->registerServices();
 
-        $this->app->bind(Contracts\Repositories\UserRepository::class, function () {
-            return new Repositories\UserRepository(new Models\User());
-        });
-
-        $this->app->bind(Contracts\Repositories\PermissionRepository::class, function () {
-            return new Repositories\PermissionRepository(new Models\Permission());
-        });
+        $this->registerRepositories();
     }
 
     /**
@@ -48,7 +40,32 @@ class AppServiceProvider extends ServiceProvider implements DeferrableProvider
     {
         return [
             Contracts\Services\UserService::class,
+
             Contracts\Repositories\UserRepository::class,
+            Contracts\Repositories\PermGroupRepository::class,
+            Contracts\Repositories\PermissionRepository::class,
         ];
+    }
+
+    private function registerServices()
+    {
+        $this->app->bind(Contracts\Services\UserService::class, function () {
+            return new Services\UserService();
+        });
+    }
+
+    public function registerRepositories()
+    {
+        $this->app->bind(Contracts\Repositories\UserRepository::class, function () {
+            return new Repositories\UserRepository(new Models\User());
+        });
+
+        $this->app->bind(Contracts\Repositories\PermGroupRepository::class, function () {
+            return new Repositories\PermGroupRepository(new Models\PermGroup());
+        });
+
+        $this->app->bind(Contracts\Repositories\PermissionRepository::class, function () {
+            return new Repositories\PermissionRepository(new Models\Permission());
+        });
     }
 }

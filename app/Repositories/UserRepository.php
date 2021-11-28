@@ -30,12 +30,12 @@ class UserRepository extends Repository implements URepository
             ->first();
     }
 
-    public function refreshSocialToken(User $user, array $social): bool
+    public function updateSocialToken(User $user, array $social): bool
     {
         return $user->update($social);
     }
 
-    public function updateUserProfile(User $user, string $name, string $email, bool $deVerify = false): bool
+    public function updateProfile(User $user, string $name, string $email, bool $deVerify = false): bool
     {
         $fields = [
             'name' => $name,
@@ -49,8 +49,15 @@ class UserRepository extends Repository implements URepository
         return $user->update($fields);
     }
 
-    public function updateUserPassword(User $user, string $newPassword): bool
+    public function updatePassword(User $user, string $newPassword): bool
     {
         return $user->update(['password' => Hash::make($newPassword)]);
     }
+
+    public function updateGroup(User $user, string $groupId): bool
+    {
+        return $user->update(['perm_group_id' => $groupId]);
+    }
+
+
 }

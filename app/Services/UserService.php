@@ -48,16 +48,16 @@ class UserService extends Service implements UService
 
     public function refreshSocialToken(User $user, array $social): bool
     {
-        return $this->userRepository->refreshSocialToken($user, $social);
+        return $this->userRepository->updateSocialToken($user, $social);
     }
 
     public function updateUserProfile(User $user, string $name, string $email, bool $deVerify = false): bool
     {
-        return $this->userRepository->updateUserProfile($user, $name, $email, $deVerify);
+        return $this->userRepository->updateProfile($user, $name, $email, $deVerify);
     }
 
     public function updateUserPassword(User $user, string $newPassword): bool
     {
-        return $this->userRepository->updateUserPassword($user, $newPassword);
+        return $this->userRepository->updatePassword($user, $newPassword);
     }
 }

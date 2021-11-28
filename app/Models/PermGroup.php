@@ -6,13 +6,15 @@ use App\Traits\Models\HasUuid;
 use App\ParameterObjects\Source;
 use App\Contracts\Models\{Parameterizable, Permissionable};
 
-use Illuminate\Support\Str;
+use Illuminate\Support\{Carbon, Str};
 use Illuminate\Database\Eloquent\{Collection, Model};
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 /**
+ * @property string $id
  * @property string|null $parent_id
  * @property string $slug
+ * @property Carbon|null $created_at
  *
  * @property Collection $users
  * @property PermGroup|null $parent

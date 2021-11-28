@@ -24,6 +24,9 @@ use Laravel\{Fortify\TwoFactorAuthenticatable, Jetstream\HasProfilePhoto, Jetstr
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property Carbon|null $deleted_at
+ *
+ * @property PermGroup|null $permGroup
+ * @property Permission[]|null $perms
  */
 class User extends Authenticatable implements Parameterizable, Permissionable
 {

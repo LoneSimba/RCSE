@@ -13,9 +13,11 @@ interface UserRepository
 
     public function getBySocialite(string $provider, SocialiteUser $user): ?User;
 
-    public function refreshSocialToken(User $user, array $social): bool;
+    public function updateSocialToken(User $user, array $social): bool;
 
-    public function updateUserProfile(User $user, string $name, string $email, bool $deVerify = false): bool;
+    public function updateProfile(User $user, string $name, string $email, bool $deVerify = false): bool;
 
-    public function updateUserPassword(User $user, string $newPassword): bool;
+    public function updatePassword(User $user, string $newPassword): bool;
+
+    public function updateGroup(User $user, string $groupId): bool;
 }
