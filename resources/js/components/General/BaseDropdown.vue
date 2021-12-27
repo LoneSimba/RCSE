@@ -1,9 +1,9 @@
 <template>
-        <div v-if="isOpen" @click="toggle" v-click-outside="overridableToggle">
-            <transition name="fade">
-                <slot />
-            </transition>
+    <transition name="fade">
+        <div v-if="isOpen" @click="close" v-click-outside="overridableToggle">
+            <slot />
         </div>
+    </transition>
 </template>
 
 <script>
@@ -11,8 +11,7 @@ export default {
     name: "BaseDropdown",
 
     props: [
-        'override_click_outside',
-        'parent'
+        'parent_overridden'
     ],
 
     data: function() {
@@ -37,18 +36,17 @@ export default {
             this.isOpen = !this.isOpen;
         },
 
-        overridableToggle(e) {
-            let parent = this.$props.parent;
-            if (
-                this.override_click_outside === undefined ||
-                this.override_click_outside === false ||
-                parent === undefined
-            ) {
-                this.toggle();
-            }
+        close() {
+            this.isOpen = false;
+        },
 
-            if (!(e.target == parent || parent.contains(e.target))) {
-                return this.toggle();
+        overridableToggle(e) {
+            if (!this.parent_overridden) {
+                this.close();
+            } else {
+                if (!(e.target == this.$parent.$el || this.$parent.$el.contains(e.target))) {
+                    return this.close();
+                }
             }
         }
     }

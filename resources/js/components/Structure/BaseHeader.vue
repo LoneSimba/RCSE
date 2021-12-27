@@ -3,28 +3,39 @@
         <div id="header-inner">
             <div id="logo"></div>
             <div id="user-controls">
-                <div id="lang-setting" ref="lang">
-                    <div id="current-lang" @click="$refs.drop.toggle()">
-                        <img alt="globe_wireframe_32" src="/images/icons/globe_wireframe_32.svg"/>
-                        <span>{{ __('frontend.header.lang.' + this.language.slug) }}</span>
-                    </div>
-                    <BaseDropdown id="lang-list" ref="drop" :override_click_outside="true" :parent="$refs.lang">
-                        <ul>
-                            <li v-for="lang in langList"
-                                :key="lang.slug"
-                                :class="currentLangClass(lang.slug)"
-                                @click="setCurrentLang(lang.slug)">
-                                {{ __('frontend.header.lang.' + lang.slug) }}
-                            </li>
-                        </ul>
-                    </BaseDropdown>
-                </div>
-                <div id="user-account">
-                    <div id="user-icons">
-                        <img alt="user_avatar_32" src="/images/icons/user_avatar_32.svg" />
-                        <img alt="arrow_simple_32" src="/images/icons/arrow_simple_32.svg" class="arrow" />
-                    </div>
-                </div>
+                <NestedDropdown id="lang-setting">
+                    <template #parent>
+                        <div id="current-lang">
+                            <img alt="globe_wireframe_32" src="/images/icons/globe_wireframe_32.svg"/>
+                            <span>{{ __('frontend.header.lang.' + language.slug) }}</span>
+                        </div>
+                    </template>
+                    <template #dropdown>
+                        <div id="lang-list">
+                            <ul>
+                                <li v-for="lang in langList"
+                                    :key="lang.slug"
+                                    :class="currentLangClass(lang.slug)"
+                                    @click="setCurrentLang(lang.slug)">
+                                    {{ __('frontend.header.lang.' + lang.slug) }}
+                                </li>
+                            </ul>
+                        </div>
+                    </template>
+                </NestedDropdown>
+                <NestedDropdown id="user-account">
+                    <template #parent>
+                        <div id="user-icons">
+                            <img alt="user_avatar_32" src="/images/icons/user_avatar_32.svg" />
+                            <img alt="arrow_simple_32" src="/images/icons/arrow_simple_32.svg" class="arrow" />
+                        </div>
+                    </template>
+                    <template #dropdown>
+                        <div id="user-profile">
+                            test
+                        </div>
+                    </template>
+                </NestedDropdown>
             </div>
         </div>
     </header>
@@ -33,11 +44,12 @@
 <script>
 import { mapActions } from 'vuex';
 import BaseDropdown from "../General/BaseDropdown";
+import NestedDropdown from "../General/NestedDropdown";
 
 export default {
     name: "BaseHeader",
 
-    components: {BaseDropdown},
+    components: {NestedDropdown, BaseDropdown},
 
     props: [
         'language',
@@ -91,6 +103,14 @@ header {
             font-weight: bold;
             flex-direction: row;
 
+            .dropdown-contents {
+                top: 48px;
+                position: absolute;
+                border-radius: 0 0 8px 8px;
+                background-color: $black-main;
+
+            }
+
             #lang-setting {
                 display: flex;
                 position: relative;
@@ -123,8 +143,6 @@ header {
                 }
 
                 #lang-list {
-                    top: 48px;
-                    z-index: 10;
                     width: 100%;
                     position: absolute;
                     border-radius: 0 0 8px 8px;
@@ -179,6 +197,20 @@ header {
                         height: 8px;
                         margin-left: 0;
                     }
+
+                }
+
+                #user-profile {
+                    right: 0;
+                    z-index: 10;
+                    width: 256px;
+                    display: flex;
+                    padding: 16px;
+                    min-height: 128px;
+                    position: absolute;
+                    border-radius: 0 0 8px 8px;
+                    background-color: $black-main;
+
                 }
             }
         }
