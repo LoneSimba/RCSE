@@ -42,19 +42,18 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-import BaseDropdown from "../General/BaseDropdown";
+import {mapActions, mapState} from 'vuex';
 import NestedDropdown from "../General/NestedDropdown";
 
 export default {
     name: "BaseHeader",
 
-    components: {NestedDropdown, BaseDropdown},
+    components: {NestedDropdown},
 
-    props: [
-        'language',
-        'langList'
-    ],
+    computed: mapState('config', {
+        language: state => state.language,
+        langList: state => state.langList,
+    }),
 
     methods: {
         ...mapActions('config', [
@@ -74,9 +73,12 @@ export default {
 @import 'resources/css/variables';
 
 header {
+    z-index: 10;
     width: 100%;
     height: 48px;
     display: flex;
+    position: fixed;
+    color: $gray-main;
     flex-direction: row;
     justify-content: center;
     background-color: $black-main;
@@ -91,28 +93,20 @@ header {
         #logo {
             width: 96px;
             height: 96px;
-
+            user-select: none;
             background: center / contain no-repeat url("/images/logos/rcs_128.svg");
         }
 
         #user-controls {
             height: 48px;
             display: flex;
-            color: $gray-main;
             font-size: 14px;
-            font-weight: bold;
             flex-direction: row;
-
-            .dropdown-contents {
-                top: 48px;
-                position: absolute;
-                border-radius: 0 0 8px 8px;
-                background-color: $black-main;
-
-            }
 
             #lang-setting {
                 display: flex;
+                font-weight: bold;
+                user-select: none;
                 position: relative;
                 flex-direction: column;
 
@@ -144,6 +138,7 @@ header {
 
                 #lang-list {
                     width: 100%;
+                    z-index: 20;
                     position: absolute;
                     border-radius: 0 0 8px 8px;
                     background-color: $black-main;
@@ -180,6 +175,7 @@ header {
                 #user-icons {
                     height: 48px;
                     display: flex;
+                    user-select: none;
                     flex-direction: row;
                     align-items: center;
 
@@ -202,7 +198,7 @@ header {
 
                 #user-profile {
                     right: 0;
-                    z-index: 10;
+                    z-index: 20;
                     width: 256px;
                     display: flex;
                     padding: 16px;

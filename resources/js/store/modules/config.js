@@ -5,7 +5,8 @@ export default {
 
     state: {
         language: {},
-        langList : []
+        langList : [],
+        mainMenu: []
     },
 
     getters: {
@@ -20,7 +21,7 @@ export default {
 
     actions: {
         getAvailableLangs: function({ commit }) {
-            config.getLangs(langs => {
+            config.getLangList(langs => {
                 commit('setLangList', langs);
             });
         },
@@ -28,6 +29,12 @@ export default {
         setCurrentLang: function({ state, commit }, lang) {
           commit('setLang', lang);
         },
+
+        getMainMenu: function ({ commit }) {
+            config.getMenuList(menu => {
+                commit('setMainMenu', menu);
+            })
+        }
     },
 
     mutations: {
@@ -35,8 +42,12 @@ export default {
             state.language = state.langList.find(value => value.slug === lang) ?? config.getDefaultLang();
         },
 
-        setLangList(state, langs) {
-            state.langList = langs;
+        setLangList(state, items) {
+            state.langList = items;
+        },
+
+        setMainMenu(state, items) {
+            state.mainMenu = items;
         }
     }
 }

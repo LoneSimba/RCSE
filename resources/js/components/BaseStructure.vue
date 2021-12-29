@@ -1,20 +1,24 @@
 <template>
-    <BaseHeader :language="language" :langList="langList"></BaseHeader>
+    <div id="page">
+        <BaseHeader></BaseHeader>
+
+        <BaseWrapper></BaseWrapper>
+    </div>
 </template>
 
 <script>
 import {mapActions, mapGetters, mapState} from "vuex";
 
 import BaseHeader from "./Structure/BaseHeader";
+import BaseWrapper from "./Structure/BaseWrapper";
 
 export default {
     name: "BaseStructure",
 
-    components: {BaseHeader},
+    components: {BaseWrapper, BaseHeader},
 
     computed: mapState('config', {
         language: state => state.language,
-        langList: state => state.langList,
     }),
 
     methods: {
@@ -37,6 +41,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
+#page {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 </style>
