@@ -46,6 +46,8 @@ export default {
 #main-sidebar {
     width: 64px;
     display: flex;
+    font-size: 14pt;
+    font-weight: bold;
     color: $gray-main;
     padding-top: 48px;
     align-items: center;
@@ -77,14 +79,15 @@ export default {
                     align-items: center;
                     display: inline-flex;
                     transform-origin: right;
-                    transition: 0.1s ease-out;
+                    text-transform: uppercase;
+                    border-radius: 4px 0 0 4px;
                     background-color: $black-main;
+                    transition: all .15s ease-in-out;
                 }
 
                 .menu-item-icon {
                     width: 64px;
                     height: inherit;
-                    position: relative;
                     align-items: center;
                     display: inline-flex;
                     justify-content: center;
@@ -93,7 +96,7 @@ export default {
 
             &:hover {
                 .menu-item-text {
-                    width: 300%;
+                    width: 175%;
                     padding: 0 8px;
                 }
             }
