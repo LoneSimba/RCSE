@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Contracts\Repositories\PermissionRepository;
 use App\Models\PermGroup;
 use App\Models\Permission;
 use App\Models\User;
@@ -20,12 +21,22 @@ class Test extends \Illuminate\Console\Command
         $ids = $groups->pluck('id')->all();
         array_push($ids, $user->id);
 
-        $perms = Permission::whereIn('owner_id', $ids)
-            ->select('permission', 'allow')
-            ->distinct()
-            ->get()
-            ->all();
 
-        dd($perms);
+        $perms = app(PermissionRepository::class)->findForPermissionableWithAncestors($user)->groupBy('owner_id');
+        $userPerms = $perms->get($user->id)->pluck('allow', 'permission');
+
+        $perms->each(function ($group, $owner) use (&$userPerms, $user) {
+            if ($owner !== $user->id) {
+                $keys = $userPerms->keys();
+                $data = $group->filter(function ($perm) use ($keys) {
+                    return !in_array($perm->permission, $keys);
+                });
+                dump($data);
+
+
+            }
+        });
+
+        dd($userPerms);
     }
 }

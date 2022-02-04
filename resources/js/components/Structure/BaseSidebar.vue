@@ -79,7 +79,7 @@ export default {
                     align-items: center;
                     display: inline-flex;
                     transform-origin: right;
-                    text-transform: uppercase;
+                    // text-transform: uppercase;
                     border-radius: 4px 0 0 4px;
                     background-color: $black-main;
                     transition: all .15s ease-in-out;
