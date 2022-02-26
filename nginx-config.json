@@ -1,13 +1,39 @@
 {
     "listeners": {
         "*:8080": {
-            "pass": "applications/php_app"
+            "pass": "routes"
+        }
+    },
+    "routes": [
+        {
+            "action": {
+                "pass": "applications/php"
+            }
+        }
+    ],
+    "settings": {
+        "http": {
+            "max_body_size": 50000000
         }
     },
     "applications": {
-        "php_app": {
+        "php": {
             "type": "php",
-            "root": "/var/www/public/"
+            "limits": {
+                "requests": 250,
+                "timeout": 30
+            },
+            "processes": {
+                "max": 10,
+                "spare": 5,
+                "idle_timeout": 30
+            },
+            "user": "www-data",
+            "group": "www-data",
+            "root": "/var/www/public",
+            "script": "index.php",
+            "index": "index.php"
         }
-    }
+    },
+    "access_log": "/dev/stdout"
 }
