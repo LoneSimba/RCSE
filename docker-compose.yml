@@ -7,14 +7,13 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 'default'
     ports:
-     - 3306:3306
-   
+     - "3306:3306"
   nginx:
     container_name: rcse.nginx
     build:
       context: ./
     ports:
-      - 8080:8080
+      - "8080:8080"
     volumes:
       - ./:/var/www:delegated
     networks:

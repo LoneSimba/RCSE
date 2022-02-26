@@ -1,7 +1,8 @@
 <?php
 
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\OAuthController;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +16,14 @@ use App\Http\Controllers\Auth\OAuthController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return Inertia::render('Dashboard');
 })->name('dashboard');
-
-Route::get('/login/{provider}', [OAuthController::class, 'redirectToProvider'])
-     ->name('social.login');
-Route::get('/login/{provider}/callback', [OAuthController::class, 'handleProviderCallback'])
-     ->name('social.callback');
