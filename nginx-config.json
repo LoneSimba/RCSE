@@ -6,6 +6,14 @@
     },
     "routes": [
         {
+            "match": {
+                "uri": ["/js/*.js", "/css/*.css"]
+            },
+            "action": {
+                "share": "/var/www/public$uri"
+            }
+        },
+        {
             "action": {
                 "pass": "applications/php"
             }
