@@ -1,0 +1,36 @@
+version: '3.9'
+services:
+
+  database:
+    container_name: rcse-s.database
+    image: mariadb:10.8.2-focal
+
+    environment:
+      MARIADB_DATABASE: 'app'
+      MARIADB_USER: 'symfony'
+      MARIADB_PASSWORD: 'default'
+      MARIADB_ROOT_PASSWORD: 'root'
+      TZ: Europe/Moscow
+    ports:
+      - "3306:3306"
+
+  nginx:
+    container_name: rcse-s.nginx
+    build:
+      context: ./docker
+      args:
+        ENV: development # development or production
+    environment:
+      TZ: Europe/Moscow
+      APP_ENV: dev
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www:delegated
+
+  ###> symfony/mailer ###
+  mailer:
+    container_name: rcse-s.mailer
+    image: schickling/mailcatcher
+    ports: [1025, 1080]
+###< symfony/mailer ###
