@@ -192,3 +192,6 @@ node_modules/
 dist/
 
 # End of https://www.toptal.com/developers/gitignore/api/symfony,vuejs,phpstorm
+
+bootstrap/cache
+symfony.exe

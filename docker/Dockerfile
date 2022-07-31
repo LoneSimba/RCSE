@@ -25,11 +25,13 @@ RUN if test "$ENV" = "development"; then \
         echo "xdebug.idekey=PHPSTORM" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini;\
     fi 
 
-ADD https://getcomposer.org/installer /tmp/composer
-RUN php /tmp/composer --install-dir=/usr/bin --filename=composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 RUN set -xe && \
     echo 'deb [trusted=yes] https://repo.symfony.com/apt/ /' | tee /etc/apt/sources.list.d/symfony-cli.list && \
     apt update && \
-    apt install symfony-cli
+    apt install symfony-cli -y
+
+RUN apt install npm -y && \
+    npm install --global yarn
 
