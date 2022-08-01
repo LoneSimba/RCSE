@@ -1,0 +1,4 @@
+core_common_controllers:
+  resource: ../../src/Modules/Core/Controller/
+  type: annotation
+
