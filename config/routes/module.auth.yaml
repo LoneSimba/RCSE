@@ -1,0 +1,4 @@
+auth_common_controllers:
+  resource: ../../src/Modules/Auth/Controller/
+  type: annotation
+

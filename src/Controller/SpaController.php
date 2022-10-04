@@ -8,9 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SpaController extends AbstractController
 {
-    /**
-     * @Route("/", name="index")
-     */
+    #[Route("/", "index")]
     public function index(): Response
     {
         return $this->render('base.html.twig');
