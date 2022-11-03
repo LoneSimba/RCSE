@@ -9,7 +9,7 @@ class ErrorController extends AbstractController
 {
     public function show(\Throwable $exception, ?DebugLoggerInterface $debugLogger): JsonResponse
     {
-        $this->logger->error("Error occured: ({$exception->getCode()}) {$exception->getMessage()} in {$exception->getFile()} at {$exception->getLine()}, trace \n\n{$exception->getTraceAsString()}");
+        $this->logger->error("Error occurred: ({$exception->getCode()}) {$exception->getMessage()} in {$exception->getFile()} at {$exception->getLine()}, trace \n\n{$exception->getTraceAsString()}");
 
         $data = $this->getParameter('kernel.environment') !== 'prod' ? [
                'exception' => "{$exception->getCode()} - {$exception->getMessage()}" ,
