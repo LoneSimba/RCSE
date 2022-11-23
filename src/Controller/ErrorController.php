@@ -3,11 +3,10 @@
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 
 class ErrorController extends AbstractController
 {
-    public function show(\Throwable $exception, ?DebugLoggerInterface $debugLogger): JsonResponse
+    public function show(\Throwable $exception): JsonResponse
     {
         $this->logger->error("Error occurred: ({$exception->getCode()}) {$exception->getMessage()} in {$exception->getFile()} at {$exception->getLine()}, trace \n\n{$exception->getTraceAsString()}");
 
