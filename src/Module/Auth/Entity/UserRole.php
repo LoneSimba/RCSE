@@ -13,7 +13,10 @@ class UserRole
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(nullable: true)]
+    private ?int $parent_id = null;
+
+    #[ORM\Column(length: 50)]
     private ?string $name = null;
 
     public function getId(): ?int
@@ -29,6 +32,18 @@ class UserRole
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getParentId(): ?int
+    {
+        return $this->parent_id;
+    }
+
+    public function setParentId(int $parent_id): self
+    {
+        $this->parent_id = $parent_id;
 
         return $this;
     }
